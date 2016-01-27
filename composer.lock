@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6e8ca7e514fb491c32981547f3d4b742",
-    "content-hash": "938c6bbfeed988276270d60d3a41c5c1",
+    "hash": "93e81486d901e3a8e78ed0afc156c387",
+    "content-hash": "2042fe2db8af00e71794f4b13c7b1cbf",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -1392,16 +1392,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.11",
+            "version": "v5.2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "e8ad411ac3ca63f532952417156e32d010fcc522"
+                "reference": "6b6255ad7bfbdb721b8d00b09d52b146c5d363d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/e8ad411ac3ca63f532952417156e32d010fcc522",
-                "reference": "e8ad411ac3ca63f532952417156e32d010fcc522",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/6b6255ad7bfbdb721b8d00b09d52b146c5d363d7",
+                "reference": "6b6255ad7bfbdb721b8d00b09d52b146c5d363d7",
                 "shasum": ""
             },
             "require": {
@@ -1516,7 +1516,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-01-22 18:36:05"
+            "time": "2016-01-26 04:15:37"
         },
         {
             "name": "laravel/socialite",
@@ -1931,6 +1931,48 @@
             "time": "2015-10-23 04:02:07"
         },
         {
+            "name": "mathiasgrimm/laravel-dot-env-gen",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mathiasgrimm/laravel-dot-env-gen.git",
+                "reference": "966112e6c9b036a3fbc3d8787889afab529eada1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mathiasgrimm/laravel-dot-env-gen/zipball/966112e6c9b036a3fbc3d8787889afab529eada1",
+                "reference": "966112e6c9b036a3fbc3d8787889afab529eada1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MathiasGrimm\\LaravelDotEnvGen\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Mathias Grimm",
+                    "email": "mathiasgrimm@gmail.com",
+                    "homepage": "http://phpEmpregos.com"
+                }
+            ],
+            "description": "A Laravel 5 artisan command to generate a .env.gen file based on the existing project.",
+            "homepage": "https://github.com/mathiasgrimm/laravel-dot-env-gen/",
+            "keywords": [
+                "artisan",
+                "command",
+                "dotenv",
+                "env",
+                "environment"
+            ],
+            "time": "2015-04-20 12:50:38"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.17.2",
             "source": {
@@ -2009,23 +2051,23 @@
         },
         {
             "name": "mtdowling/cron-expression",
-            "version": "v1.0.4",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mtdowling/cron-expression.git",
-                "reference": "fd92e883195e5dfa77720b1868cf084b08be4412"
+                "reference": "c9ee7886f5a12902b225a1a12f36bb45f9ab89e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mtdowling/cron-expression/zipball/fd92e883195e5dfa77720b1868cf084b08be4412",
-                "reference": "fd92e883195e5dfa77720b1868cf084b08be4412",
+                "url": "https://api.github.com/repos/mtdowling/cron-expression/zipball/c9ee7886f5a12902b225a1a12f36bb45f9ab89e5",
+                "reference": "c9ee7886f5a12902b225a1a12f36bb45f9ab89e5",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.*"
+                "phpunit/phpunit": "~4.0|~5.0"
             },
             "type": "library",
             "autoload": {
@@ -2049,7 +2091,7 @@
                 "cron",
                 "schedule"
             ],
-            "time": "2015-01-11 23:07:46"
+            "time": "2016-01-26 21:23:30"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -5249,7 +5291,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "mathiasgrimm/laravel-dot-env-gen": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
