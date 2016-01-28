@@ -155,6 +155,7 @@ return [
         BuildGrid\Providers\AuthServiceProvider::class,
         BuildGrid\Providers\EventServiceProvider::class,
         BuildGrid\Providers\RouteServiceProvider::class,
+        BuildGrid\Providers\DropboxServiceProvider::class,
 
         /*
          *  Exceptions Handler

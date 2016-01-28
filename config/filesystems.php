@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'cloud' => 's3',
+    'cloud' => 'dropbox',
 
     /*
     |--------------------------------------------------------------------------
@@ -79,6 +79,12 @@ return [
             'region'    => 'IAD',
             'url_type'  => 'publicURL',
         ],
+
+        'dropbox' => [
+            'driver'    => 'dropbox',
+            'accessToken' => env('DROPBOX_TOKEN', ''),
+            'clientIdentifier' => env('DROPBOX_SECRET', '')
+        ]
 
     ],
 
