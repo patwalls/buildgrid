@@ -8,7 +8,13 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    <div id="dropzone">
+                        <form action="/file-upload"
+                              class="dropzone"
+                              id="my-awesome-dropzone">
+                            {!! csrf_field() !!}
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
