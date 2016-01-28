@@ -1,6 +1,7 @@
 // ** Require libraries and frameworks ** //
 
 global.$ = global.jQuery = require('jquery');       // jQuery is expected to be found tied to the window object.
+global.router    = require('jquery-router-plugin');
 global.modal     = require('jquery-modal');
 global.toastr    = require('toastr');
 global.dropzone  = require('dropzone');
