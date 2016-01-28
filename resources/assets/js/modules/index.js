@@ -1,5 +1,7 @@
-$('document').ready( () => {
+module.exports = () => {
 
-    toastr.success('Hello, Welcome to BuildGrid, this site is in development!');
+    console.log("This is the index module");
 
-});
+
+
+}
