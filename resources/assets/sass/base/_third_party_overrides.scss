@@ -22,6 +22,7 @@
   .navbar-nav {
     li {
       a {
+        font-weight: 700;
         color: #fff;
         &:hover {
           color: #fff;
@@ -32,3 +33,10 @@
   }
 }
 
+
+.dropzone {
+    border: 2px dashed $light-blue;
+    border-radius: 5px;
+    background: white;
+    padding: 54px;
+}
