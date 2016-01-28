@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace BuildGrid\Http\Controllers\Auth;
 
-use App\User;
+use BuildGrid\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use BuildGrid\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

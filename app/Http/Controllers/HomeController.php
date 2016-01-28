@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace BuildGrid\Http\Controllers;
 
-use App\Http\Requests;
+use BuildGrid\Http\Requests;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller

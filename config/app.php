@@ -151,16 +151,21 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        BuildGrid\Providers\AppServiceProvider::class,
+        BuildGrid\Providers\AuthServiceProvider::class,
+        BuildGrid\Providers\EventServiceProvider::class,
+        BuildGrid\Providers\RouteServiceProvider::class,
 
         /*
          *  Exceptions Handler
          */
 
-        'GrahamCampbell\Exceptions\ExceptionsServiceProvider'
+        'GrahamCampbell\Exceptions\ExceptionsServiceProvider',
+
+        /*
+         * .env generator
+         */
+        'MathiasGrimm\LaravelDotEnvGen\DotEnvGenServiceProvider',
 
     ],
 
