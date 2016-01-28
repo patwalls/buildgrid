@@ -1,12 +1,5 @@
-module.exports = () => {
+$('document').ready( () => {
 
-    var toastr = require('toastr');
+    toastr.success('Hello, Welcome to BuildGrid, this site is in development!');
 
-    $('document').ready( () => {
-
-        toastr.success('Hello, Welcome to BuildGrid, this site is in development!');
-
-    });
-
-
-}
+});
