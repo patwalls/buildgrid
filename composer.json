@@ -18,12 +18,13 @@
         "jenssegers/rollbar": "v1.4.6",
         "jenssegers/date": "v3.1.0",
         "laracasts/presenter": "0.2.1",
-        "laravelbook/ardent": "v3.3.0",
+        "laravelbook/ardent": "v3.4.2",
         "league/flysystem-aws-s3-v3": "1.0.9",
         "league/flysystem-dropbox": "1.0.1",
         "slynova/laravel-commentable": "v2.0.0",
         "spatie/laravel-glide": "2.2.8",
-        "mathiasgrimm/laravel-dot-env-gen": "dev-master"
+        "mathiasgrimm/laravel-dot-env-gen": "dev-master",
+        "venturecraft/revisionable": "^1.26"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "v2.1.2",
