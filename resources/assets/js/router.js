@@ -3,24 +3,11 @@
 $('document').ready( () => $.router.check() );
 
 
-$.router.add("/", (data) => {
+// Define routes and actions on each one.
 
-    var index = require("./modules/index")();
+$.router.add("/create_project", () => {
 
-    toastr.success('Hello, Welcome to BuildGrid, this site is in development!');
-
-} );
-
-
-$.router.add("/login", (data) => {
-
-    toastr.info('Please login into your account to upload files to Dropbox');
-
-} );
-
-
-$.router.add("/password/reset", () => {
-
-    toastr.warning('Remember to provide the same email used when you registered');
+    require('./modules/create_project')();
 
 });
+
