@@ -1,0 +1,28 @@
+// Twitter's Bootstrap
+
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+// Bootstrap Flatly Theme from Bootswatch  -- Just as a quick facelift from default bootstrap look
+
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "node_modules/bootswatch-sass/flatly/variables";
+
+// Customization
+
+$brand-primary    : $bg_dark-blue;
+$brand-info       : $bg_light-blue;
+$navbar-default-bg: lighten($bg_dark-blue, 5%);
+$gray-light       : $bg_light-gray;
+$gray-dark        : $bg_dark-gray;
+$navbar-border-radius: 0;
+
+// The rest of Flatly theme and boootstrap
+
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootswatch-sass/flatly/bootswatch.scss";
+
+
+// Overrides
+
+

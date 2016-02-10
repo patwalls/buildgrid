@@ -1,0 +1,7 @@
+@import "node_modules/toastr/toastr";
+
+// Make toasts solid
+
+#toast-container > div {
+  opacity: 1.0;
+}

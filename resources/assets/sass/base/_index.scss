@@ -1,3 +1,21 @@
-@import "colors";
+// Variables definitions
+
+@import "variables";
+@import "social";
+
+// Libraries and frameworks
+
+@import "bootstrap";
+// @import "bourbon";
+// @import "neat";
+
+
+// Plugins and third party packages required stylesheets
+
+@import "toastr";
+@import "dropzone";
+
+
+// Sitewide overrides
+
 @import "base";
-@import "third_party_overrides";

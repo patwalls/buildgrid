@@ -3,6 +3,7 @@ ul{
 	padding-left: 0px;
 	margin-bottom: 0px;
 }
+
 a{
 	&:hover{
 		text-decoration: none;
@@ -11,11 +12,8 @@ a{
 		text-decoration: none;
 	}
 }
+
 input, button, textarea {
 	outline: none;
-}
-
-body {
-  font-family: 'Open Sans';
 }
 
