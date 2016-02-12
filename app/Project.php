@@ -19,7 +19,7 @@ class Project extends Ardent
     ];
 
     public static $relationsData = [
-        'boms' => [self::HAS_MANY, 'Bom'],
-        'user' => [self::BELONGS_TO, 'User']
+        'boms' => [self::HAS_MANY, 'BuildGrid\Bom'],
+        'user' => [self::BELONGS_TO, 'BuildGrid\User']
     ];
 }

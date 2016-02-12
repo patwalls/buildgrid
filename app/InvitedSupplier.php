@@ -21,6 +21,6 @@ class InvitedSupplier extends Ardent
     ];
 
     public static $relationsData = [
-        'project' => [self::BELONGS_TO, 'Bom']
+        'bom' => [self::BELONGS_TO, 'BuildGrid\Bom']
     ];
 }

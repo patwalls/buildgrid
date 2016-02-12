@@ -23,4 +23,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * A user has many projects relationship
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function projects(){
+        return $this->hasMany('BuildGrid\Project');
+    }
+
+
+    /**
+     *
+     * A user has many Boms through its Projects
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function boms(){
+        return $this->hasManyThrough('BuildGrid\Bom', 'BuildGrid\Project');
+    }
+
 }
