@@ -34,6 +34,7 @@ $colors:(
     .ho-#{$brand}:hover { background-color: darken($color, 10%); border-color: darken($color, 10%); }
     .fg-#{$brand} {  color: $color; }
     .bd-#{$brand} {  border-color: $color; }
+
   }
 
 }

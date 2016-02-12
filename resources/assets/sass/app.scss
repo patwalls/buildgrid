@@ -1,8 +1,8 @@
 // ** App Main SASS File ** //
 
-@import "base/index";
-@import "layout/index";
-@import "components/index";
-@import "partials/index";
+@import "base/index_app";
+@import "layout/index_app";
+@import "components/index_app";
+@import "partials/app/index";
 
 @include social-colors();
