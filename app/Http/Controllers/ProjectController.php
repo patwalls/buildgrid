@@ -29,13 +29,15 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $projects = Project::where('user_id', Auth::id())->with('boms')->get();
+
+        return view('home', ['projects' => $projects]);
     }
 
 
     public function create()
     {
-        return view('home');
+        return view('create_project');
     }
 
 
