@@ -1,0 +1,9 @@
+.standard-blue-button {
+    border: none;
+    border-radius: 0;
+	background-color: $bg_light-blue;
+	&:hover {
+		background-color: $bg_dark-blue ;
+	}
+	color: #fff;
+}
