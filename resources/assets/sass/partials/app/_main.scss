@@ -13,18 +13,18 @@ img.logo {
 }
 
 .login-form{
-    hr{
-        border-width: 2px 0 0;
-        margin-top: 30px;
-    }
-    .form-group{
-  	    margin-top: 20px;
-    }
-    .form-control{
-        border-radius: 0;
-    }
-    .form-control:focus{
-       border-color: $bg_dark-blue;
-    }
+  hr{
+    border-width: 2px 0 0;
+    margin-top: 30px;
+  }
+  .form-group{
+    margin-top: 20px;
+  }
+  .form-control{
+    border-radius: 0;
+  }
+  .form-control:focus{
+    border-color: $bg_dark-blue;
+  }
 }
 
