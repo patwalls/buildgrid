@@ -12,7 +12,18 @@ img.logo {
   margin-top: 20%;
 }
 
-.login-form{
+.body-copy-1{
+  font-size: 16px;
+  font-weight: bold;
+}
+.body-copy-2{
+  font-size: 16px;
+}
+.body-copy-3{
+  font-size: 12px;
+}
+.login-form, .register-form{
+  
   hr{
     border-width: 2px 0 0;
     margin-top: 30px;
@@ -29,5 +40,8 @@ img.logo {
   .has-error label{
     color: #ff0000;
   }
+  .header{
+    font-size: 50px;
+  }  
 }
 
