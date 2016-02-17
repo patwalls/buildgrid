@@ -15,14 +15,13 @@
 
 </head>
 <body>
-
-
+    
+    @include('partials.header')
+    
     @yield('content')
 
     <!-- JavaScripts -->
-
     <script src="{{ elixir('js/site.js') }}"></script>
-
 
 </body>
 </html>

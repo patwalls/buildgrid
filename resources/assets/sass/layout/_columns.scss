@@ -1,0 +1,15 @@
+
+
+.wrap-outer{
+  @include display(flex);
+  @include justify-content(center);
+  width: 100%;
+}
+ 
+.container-90{
+  width: 90%;
+}
+
+.container-80{
+  width: 80%;
+}

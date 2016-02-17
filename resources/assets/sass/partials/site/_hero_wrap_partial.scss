@@ -1,0 +1,26 @@
+#home-hero-wrap{
+  background: url('../../images/home-header.jpg');
+  background-size: cover;
+  background-position: center center;
+  padding: 15% 0;
+  .hero-content-wrap{
+    @include display(flex);
+    @include flex-direction(column);
+    @include align-items(center);
+    h2{
+      color: $white;
+      margin: 0px;
+      span{
+        @extend h1;
+      }
+    }
+    .b1{
+      color: $white;
+    }
+    a{
+      span{
+        color: $white;
+      }
+    }
+  }
+}
