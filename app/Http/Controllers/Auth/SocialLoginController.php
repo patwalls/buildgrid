@@ -30,7 +30,7 @@ class SocialLoginController extends Controller
     {
     	return Socialite::driver('linkedin')->redirect();
     }
-	
+	    
 	/**
 	 * Obtain the user information from LinkedIn.
 	 *
@@ -58,7 +58,7 @@ class SocialLoginController extends Controller
 
         return redirect()->route('home');
     }
-    
+       
     /**
      * Return user if exists; create and return if doesn't
      *
@@ -83,4 +83,55 @@ class SocialLoginController extends Controller
     	//Create a NEW user
     	return User::create((array) $user);
     } 
+    
+    /**
+     * Redirect the user to the Google+ authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToGoogle()
+    {
+    	return Socialite::driver('google')->redirect();
+    }
+    
+    /**
+     * Obtain the user information from Google+.
+     *
+     * @return Response
+     */
+    public function handleGoogleCallback() {
+    	try {
+    		$user = Socialite::driver('google')->user();
+    		$authUser = $this->getGoogleUser($user);
+    		
+    		Auth::login($authUser, true);
+    
+    		return redirect()->route('home');
+    	}catch ( Exception $e ) {
+    		return redirect()->route('login');
+    	}
+    }    
+    
+    /**
+     * Return user if exists; create and return if doesn't
+     *
+     * @param $user		User with all Google+ info
+     * @return User
+     */
+    private function getGoogleUser($user)
+    {
+    	if ($authUser = User::where('email', $user->email)->first()) {
+    
+    		//Update all info for an existing user
+    		//$authUser->linkedin_id 	     = $user->linkedin_id;
+    		//$authUser->linkedin_token    = $user->linkedin_token;
+    
+    		$authUser->save();
+    
+    		return $authUser;
+    	}
+    
+    	//Create a NEW user
+    	return User::create((array) $user);
+    }    
 }
