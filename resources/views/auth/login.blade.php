@@ -56,7 +56,7 @@
                 </div>
             <div class="row">
                     <div class="col-md-5 col-md-offset-1 col-xs-5 col-xs-offset-1 form-group">
-                        <a class="btn btn-block standard-blue-button" href="{{ url('/password/reset') }}">Google+</a>
+                        <a class="btn btn-block standard-blue-button" href="{{ route('login.google') }}">Google+</a>
                     </div>
                     <div class="col-md-5 col-xs-5 form-group">
                         <a class="btn btn-block standard-blue-button" href="{{ route('login.linkedin') }}">LinkedIn</a>
