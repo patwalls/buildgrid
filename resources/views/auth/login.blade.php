@@ -18,14 +18,21 @@
                         <hr>
                     </div>
                 </div>
-
+                @if ( $errors->any() )
+				<div class="row">
+					<div class="col-md-12 col-xs-12 alert alert-danger">
+					    {{ $errors->first('email') }}
+					    {{ $errors->first('password') }}
+					</div>
+				</div>
+				@endif
                 <div class="row">
-                        <div class="form-group col-md-6 col-xs-12">
+                        <div class="form-group col-md-6 col-xs-12 @if ($errors->has('email')) has-error @endif">
                             <label for="email">Email address</label>
-                            <input type="email" class="form-control" name="email" placeholder="Email">
+                            <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
                         </div>
 
-                        <div class="form-group col-md-6 col-xs-12">
+                        <div class="form-group col-md-6 col-xs-12 @if ($errors->has('password')) has-error @endif">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" name="password" placeholder="Password">
                             <!-- 

@@ -26,5 +26,8 @@ img.logo {
   .form-control:focus{
     border-color: $bg_dark-blue;
   }
+  .has-error label{
+    color: #ff0000;
+  }
 }
 
