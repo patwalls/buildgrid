@@ -123,8 +123,8 @@ class SocialLoginController extends Controller
     	if ($authUser = User::where('email', $user->email)->first()) {
     
     		//Update all info for an existing user
-    		//$authUser->linkedin_id 	     = $user->linkedin_id;
-    		//$authUser->linkedin_token    = $user->linkedin_token;
+    		$authUser->google_id 	= $user->id;
+    		$authUser->google_token = $user->token;
     
     		$authUser->save();
     
@@ -132,6 +132,12 @@ class SocialLoginController extends Controller
     	}
     
     	//Create a NEW user
-    	return User::create((array) $user);
+    	$authUser = ['first_name'   => $user->user['name']['givenName'],
+    			     'last_name'    => $user->user['name']['familyName'],
+    			     'email'        => $user->email,
+    			     'google_id'    => $user->id,
+    			     'google_token' => $user->token ];
+    	
+    	return User::create($authUser);
     }    
 }
