@@ -2,6 +2,11 @@
 
 @section('content')
 
-    This is were the marketing site goes
+  <!-- Hero Wrap -->
+  @include('partials.marketing-index.hero-wrap')
+
+  <!-- Easily Accessible -->
+
+  @include('partials.marketing-index.easily-accessible')
 
 @endsection

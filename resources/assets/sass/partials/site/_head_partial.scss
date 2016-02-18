@@ -1,0 +1,23 @@
+#nav-desk{
+  position: fixed;
+  .header-outer-wrap{
+    @include display(flex);
+    @include justify-content(space-between);
+    margin: 1% 0 0 0;
+    .header-item-wrap{ 
+      img{
+
+      }
+      ul{
+        @include display(flex);
+        li{
+          a{
+            span{
+ 
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.wrap-outer{
+  @include display(flex);
+  @include justify-content(center);
+  width: 100%;
+}
+ 
+.container-90{
+  width: 90%;
+}
+
+.container-80{
+  width: 80%;
+}
+
+// 44% 56% Grid
+.grid-44-56-outer-wrap{
+  @include display(flex);
+  .grid-item-44-wrap{
+    width: 44%;
+    img{
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+  .grid-item-56-wrap{
+    width: 56%;
+    @include display(flex);
+    @include align-items(center);
+    .grid-item-content-wrap{
+      margin: 0% 0% 0% 5%;
+    }
+  }
+  @media screen and (max-width: 767px){
+    @include flex-wrap(wrap);
+    .grid-item-56-wrap, .grid-item-44-wrap{
+      width: 100%;
+    }
+  }
+} 
+
+
+// 50% 50% Grid
