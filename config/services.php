@@ -39,6 +39,9 @@ return [
 		'client_secret' => env('LINKEDIN_SECRET'),
 		'redirect' 		=> env('LINKEDIN_URL_CALLBACK'),
 	],
-		
-
+	'google' => [
+		'client_id' 	=> env('GOOGLE_CLIENT_ID'),
+		'client_secret' => env('GOOGLE_SECRET'),
+		'redirect' 		=> env('GOOGLE_URL_CALLBACK'),
+	],
 ];
