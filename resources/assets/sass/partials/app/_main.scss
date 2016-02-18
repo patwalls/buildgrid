@@ -12,4 +12,36 @@ img.logo {
   margin-top: 20%;
 }
 
+.body-copy-1{
+  font-size: 16px;
+  font-weight: bold;
+}
+.body-copy-2{
+  font-size: 16px;
+}
+.body-copy-3{
+  font-size: 12px;
+}
+.login-form, .register-form{
+  
+  hr{
+    border-width: 2px 0 0;
+    margin-top: 30px;
+  }
+  .form-group{
+    margin-top: 20px;
+  }
+  .form-control{
+    border-radius: 0;
+  }
+  .form-control:focus{
+    border-color: $bg_dark-blue;
+  }
+  .has-error label{
+    color: #ff0000;
+  }
+  .header{
+    font-size: 50px;
+  }  
+}
 
