@@ -55,7 +55,7 @@
         <div class="col-md-10 col-md-offset-1">
 
             <div class="row">
-                <h2>Current BOM's</h2>
+                <h1>Current BOM's</h1>
             </div>
 
             @if( $projects->isEmpty() )
@@ -68,7 +68,7 @@
             @foreach($projects as $project)
                 <div class="row">
 
-                    <h3>{{ $project->name }}</h3>
+                    <h2>{{ $project->name }}</h2>
 
                     @foreach($project->boms->chunk(4) as $chunk)
                         <div class="row">
@@ -76,7 +76,7 @@
                                 <div class="col-sm-6  col-md-3">
                                     <div class="info-card">
                                         <div class="info-card-header">
-                                            <a href="{{ route('ShowBom', [$bom->id]) }}">{{ $bom->name }}</a>
+                                            <a href="{{ route('getShowBom', [$bom->id]) }}">{{ $bom->name }}</a>
                                             <p>Added on {{ Date::parse($bom->created_at)->format('F j, Y') }}</p>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
             <div class="row spaced">
                     <div class="row">
                         <div class="col-sm-6 col-md-3">
-                            <a class="add" href="{{ route('CreateProject') }}">
+                            <a class="add" href="{{ route('getCreateProject') }}">
                                 <i class="fa fa-plus"></i>
                                 <p>New Project</p>
                             </a>
