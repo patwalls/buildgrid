@@ -12,6 +12,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::auth();
     
+    //User profile
+    Route::get('profile', ['uses' => 'UserController@edit', 'as' => 'edit.profile']);
+    Route::put('profile', ['uses' => 'UserController@update', 'as' => 'update.profile']);
+    
     //LinkedIn Login
     Route::get('login/linkedin', ['uses' => 'Auth\SocialLoginController@redirectToLinkedIn', 'as' => 'login.linkedin'] );
     Route::get('linkedin/callback', 'Auth\SocialLoginController@handleLinkedInCallback');
