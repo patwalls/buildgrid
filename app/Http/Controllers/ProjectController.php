@@ -4,11 +4,10 @@ namespace BuildGrid\Http\Controllers;
 
 use BuildGrid\Bom;
 use BuildGrid\Http\Requests;
+use BuildGrid\Http\Requests\CreateNewProjectRequest;
 use BuildGrid\InvitedSupplier;
 use BuildGrid\Project;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+
 
 class ProjectController extends Controller
 {
@@ -29,7 +28,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::where('user_id', Auth::id())->with('boms')->get();
+        $projects = Project::where('user_id', \Auth::id())->with('boms')->get();
 
         return view('home', ['projects' => $projects]);
     }
@@ -41,48 +40,28 @@ class ProjectController extends Controller
     }
 
 
-    public function saveNewProject(Request $request)
+    public function store(CreateNewProjectRequest $request)
     {
 
         $project = new Project();
-        $project->name = $request->project_name;
-        $project->user_id = Auth::id();
+        $project->user_id = \Auth::id();
+        $project->name = $request->get('project_name');
+        $project->save();
 
-        if( $project->save() ){
+        $bom = new Bom();
+        $bom->name= $request->get('bom_name');
+        $bom->project_id =  $project->id;
+        $bom->filename = $request->get('filename');
+        $bom->save();
 
-            $bom = new Bom();
-            $bom->project_id = $project->id;
-            $bom->name = $request->bom_name;
-            $bom->filename = $filename = $request->file('file')->getClientOriginalName();
-
-            if ( $bom->save() ){
-                $file = $request->file('file');
-                Storage::disk('dropbox')->put($filename, file_get_contents($file));
-
-                for($i = 1; $i <= sizeof($request->name); $i++ ){
-
-                    $supplier         = new InvitedSupplier();
-                    $supplier->bom_id = $bom->id;
-                    $supplier->name   = $request->name[$i];
-                    $supplier->email  = $request->email[$i];
-
-                    if( ! $supplier->save() ){
-
-                        return response($supplier->errors()->all(), 400);
-
-                    }
-
-                    return response('OK', 200);
-
-                }
-
-            }
-
-            return response($bom->errors()->all(), 400);
-
+        foreach($request->get('supplier') as $supplier){
+            $bom_supplier = new InvitedSupplier();
+            $bom_supplier->name = $supplier['name'];
+            $bom_supplier->email = $supplier['email'];
+            $bom_supplier->bom_id = $bom->id;
+            $bom_supplier->save();
         }
 
-        return response($project->errors()->all(), 400);
-
+        return response(['bom_id' => $bom->id, '_token' => csrf_token() ], 200);
     }
 }
