@@ -178,6 +178,16 @@ return [
          */
         'Jenssegers\Date\DateServiceProvider',
 
+        /*
+         * Admin
+         */
+        'SleepingOwl\Admin\AdminServiceProvider',
+
+        /*
+         * El Finder
+         */
+        'Barryvdh\Elfinder\ElfinderServiceProvider'
+
     ],
 
     /*
@@ -224,7 +234,22 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
+        /*
+         * Admin
+         */
+
+        'Admin'         => 'SleepingOwl\Admin\Admin',
+        'AdminAuth'     => 'SleepingOwl\AdminAuth\Facades\AdminAuth',
+        'Column'        => 'SleepingOwl\Admin\Columns\Column',
+        'ColumnFilter'  => 'SleepingOwl\Admin\ColumnFilters\ColumnFilter',
+        'Filter'        => 'SleepingOwl\Admin\Filter\Filter',
+        'AdminDisplay'  => 'SleepingOwl\Admin\Display\AdminDisplay',
+        'AdminForm'     => 'SleepingOwl\Admin\Form\AdminForm',
+        'AdminTemplate' => 'SleepingOwl\Admin\Templates\Facade\AdminTemplate',
+        'FormItem'      => 'SleepingOwl\Admin\FormItems\FormItem',
+
 
     ],
 
