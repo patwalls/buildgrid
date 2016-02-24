@@ -11,6 +11,7 @@ Route::group(['middleware' => 'web'], function () {
     // Auth
 
     Route::auth();
+    Route::get('signup', 'Auth\AuthController@showRegistrationForm');
     
     //User profile
     Route::get('profile', ['uses' => 'UserController@edit', 'as' => 'edit.profile']);
