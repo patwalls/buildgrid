@@ -12,8 +12,22 @@
         @include display(flex);
         li{
           a{
+            color: #fff;
+            font-family: AvenirLTStd;
+            font-size: 14px;
+            margin: 0 15px;
             span{
- 
+              &.signup {
+                border: thin solid $white;
+                padding: 10px 20px;
+                border-radius: 8px;
+                @include flex-grow(2);
+                &:hover{
+                  color: $gray;
+                  background: $white;
+                  background-opacity: .75;
+                }
+              }
             }
           }
         }
