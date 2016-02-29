@@ -5,8 +5,13 @@
   <!-- Hero Wrap -->
   @include('partials.marketing-index.hero-wrap')
 
-  <!-- Easily Accessible -->
+  <!-- Main content -->
 
-  @include('partials.marketing-index.easily-accessible')
+  @include('partials.marketing-index.main-content')
+
+  <!-- Contact Form -->
+
+  @include('partials.marketing-index.contact-form')
+
 
 @endsection

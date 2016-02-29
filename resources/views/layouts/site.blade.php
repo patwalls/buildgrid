@@ -20,6 +20,8 @@
     
     @yield('content')
 
+    @include('partials.footer')
+
     <!-- JavaScripts -->
     <script src="{{ elixir('js/site.js') }}"></script>
 

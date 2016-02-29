@@ -4,7 +4,8 @@ ul{
 	margin-bottom: 0px;
 }
 
-a{
+a {
+    text-decoration: none;
 	&:hover{
 		text-decoration: none;
 	}
@@ -18,12 +19,15 @@ input, button, textarea {
 }
 body{
 	margin:0px;
+    font-family: AvenirLTStd;
 }
 
-$blue-light: #bfd1e1;
-$blue: #0076be;
-$dark-blue: #00468b;
-$dark-gray: #333740;
-$gray: #666970;
-$white: #fafafa;
-$red: #dc3522;
+p {
+  color:  #333740;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+strong {
+  color:  #333740;
+}
