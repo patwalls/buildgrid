@@ -12,31 +12,280 @@
   width: 80%;
 }
 
+
+
 // 44% 56% Grid
 .grid-44-56-outer-wrap{
   @include display(flex);
+
+  border-top: 1px solid $bg_light-gray;
+  border-bottom: 1px solid $bg_light-gray;
+
   .grid-item-44-wrap{
-    width: 44%;
-    img{
-      max-width: 100%;
-      width: 100%;
-    }
-  }
-  .grid-item-56-wrap{
-    width: 56%;
     @include display(flex);
-    @include align-items(center);
-    .grid-item-content-wrap{
-      margin: 0% 0% 0% 5%;
-    }
+    @include flex-basis(44%);
   }
+
+  .grid-item-56-wrap{
+    @include display('flex');
+    @include flex-basis(56%);
+  }
+
   @media screen and (max-width: 767px){
     @include flex-wrap(wrap);
     .grid-item-56-wrap, .grid-item-44-wrap{
-      width: 100%;
+      @include flex-basis(100%);
     }
+
+    .grid-item-56-wrap{
+      @include order(-1);
+    }
+
+
   }
+
 } 
 
 
 // 50% 50% Grid
+
+.grid-50-50-outer-wrap {
+
+  @include display(flex);
+
+  .grid-item-50-wrap {
+    @include flex-grow(1);
+  }
+
+  @media screen and (max-width: 767px){
+    @include flex-wrap(wrap);
+    .grid-item-50-wrap{
+      @include flex-basis(100%);
+    }
+  }
+
+}
+
+
+
+// 100% Grid
+
+.grid-100-outer-wrap {
+
+  @include display(flex);
+  @include justify-content(center);
+
+  .grid-item-100-wrap {
+    @include flex-basis(40%);
+    text-align: center;
+    font-family: AvenirLTStd;
+    margin: 50px auto;
+  }
+}
+
+
+
+
+
+// 60% 40% Grid
+.grid-60-40-outer-wrap{
+  @include display(flex);
+  border-top: 1px solid $bg_light-gray;
+  border-bottom: 1px solid $bg_light-gray;
+
+  .grid-item-60-wrap{
+    @include display(flex);
+    @include flex-basis(60%);
+  }
+
+  .grid-item-40-wrap{
+    @include display('flex');
+    @include flex-basis(40%);
+  }
+
+  @media screen and (max-width: 767px){
+    @include flex-wrap(wrap);
+    .grid-item-60-wrap, .grid-item-40-wrap{
+      @include flex-basis(100%);
+    }
+
+    .grid-item-60-wrap{
+      @include order(-1);
+    }
+
+
+  }
+
+}
+
+
+.how-it-works {
+  background: url("/images/home-how-buildgrid-works.jpg") 50% 50% no-repeat;
+  background-size: cover;
+  color: $white;
+  p, strong {
+    color: $white;
+  }
+}
+
+
+.developer-interest-image {
+  background: url("/images/home-developer-interest.png") 50% 50% no-repeat;
+  background-size: cover;
+}
+
+.easily-accessible-image {
+  background: url("/images/home-easy-access.jpg") 50% 50% no-repeat;
+  background-size: cover;
+}
+
+
+// img
+
+[class^=grid-item] img {
+  @include size(100%);
+}
+
+.transparency-section [class^=grid-item] img {
+  @include size(90%);
+}
+
+[class^=grid-item] .copy {
+  padding: 8%;
+  @include flex-basis(80%);
+
+  @media screen and (max-width: 767px){
+    padding: 5%;
+    @include flex-basis(100%);
+    }
+
+}
+
+.fcenter {
+  @include align-items(center);
+}
+
+
+// transparency-section
+
+.transparency-section {
+  background-color: $white;
+}
+
+.transparency-section .grid-item-56-wrap, .developer-interest-section .grid-item-60-wrap, .contact-form .grid-item-60-wrap {
+  @include justify-content(flex-end);
+}
+
+// Easy 123
+
+.as-easy-123 {
+  margin-bottom: 80px;
+  @include align-items(stretch);
+}
+
+.step {
+  @include flex-basis(400px);
+  cursor: pointer;
+  margin: auto 20px;
+  padding: 20px;
+  border: 1px solid $bg_light-gray;
+  img {
+    display: block;
+    margin-bottom: 20px;
+  }
+  &:hover {
+    border: 1px solid $bg_dark_blue;
+  }
+
+  .bg-blue {
+    color: $bg_dark_blue;
+  }
+
+  .small {
+    font-size: 14px;
+    font-weight: 900;
+  }
+}
+
+
+// Contact form
+
+.contact-form {
+
+  h2 {
+    font-size: 30px;
+  }
+
+  .form-group {
+    display: block;
+    margin-top: 15px;
+  }
+
+  label {
+    display: block;
+    font-weight: 900;
+    font-size: 14px;
+    font-family: AvenirLTStd;
+  }
+
+  input, textarea {
+    border: 1px solid #bfd1e1;
+    border-radius: 5px;
+    padding: 12px;
+    width: 400px;
+    font-family: AvenirLTStd;
+    font-size: 18px;
+    &:focus {
+      border: 1px solid $bg_dark-blue;
+    }
+
+  }
+
+  input {
+    height: 40px;
+  }
+
+  button {
+    color: $bg_dark-blue;
+    font-weight: 900;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+
+}
+
+
+.footer {
+  background-color: #333740;
+  min-height: 95px;
+  height: 95px;
+
+  @include display(flex);
+  @include align-items(center);
+
+  ul {
+    margin-right: auto;
+    margin-left: 200px;
+    padding: 0;
+  }
+
+  ul li {
+    display: inline-block;
+    text-align: center;
+    margin-right: 20px;
+  }
+
+  a, p, strong {
+    color: $white;
+    font-size: 14px;
+    line-height: 23px;
+    font-family: AvenirLTStd;
+  }
+
+  p {
+    margin-right: 200px;
+  }
+
+}
