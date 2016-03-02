@@ -15,23 +15,41 @@
             color: #fff;
             font-family: AvenirLTStd;
             font-size: 14px;
-            margin: 0 15px;
             span{
+              @include transition(color .3s ease-out);
               &.signup {
-                border: thin solid $white;
-                padding: 10px 20px;
-                border-radius: 8px;
-                @include flex-grow(2);
+                border: 1px solid $white;
+                padding: 7px 20px;
+                border-radius: 4px;
+                @include transition(background .4s ease-out);
+                @include transition(color .3s ease-out);
                 &:hover{
                   color: $gray;
+                  @include transition(color .3s ease-in);
+                  @include transition(background .4s ease-in);
                   background: $white;
                   background-opacity: .75;
                 }
+              }
+              &:hover{
+                color: $main-nav-hover;
+                @include transition(color .3s ease-in);
               }
             }
           }
         }
       }
     }
+  }
+}
+
+#right-header-wrap{
+  @media screen and (min-width: 970px) and (max-width: 1300px){
+    width: 75%;
+  }
+  width: 55%;
+  max-width: 700px;
+  ul{
+    @include justify-content(space-between);
   }
 }
