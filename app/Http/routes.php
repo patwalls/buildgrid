@@ -16,6 +16,7 @@ Route::group(['middleware' => 'web'], function () {
     //User profile
     Route::get('profile', ['uses' => 'UserController@edit', 'as' => 'edit.profile']);
     Route::put('profile', ['uses' => 'UserController@update', 'as' => 'update.profile']);
+    Route::put('profile/updatePassword/{id}', ['uses' => 'UserController@updatePassword', 'as'=>'update.password']);
     
     //LinkedIn Login
     Route::get('login/linkedin', ['uses' => 'Auth\SocialLoginController@redirectToLinkedIn', 'as' => 'login.linkedin'] );
