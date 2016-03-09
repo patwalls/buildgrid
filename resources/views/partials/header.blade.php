@@ -4,8 +4,8 @@
       <div class="header-item-wrap">
         <img src="/images/logo.png" alt="">
       </div>
-      <div class="header-item-wrap">
-        <ul>
+      <div class="header-item-wrap" id="right-header-wrap">
+        <ul id="menu-target">
           <li><a href="#home"><span class="b1">Home</span></a></li>
           <li><a href="#about-us"><span class="b1">About Us</span></a></li>
           <li><a href="#how-it-works"><span class="b1">How it Works</span></a></li>

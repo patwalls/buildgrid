@@ -16,12 +16,21 @@
     }
     .b1{
       color: $white;
+      font-weight: 700;
+      font-size: 18px;
+      span{
+        font-weight: 100;
+        font-size: 18px;
+      }
     }
     a{
       margin-top: 40px;
       span{
         color: $white;
       }
+    }
+    .icon{
+      color: white;
     }
   }
 }

@@ -18,8 +18,8 @@
 .grid-44-56-outer-wrap{
   @include display(flex);
 
-  border-top: 1px solid $bg_light-gray;
-  border-bottom: 1px solid $bg_light-gray;
+  // border-top: 1px solid $bg_light-gray;
+  // border-bottom: 1px solid $bg_light-gray;
 
   .grid-item-44-wrap{
     @include display(flex);
@@ -79,7 +79,7 @@
     @include flex-basis(40%);
     text-align: center;
     font-family: AvenirLTStd;
-    margin: 50px auto;
+    margin: 3% auto;
   }
 }
 
@@ -90,8 +90,9 @@
 // 60% 40% Grid
 .grid-60-40-outer-wrap{
   @include display(flex);
-  border-top: 1px solid $bg_light-gray;
-  border-bottom: 1px solid $bg_light-gray;
+  margin: 5% 0;
+  // border-top: 1px solid $bg_light-gray;
+  // border-bottom: 1px solid $bg_light-gray;
 
   .grid-item-60-wrap{
     @include display(flex);
@@ -151,7 +152,7 @@
 }
 
 [class^=grid-item] .copy {
-  padding: 8%;
+  padding: 6% 0 6% 8%;
   @include flex-basis(80%);
 
   @media screen and (max-width: 767px){
@@ -170,10 +171,12 @@
 
 .transparency-section {
   background-color: $white;
+  border-top: 1px solid $light-gray-border;
+  border-bottom: 1px solid $light-gray-border;
 }
 
 .transparency-section .grid-item-56-wrap, .developer-interest-section .grid-item-60-wrap, .contact-form .grid-item-60-wrap {
-  @include justify-content(flex-end);
+  @include justify-content(center);
 }
 
 // Easy 123
@@ -188,18 +191,27 @@
   cursor: pointer;
   margin: auto 20px;
   padding: 20px;
-  border: 1px solid $bg_light-gray;
+  border-radius:4px;
+  border: 2px solid $bg_light-gray;
+  @include transition(.4s border ease-out);
   img {
     display: block;
     margin-bottom: 20px;
   }
-  &:hover {
-    border: 1px solid $bg_dark_blue;
-  }
-
   .bg-blue {
     color: $bg_dark_blue;
+    @include transition(.3s color ease-out);
   }
+
+  &:hover {
+    border: 2px solid $bg_dark_blue;
+    @include transition(.4s border ease-in);
+    .bg-blue {
+      color: $blue;
+      @include transition(.3s color ease-in);
+    }
+  }
+
 
   .small {
     font-size: 14px;
@@ -230,7 +242,7 @@
 
   input, textarea {
     border: 1px solid #bfd1e1;
-    border-radius: 5px;
+    border-radius: 3px;
     padding: 12px;
     width: 400px;
     font-family: AvenirLTStd;
@@ -256,36 +268,40 @@
 
 }
 
-
-.footer {
-  background-color: #333740;
-  min-height: 95px;
-  height: 95px;
-
+.footer-outer-wrap{
   @include display(flex);
-  @include align-items(center);
+  @include justify-content(center);
+  background-color: $dark-gray;
+  .footer {
+    background-color: $dark-gray;
+    min-height: 95px;
+    height: 95px;
+    width: 90%;
+    // max-width: 1170px;
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(space-between);
 
-  ul {
-    margin-right: auto;
-    margin-left: 200px;
-    padding: 0;
+    ul {
+      margin: 0px;
+      padding: 0;
+    }
+
+    ul li {
+      display: inline-block;
+      text-align: center;
+      margin-right: 20px;
+    }
+
+    a, p, strong {
+      color: $white;
+      font-size: 14px;
+      line-height: 23px;
+      font-family: AvenirLTStd;
+    }
+
+    p {
+    }
+
   }
-
-  ul li {
-    display: inline-block;
-    text-align: center;
-    margin-right: 20px;
-  }
-
-  a, p, strong {
-    color: $white;
-    font-size: 14px;
-    line-height: 23px;
-    font-family: AvenirLTStd;
-  }
-
-  p {
-    margin-right: 200px;
-  }
-
 }

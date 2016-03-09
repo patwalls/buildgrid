@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/images/buildgrid-favicon-01.png">
 
     <title>BuildGrid</title>
 
@@ -12,6 +13,7 @@
 
     <!-- Styles -->
     <link href="{{  elixir('css/site.css') }}" rel="stylesheet">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
 </head>
 <body>
@@ -23,6 +25,7 @@
     @include('partials.footer')
 
     <!-- JavaScripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="{{ elixir('js/site.js') }}"></script>
 
 </body>

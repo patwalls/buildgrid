@@ -41,7 +41,7 @@
                 <textarea name="message" id="" cols="30" rows="6"></textarea>
             </div>
 
-            <button class="submit" type="submit">Submit ></button>
+            <button class="submit" type="submit">Submit <i class="icon ion-ios-arrow-right"></i></button>
 
         </form>
 
