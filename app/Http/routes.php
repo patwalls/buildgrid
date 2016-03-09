@@ -33,7 +33,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/create_project', 'ProjectController@store')->name('postCreateProject');
 
 
-    Route::get('/bom/{id}', 'ProjectController@bom')->name('getShowBom');
+    Route::get('/bom/{id}', 'ProjectController@showBom');
     Route::get('/add_bom', 'ProjectController@bom')->name('getAddBom');
 
     Route::post('/bom_file_upload', 'BomController@bomFileUpload')->name('postBomUploadFile');
