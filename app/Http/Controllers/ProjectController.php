@@ -64,4 +64,9 @@ class ProjectController extends Controller
 
         return response(['bom_id' => $bom->id, '_token' => csrf_token() ], 200);
     }
+
+    public function showBom()
+    {
+        return view('boms.show');
+    }
 }

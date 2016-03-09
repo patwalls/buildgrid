@@ -28,9 +28,10 @@ class UserController extends Controller
 	public function update(Request $request)
 	{
 	    $this->validate($request, [
-	        'first_name' => 'required|min:2',
-	        'last_name' => 'required|min:4',
+				'first_name' => 'required|min:2',
+				'last_name' => 'required|min:4',
 	    	'email' => 'required|email|min:10',
+	    	'phone' => 'min:10'
 	    ]);
 	    
 	    $user = User::findOrNew($request->id);
@@ -42,4 +43,26 @@ class UserController extends Controller
 	    
 	    return view('profile', ['user' => $user]);
 	}
+
+  public function updatePassword(Request $request, $id)
+    {
+        $this->validate($request, [
+          'password' => 'required|min:8',
+          'confirm_password' => 'required|min:8'
+        ]);
+
+        $user = User::findOrFail($id);
+
+        if ( strcmp ( $request->get('password') , $request->get('confirm_password') ) === 0) {
+            $user->password = Hash::make($request->get('password'));
+            $user->save();
+
+						return view('profile', compact($user));            
+            // return response()->json(['error' => false,
+            // 		'message' =>  'The password was updated.' ]);            
+        } else {          
+          return response()->json(['error' => true,
+          		'message' =>  "The passwords doesn't match." ]);
+        }
+    }
 }	

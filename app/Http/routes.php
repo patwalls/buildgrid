@@ -16,6 +16,7 @@ Route::group(['middleware' => 'web'], function () {
     //User profile
     Route::get('profile', ['uses' => 'UserController@edit', 'as' => 'edit.profile']);
     Route::put('profile', ['uses' => 'UserController@update', 'as' => 'update.profile']);
+    Route::put('profile/updatePassword/{id}', ['uses' => 'UserController@updatePassword', 'as'=>'update.password']);
     
     //LinkedIn Login
     Route::get('login/linkedin', ['uses' => 'Auth\SocialLoginController@redirectToLinkedIn', 'as' => 'login.linkedin'] );
@@ -32,7 +33,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/create_project', 'ProjectController@store')->name('postCreateProject');
 
 
-    Route::get('/bom/{id}', 'ProjectController@bom')->name('getShowBom');
+    Route::get('/bom/{id}', 'ProjectController@showBom');
     Route::get('/add_bom', 'ProjectController@bom')->name('getAddBom');
 
     Route::post('/bom_file_upload', 'BomController@bomFileUpload')->name('postBomUploadFile');
