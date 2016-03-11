@@ -15,6 +15,12 @@
           <li><a href="/signup"><span class="b1 signup">Sign Up</span></a></li>
         </ul>
       </div>
+      <div id="mobile-nav-icon">
+        <a href="#" id="mobile-nav-link"><i class="icon ion-navicon"></i></a>
+      </div>
     </div>
   </div>
+</div>
+<div id="mobile-menu-wrap">
+  
 </div>

@@ -1,5 +1,6 @@
 #nav-desk{
   position: fixed;
+  padding-bottom: 15px;
   .header-outer-wrap{
     @include display(flex);
     @include justify-content(space-between);
@@ -43,13 +44,48 @@
   }
 }
 
-#right-header-wrap{
-  @media screen and (min-width: 970px) and (max-width: 1300px){
-    width: 75%;
-  }
+#right-header-wrap{  
   width: 55%;
   max-width: 700px;
+  @media screen and (max-width: 970px){
+    display: none;
+  }
+  @media screen and (min-width: 971px) and (max-width: 1300px){
+    width: 75%;
+  }
   ul{
     @include justify-content(space-between);
   }
 }
+
+#mobile-nav-icon{
+  @media screen and (min-width: 768px){
+    display: none;
+  }
+  @include display(flex);
+  @include align-items(center);
+  i{
+    font-size: 30px;
+    color: white;
+  }
+}
+
+
+#mobile-menu-wrap{
+  display: none;
+  height: 100vh;
+  background: black;
+  position: absolute;
+  top: 0;
+  left: 9;
+  width: 100vh;
+
+}
+
+
+
+
+
+
+
+

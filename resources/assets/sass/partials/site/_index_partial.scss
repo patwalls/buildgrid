@@ -40,8 +40,53 @@
   }
 }
 
+
+.transparency-section{
+  .grid-item-44-wrap{
+    display: none;
+  }
+}
+
+.as-easy-123{
+  @media screen and (max-width: 767px){
+    @include flex-wrap(wrap);
+  }
+}
 .developer-interest-section{
   border-top: 1px solid $light-gray-border;
   border-bottom: 1px solid $light-gray-border;
   background: $white;
 }
+
+.contact-social-wrap{
+  @include display(flex);
+  li{
+    margin: 0 5px 0 0px;
+    a{
+      i{
+        color: $blue-light;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px){
+  .contact-form{
+    @include display(flex);
+    @include justify-content(center);
+    form{
+      width: 90%;
+      .form-group{
+        input, textarea{
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+

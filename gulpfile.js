@@ -21,5 +21,8 @@ elixir(function(mix) {
             'public/css/app.css',
             'public/js/site.js',
             'public/js/app.js'
-        ]);
+        ])
+        .styles([
+            'vendor/animate.css'
+        ], 'public/css/vendor.css');
 });
