@@ -16,11 +16,21 @@
         </ul>
       </div>
       <div id="mobile-nav-icon">
-        <a href="#" id="mobile-nav-link"><i class="icon ion-navicon"></i></a>
+        <a href="#" id="mobile-nav-link"><i class="icon ion-navicon-round"></i></a>
       </div>
     </div>
   </div>
 </div>
 <div id="mobile-menu-wrap">
-  
+  <div class="mobile-menu-inner-wrap">
+    <ul id="mobile-menu-list">
+      <li><a href="#home"><span class="b1">Home</span></a></li>
+      <li><a href="#about-us"><span class="b1">About Us</span></a></li>
+      <li><a href="#how-it-works"><span class="b1">How it Works</span></a></li>
+      <li><a href="#developer-interest"><span class="b1">Developer Interest</span></a></li>
+      <li><a href="#contact-us"><span class="b1">Contact Us</span></a></li>
+      <li><a href="/login"><span class="b1">Login</span></a></li>
+      <li id='signup-mobile-item'><a href="/signup"><span class="b1 signup">Sign Up</span></a></li>
+    </ul>
+  </div>
 </div>
