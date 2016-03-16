@@ -1,4 +1,4 @@
-<div class="grid-60-40-outer-wrap contact-form">
+<div class="grid-60-40-outer-wrap contact-form" id="contact-us">
     <div class="grid-item-60-wrap fcenter">
         <div class="grid-item-content-wrap copy">
             <h2>Have a question <br> or a <strong>comment for us?</strong></h2>

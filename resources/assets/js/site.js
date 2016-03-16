@@ -1,18 +1,26 @@
-function menuBackgroundColor(){
-  if (isMenuScrollOutsideHeader($('#nav-desk'))){
-      $(this).css('background', 'red');
+global.bxslider = require('bxslider');
+global.smoothScroll = require('smooth-scroll');
+
+$(document).ready(function(){
+  $('.as-easy-123-mob').bxSlider({
+  });
+});
+
+// Smooth Scrolling for Nav
+smoothScroll.init({
+  speed: 1100,
+  offset: 60
+});
+
+$(document).scroll(function(){
+  var dataPosition = $('#contrast-item').offset().top - $(window).scrollTop();
+  console.log( dataPosition );
+  if (dataPosition <= 500 && dataPosition <= 0){
+    $('#nav-desk').css('position', 'fixed').addClass('background-transition tran-state');
+  }else{
+    $('#nav-desk').css('position', 'absolute').removeClass('background-transition tran-state');
   }
-};
-
-function isMenuScrollOutsideHeader(element){
-  var scrollOutSide = false;
-
-  var menuPosition = element.offset().top - $(window).scrollTop() + 25;
-
-  console.log(menuPosition);
-
-  console.log(scrollOutSide);
-};
+});
 
 $('#mobile-nav-link').click(function(){
 
@@ -28,17 +36,24 @@ $('#mobile-nav-link').click(function(){
     $('#mobile-nav-link i').addClass( startingMenuIcon);
   } 
 
+
+  // Fade Toggle the menu on to the screen
   $('#mobile-menu-wrap').fadeToggle('slow');
 
-  // // Animation of Menu Container
-  // var mobileMenuInEffect = 'fadeInDown';
-  // var mobileMenuOutEffect = 'fadeOutUp';
+  // Animation of Menu Container
+  var mobileMenuInEffect = 'fadeInDown';
+  var mobileMenuOutEffect = 'fadeOutUp';
+  var menuContainer = '#mobile-menu-list';
 
-  // if ($('#mobile-menu-wrap').hasClass( mobileMenuInEffect )){
-  //   $('#mobile-menu-wrap').fadeToggle('slow').removeClass( mobileMenuInEffect ).addClass('animated ' + mobileMenuOutEffect );
-  // }else if ($('#mobile-menu-wrap').hasClass( mobileMenuOutEffect )){
-  //   $('#mobile-menu-wrap').fadeToggle('slow').removeClass( mobileMenuOutEffect ).addClass('animated ' + mobileMenuInEffect);
-  // }else{
-  //   $('#mobile-menu-wrap').fadeToggle('slow').addClass('animated ' + mobileMenuInEffect);
-  // } 
+  if ($( menuContainer ).hasClass( mobileMenuInEffect )){
+    $( menuContainer ).removeClass( mobileMenuInEffect ).addClass( mobileMenuOutEffect );
+  }else if ($( menuContainer ).hasClass( mobileMenuOutEffect )){
+    $( menuContainer ).removeClass( mobileMenuOutEffect ).addClass( mobileMenuInEffect );
+  }else{
+    $( menuContainer ).addClass( mobileMenuInEffect );
+  } 
+});
+$('#mobile-menu-list li a').click(function(){
+  $('#mobile-menu-wrap').fadeOut();
+  $('#mobile-nav-link i').removeClass( 'ion-close-round' ).addClass( 'ion-navicon-round');
 });
