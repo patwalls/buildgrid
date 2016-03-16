@@ -186,7 +186,12 @@ return [
         /*
          * El Finder
          */
-        'Barryvdh\Elfinder\ElfinderServiceProvider'
+        'Barryvdh\Elfinder\ElfinderServiceProvider',
+
+        /*
+         *  Hashid service
+         */
+        Vinkla\Hashids\HashidsServiceProvider::class
 
     ],
 
@@ -250,7 +255,11 @@ return [
         'AdminTemplate' => 'SleepingOwl\Admin\Templates\Facade\AdminTemplate',
         'FormItem'      => 'SleepingOwl\Admin\FormItems\FormItem',
 
+        /*
+         * Hashid
+         */
 
+        'Hashids' => Vinkla\Hashids\Facades\Hashids::class
     ],
 
 ];
