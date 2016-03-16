@@ -54,6 +54,5 @@ $('#mobile-nav-link').click(function(){
   } 
 });
 $('#mobile-menu-list li a').click(function(){
-  $('#mobile-menu-wrap').fadeOut();
-  $('#mobile-nav-link i').removeClass( 'ion-close-round' ).addClass( 'ion-navicon-round');
+  $('#mobile-nav-link').click();
 });
