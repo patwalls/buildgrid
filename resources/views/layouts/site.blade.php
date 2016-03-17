@@ -14,7 +14,6 @@
     <!-- Styles -->
     <link href="{{  elixir('css/site.css') }}" rel="stylesheet">
     <link href="/css/vendor.css" rel="stylesheet">
-    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
 </head>
 <body>
