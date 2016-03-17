@@ -14,6 +14,11 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix.sass('site.scss')
         .sass('app.scss')
+
+        // Non NPM 3rd party JS packages
+        // .scripts(['/vendor/jquery.sticky.js'], 'public/js/vendor.js')
+        
+        // NPM JS packages
         .browserify('app.js')
         .browserify('site.js')
         .version([
@@ -21,5 +26,11 @@ elixir(function(mix) {
             'public/css/app.css',
             'public/js/site.js',
             'public/js/app.js'
-        ]);
+        ])
+
+        // 3rd party CSS libraries
+        .styles([
+            'vendor/animate.css',
+            'vendor/jquery.bxslider.css'
+        ], 'public/css/vendor.css');
 });

@@ -15,6 +15,7 @@
     "jquery-router-plugin": "^1.0.0",
     "jquery.inputmask": "^3.2.7",
     "jscroll": "^2.3.2",
+    "jump.js": "^0.3.2",
     "laravel-elixir": "^4.0.0",
     "toastr": "^2.1.2",
     "vanilla-modal": "^1.2.6"

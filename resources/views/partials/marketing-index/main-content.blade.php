@@ -1,4 +1,4 @@
-<div class="grid-44-56-outer-wrap" data-menu="contrast">
+<div class="grid-44-56-outer-wrap" id="contrast-item">
     <div class="grid-item-44-wrap easily-accessible-image"></div>
     <div class="grid-item-56-wrap fcenter">
         <div class="grid-item-content-wrap copy">
@@ -28,7 +28,7 @@
         </div>
     </div>
 </div>
-<div class="grid-44-56-outer-wrap transparency-section">
+<div class="grid-44-56-outer-wrap transparency-section" id="about-us">
     <div class="grid-item-56-wrap fcenter">
         <div class="grid-item-content-wrap copy">
             <h2>It's all about <br><strong>Transparency.</strong></h2>
@@ -51,7 +51,7 @@
         <img src="/images/home-transparency.jpg" alt="">
     </div>
 </div>
-<div class="grid-100-outer-wrap how-it-works">
+<div class="grid-100-outer-wrap how-it-works" id="how-it-works">
     <div class="grid-item-100-wrap">
         <h2><strong>How</strong> <strong>BuildGrid</strong> works.</h2>
         <p>
@@ -96,7 +96,39 @@
         <p class="bg-blue small">Sign up <i class="icon ion-ios-arrow-right"></i></p>
     </a>
 </div>
-<div class="grid-60-40-outer-wrap developer-interest-section">
+<div class="as-easy-123-mob-outer-wrap">
+  <ul class="grid-100-outer-wrap as-easy-123-mob">
+    <li class="easy-item-mobile">
+      <a class="step" href="/signup">
+            <img src="/images/select.png" alt="" />
+            <strong>1. Create a new project</strong>
+            <p>Create a new purchasing project from a simple dashboard. Upload an existing document, or fill out the details using our on-line form.</p>
+            <p class="bg-blue small">Sign up <i class="icon ion-ios-arrow-right"></i></p>
+        </a>
+    </li>
+    <li  class="easy-item-mobile">
+      <a class="step" href="/signup">
+        <img src="/images/currency.png" alt="" />
+        <strong>2. Discover & Invite Vendors</strong>
+        <p>Bring in only the vendors you want by inviting them to the project directly. Or make the project searchable in the marketplace.</p>
+        <p class="bg-blue small">Sign up <i class="icon ion-ios-arrow-right"></i></p>
+      </a>
+    </li>
+    <li class="easy-item-mobile">    
+      <a class="step" href="/signup">
+        <img src="/images/select2.png" alt="" />
+        <strong>3. View and Manage Bid Requests</strong>
+        <p>
+        Check the bids as they come in.
+        <br> Compare and communicate.
+        <br> You can request an update, reject a bid or cancel a request.
+        </p>
+        <p class="bg-blue small">Sign up <i class="icon ion-ios-arrow-right"></i></p>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="grid-60-40-outer-wrap developer-interest-section" id="developer-interest">
     <div class="grid-item-60-wrap fcenter">
         <div class="grid-item-content-wrap copy">
             <h2>Developer <strong>Interest.</strong></h2>
