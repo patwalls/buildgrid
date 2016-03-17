@@ -31,7 +31,7 @@ elixir(function(mix) {
         // 3rd party CSS libraries
         .styles([
             'vendor/animate.css',
-            'vendor/ionicons.min.css',
+            'vendor/ionicons.css',
             'vendor/jquery.bxslider.css'
         ], 'public/css/vendor.css');
 });
