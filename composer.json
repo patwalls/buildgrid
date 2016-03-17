@@ -4,47 +4,59 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+
+    "repositories": [
+      {
+        "type" :"vcs",
+        "url" : "https://github.com/Badou90/admin"
+      }
+    ],
+
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.2.*",
-        "laravel/socialite": "^2.0",
-        "anahkiasen/underscore-php": "^2.0",
+        "laravel/framework": "v5.2.12",
+        "laravel/socialite": "v2.0.14",
+        "anahkiasen/underscore-php": "2.0.0",
         "cviebrock/eloquent-sluggable": "3.1.3",
-        "graham-campbell/exceptions": "^8.2",
-        "graham-campbell/flysystem": "^3.3",
+        "graham-campbell/exceptions": "v8.3.1",
+        "graham-campbell/flysystem": "v3.3.0",
         "guzzlehttp/guzzle": "6.1.1",
-        "intervention/image": "^2.3",
+        "intervention/image": "2.3.5",
         "ipunkt/laravel-analytics": "1.1.4",
-        "jenssegers/rollbar": "^1.4",
-        "jenssegers/date": "^3.1",
-        "laracasts/presenter": "^0.2.1",
-        "laravelbook/ardent": "^3.3",
-        "league/flysystem-aws-s3-v3": "^1.0",
-        "league/flysystem-dropbox": "^1.0",
-        "slynova/laravel-commentable": "^2.0",
-        "spatie/laravel-glide": "^2.2"
+        "jenssegers/rollbar": "v1.4.6",
+        "jenssegers/date": "v3.1.0",
+        "laracasts/presenter": "0.2.1",
+        "laravelbook/ardent": "v3.4.2",
+        "league/flysystem-aws-s3-v3": "1.0.9",
+        "league/flysystem-dropbox": "1.0.1",
+        "slynova/laravel-commentable": "v2.0.0",
+        "spatie/laravel-glide": "2.2.8",
+        "mathiasgrimm/laravel-dot-env-gen": "dev-master",
+        "venturecraft/revisionable": "^1.26",
+        "sleeping-owl/admin" : "dev-laravel-5.2",
+        "barryvdh/laravel-elfinder": "^0.3.5"
     },
     "require-dev": {
-        "barryvdh/laravel-ide-helper": "^2.1",
-        "barryvdh/laravel-debugbar": "^2.1",
-        "filp/whoops": "^2.0",
+        "barryvdh/laravel-ide-helper": "v2.1.2",
+        "barryvdh/laravel-debugbar": "v2.1.1",
+        "filp/whoops": "2.0.0",
         "flynsarmy/csv-seeder": "v1.0.6",
-        "fzaninotto/faker": "~1.4",
-        "hamcrest/hamcrest-php": "^1.2",
-        "laracasts/generators": "^1.1",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0",
-        "phpspec/phpspec": "~2.1",
+        "fzaninotto/faker": "v1.5.0",
+        "hamcrest/hamcrest-php": "v1.2.2",
+        "laracasts/generators": "1.1.3",
+        "mockery/mockery": "0.9.4",
+        "phpunit/phpunit": "4.8.21",
+        "phpspec/phpspec": "2.4.1",
         "sensiolabs/security-checker": "^3.0",
-        "symfony/css-selector": "2.8.*|3.0.*",
-        "symfony/dom-crawler": "2.8.*|3.0.*",
+        "symfony/css-selector": "v3.0.1",
+        "symfony/dom-crawler": "v3.0.1"
     },
     "autoload": {
         "classmap": [
             "database"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "BuildGrid\\": "app/"
         }
     },
     "autoload-dev": {
@@ -60,18 +72,23 @@
             "php artisan key:generate"
         ],
         "post-install-cmd": [
-            "vendor/bin/security-checker security:check",
-            "php artisan clear-compiled",
-	        "if php artisan env | grep local; then php artisan ide-helper:generate && php artisan ide-helper:meta; else echo 'Not generating IDE helpers outside local environment...'; fi;",
-            "php artisan optimize"
+           "vendor/bin/security-checker security:check",
+           "chmod -R 777 bootstrap/cache",
+           "chmod -R 777 storage/",
+           "php artisan clear-compiled",
+	       "if php artisan env | grep local; then php artisan ide-helper:generate && php artisan ide-helper:meta; else echo 'Not generating IDE helpers outside local environment...'; fi;",
+           "php artisan optimize",
+           "php artisan env:gen",
+           "echo Do not forget to run 'npm install' and 'gulp'"
         ],
         "pre-update-cmd": [
-            "php artisan clear-compiled"
+           "php artisan clear-compiled"
         ],
         "post-update-cmd": [
-            "vendor/bin/security-checker security:check",
-            "if php artisan env | grep local; then php artisan ide-helper:generate && php artisan ide-helper:meta; else echo 'Not generating IDE helpers outside local environment...'; fi;",
-            "php artisan optimize"
+           "vendor/bin/security-checker security:check",
+           "if php artisan env | grep local; then php artisan ide-helper:generate && php artisan ide-helper:meta; else echo 'Not generating IDE helpers outside local environment...'; fi;",
+           "php artisan optimize",
+           "php artisan env:gen"
         ]
     },
     "config": {

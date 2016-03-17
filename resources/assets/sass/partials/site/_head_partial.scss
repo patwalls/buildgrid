@@ -1,0 +1,140 @@
+body{
+  // overflow: hidden;
+}
+
+#nav-desk{
+  position: fixed;
+  padding-bottom: 15px;
+  z-index: 100;
+  width: 100vw;
+  .header-outer-wrap{
+    @include display(flex);
+    @include justify-content(space-between);
+    margin: 1% 0 0 0;
+    @media screen and (max-width: 767px){
+      margin: 15px 0 0 0;
+    }
+    .header-item-wrap{ 
+      img{
+
+      }
+      ul{
+        @include display(flex);
+        li{
+          a{
+            color: #fff;
+            font-family: AvenirLTStd;
+            font-size: 14px;
+            span{
+              @include transition(color .3s ease-out);
+              &.signup {
+                border: 1px solid $white;
+                padding: 7px 20px;
+                border-radius: 4px;
+                @include transition(background .4s ease-out);
+                @include transition(color .3s ease-out);
+                &:hover{
+                  color: $gray;
+                  @include transition(color .3s ease-in);
+                  @include transition(background .4s ease-in);
+                  background: $white;
+                  background-opacity: .75;
+                }
+              }
+              &:hover{
+                color: $main-nav-hover;
+                @include transition(color .3s ease-in);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#right-header-wrap{  
+  width: 75%;
+  max-width: 800px;
+  @media screen and (max-width: 970px){
+    display: none;
+  }
+  @media screen and (min-width: 971px) and (max-width: 1300px){
+    width: 75%;
+  }
+  ul{
+    @include justify-content(space-between);
+  }
+}
+
+#mobile-nav-icon{
+  @media screen and (min-width: 970px){
+    display: none;
+  }
+  @include display(flex);
+  @include align-items(center);
+  margin: 0 5px 0 0;
+  i{
+    font-size: 20px;
+    color: white;
+  }
+}
+
+
+#mobile-menu-wrap{
+  display: none;
+  height: 100vh;
+  background: $dark-gray;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  @media screen and (min-width: 971px){
+    display:none !important;
+  }
+  .mobile-menu-inner-wrap{
+    width: 100%;
+    @include display(flex);
+    @include justify-content(center);
+    ul{
+      width: 80%;
+      margin: 25% 0 0 0;
+      @include display(flex);
+      @include justify-content(center);
+      @include flex-direction(column);
+      li{
+        padding: 0 0 5px 0;
+        margin: 10px 0;
+        border-bottom: 2px solid $white;
+        a{
+          .b1{
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+#signup-mobile-item{
+  border-bottom: none !important;
+  margin: 25px 0 0 0 !important;
+  a{
+    padding: 12px 35px;
+    border: 1px solid white;
+    border-radius: 4px;
+  }
+}
+.nav-close-wrap{
+  @include display(flex);
+  @include justify-content(flex-end);
+  #mobile-nav-link-close{
+    color: $white;
+  }
+}
+
+
+
+
+
+

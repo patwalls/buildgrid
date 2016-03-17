@@ -1,0 +1,14 @@
+@import "node_modules/dropzone/src/dropzone";
+
+.dropzone {
+  border: 3px dashed $bg_light-blue;
+  border-radius: 5px;
+  background: white;
+  padding: 20px;
+  margin: 20px 15px;
+
+  span.underline {
+    border-bottom: 2px solid $bg_light-blue;
+  }
+}
+

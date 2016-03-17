@@ -1,1 +1,97 @@
-@import url("http://fonts.googleapis.com/css?family=Roboto+Slab|Open+Sans:400italic,700italic,400,700");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,800,700");
+
+//Light
+@font-face {
+    font-family: AvenirLTStd;
+    src: url(../../fonts/AvenirLTStd-Light.otf);
+    font-weight: 100;
+} 
+
+//Book
+@font-face {
+    font-family: AvenirLTStd;
+    src: url(../../fonts/AvenirLTStd-Book.otf);
+    font-weight: 300;
+}
+
+//Standard
+@font-face {
+    font-family: AvenirLTStd;
+    src: url(../../fonts/AvenirLTStd-Roman.otf);
+    font-weight: 500;
+}
+
+// Medium
+@font-face {
+    font-family: AvenirLTStd;
+    src: url(../../fonts/AvenirLTStd-Medium.otf);
+    font-weight: 600;
+}
+
+// Heavy
+@font-face {
+    font-family: AvenirLTStd;
+    src: url(../../fonts/AvenirLTStd-Heavy.otf);
+    font-weight: 700;
+}
+
+// Black
+@font-face {
+    font-family: AvenirLTStd;
+    src: url(../../fonts/AvenirLTStd-Black.otf);
+    font-weight: 900;
+}
+
+h1{
+  font-family: AvenirLTStd;
+  font-weight: 900;
+  font-size: 50px;
+  @media screen and (max-width: 769px){
+    font-size: 30px;
+  }
+}
+
+h2{
+  font-family: AvenirLTStd;
+  font-weight: 500;
+  font-size: 50px;
+  @media screen and (max-width: 769px){
+    font-size: 30px;
+  }
+}
+
+h3{
+  font-family: AvenirLTStd;
+  font-weight: 900;
+  font-size: 10px;
+}
+
+.b1{
+  font-family: AvenirLTStd;
+  font-weight: 300;
+  font-size: 18px;
+  @media screen and (max-width: 769px){
+    font-size: 16px;
+  }
+}
+
+.b2{
+  font-family: AvenirLTStd;
+  font-weight: 500;
+  font-size: 18px;
+  @media screen and (max-width: 769px){
+    font-size: 16px;
+  }
+}
+
+.b3{
+  font-family: AvenirLTStd;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.b4{
+  font-family: AvenirLTStd;
+  font-weight: 700;
+  font-size: 14px;
+}

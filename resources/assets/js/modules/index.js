@@ -1,12 +1,7 @@
 module.exports = () => {
 
-    var toastr = require('toastr');
+    console.log("This is the index module");
 
-    $('document').ready( () => {
-
-        toastr.success('Hello, Welcome to BuildGrid, this site is in development!');
-
-    });
 
 
 }

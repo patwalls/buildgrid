@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace BuildGrid\Events;
 
 abstract class Event
 {

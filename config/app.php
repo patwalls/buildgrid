@@ -149,18 +149,44 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * Socialite
+         */
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        BuildGrid\Providers\AppServiceProvider::class,
+        BuildGrid\Providers\AuthServiceProvider::class,
+        BuildGrid\Providers\EventServiceProvider::class,
+        BuildGrid\Providers\RouteServiceProvider::class,
+        BuildGrid\Providers\DropboxServiceProvider::class,
 
         /*
          *  Exceptions Handler
          */
 
-        'GrahamCampbell\Exceptions\ExceptionsServiceProvider'
+        'GrahamCampbell\Exceptions\ExceptionsServiceProvider',
+
+        /*
+         * .env generator
+         */
+        'MathiasGrimm\LaravelDotEnvGen\DotEnvGenServiceProvider',
+
+        /*
+         *  Date formatter/parser
+         */
+        'Jenssegers\Date\DateServiceProvider',
+
+        /*
+         * Admin
+         */
+        'SleepingOwl\Admin\AdminServiceProvider',
+
+        /*
+         * El Finder
+         */
+        'Barryvdh\Elfinder\ElfinderServiceProvider'
 
     ],
 
@@ -185,6 +211,7 @@ return [
         'Config'    => Illuminate\Support\Facades\Config::class,
         'Cookie'    => Illuminate\Support\Facades\Cookie::class,
         'Crypt'     => Illuminate\Support\Facades\Crypt::class,
+        'Date'      => Jenssegers\Date\Date::class,
         'DB'        => Illuminate\Support\Facades\DB::class,
         'Eloquent'  => Illuminate\Database\Eloquent\Model::class,
         'Event'     => Illuminate\Support\Facades\Event::class,
@@ -207,6 +234,22 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
+        /*
+         * Admin
+         */
+
+        'Admin'         => 'SleepingOwl\Admin\Admin',
+        'AdminAuth'     => 'SleepingOwl\AdminAuth\Facades\AdminAuth',
+        'Column'        => 'SleepingOwl\Admin\Columns\Column',
+        'ColumnFilter'  => 'SleepingOwl\Admin\ColumnFilters\ColumnFilter',
+        'Filter'        => 'SleepingOwl\Admin\Filter\Filter',
+        'AdminDisplay'  => 'SleepingOwl\Admin\Display\AdminDisplay',
+        'AdminForm'     => 'SleepingOwl\Admin\Form\AdminForm',
+        'AdminTemplate' => 'SleepingOwl\Admin\Templates\Facade\AdminTemplate',
+        'FormItem'      => 'SleepingOwl\Admin\FormItems\FormItem',
+
 
     ],
 

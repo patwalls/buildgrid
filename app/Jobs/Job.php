@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace BuildGrid\Jobs;
 
 use Illuminate\Bus\Queueable;
 

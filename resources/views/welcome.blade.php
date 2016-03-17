@@ -1,11 +1,17 @@
-@extends('layouts.app')
+@extends('layouts.site')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
 
-        </div>
-    </div>
-</div>
+  <!-- Hero Wrap -->
+  @include('partials.marketing-index.hero-wrap')
+
+  <!-- Main content -->
+
+  @include('partials.marketing-index.main-content')
+
+  <!-- Contact Form -->
+
+  @include('partials.marketing-index.contact-form')
+
+
 @endsection

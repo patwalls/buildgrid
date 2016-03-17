@@ -1,33 +1,45 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Routes File
-|--------------------------------------------------------------------------
-|
-| Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
-*/
-
 
 Route::group(['middleware' => 'web'], function () {
+
+    // Site's main page
+
+    Route::get('/',      function () { return view('welcome'); });
+
+
+    // Auth
+
     Route::auth();
-    Route::get('/home', 'HomeController@index');
+    Route::get('signup', 'Auth\AuthController@showRegistrationForm');
+    
+    //User profile
+    Route::get('profile', ['uses' => 'UserController@edit', 'as' => 'edit.profile']);
+    Route::put('profile', ['uses' => 'UserController@update', 'as' => 'update.profile']);
+    Route::put('profile/updatePassword/{id}', ['uses' => 'UserController@updatePassword', 'as'=>'update.password']);
+    
+    //LinkedIn Login
+    Route::get('login/linkedin', ['uses' => 'Auth\SocialLoginController@redirectToLinkedIn', 'as' => 'login.linkedin'] );
+    Route::get('linkedin/callback', 'Auth\SocialLoginController@handleLinkedInCallback');
+    
+    //Google+ Login
+    Route::get('login/google', ['uses' => 'Auth\SocialLoginController@redirectToGoogle', 'as' => 'login.google'] );
+    Route::get('google/callback', 'Auth\SocialLoginController@handleGoogleCallback');
+    
+    // User
+
+    Route::get('/home', ['uses' => 'ProjectController@index', 'as' => 'home']);
+    Route::get('/create_project', 'ProjectController@create')->name('getCreateProject');
+    Route::post('/create_project', 'ProjectController@store')->name('postCreateProject');
+
+
+    Route::get('/bom/{id}', 'ProjectController@showBom');
+    Route::get('/add_bom', 'ProjectController@bom')->name('getAddBom');
+
+    Route::post('/bom_file_upload', 'BomController@bomFileUpload')->name('postBomUploadFile');
+
+
+    // Admin
+
+
 });

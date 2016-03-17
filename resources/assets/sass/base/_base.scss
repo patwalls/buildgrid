@@ -3,7 +3,9 @@ ul{
 	padding-left: 0px;
 	margin-bottom: 0px;
 }
-a{
+
+a {
+    text-decoration: none;
 	&:hover{
 		text-decoration: none;
 	}
@@ -11,11 +13,21 @@ a{
 		text-decoration: none;
 	}
 }
+
 input, button, textarea {
 	outline: none;
 }
-
-body {
-  font-family: 'Open Sans';
+body{
+	margin:0px;
+    font-family: AvenirLTStd;
 }
 
+p {
+  color:  #333740;
+  font-size: 18px;
+  line-height: 28px;
+}
+
+strong {
+  color:  #333740;
+}
