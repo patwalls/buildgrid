@@ -9,7 +9,7 @@
     "bourbon": "^4.2.6",
     "bourbon-neat": "^1.7.2",
     "bxslider": "^4.2.6",
-    "smooth-scroll": "^9.1.1",
+    "smooth-scroll": "github:cferdinandi/smooth-scroll",
     "colors": "^1.1.2",
     "dropzone": "^4.2.0",
     "jquery": "^2.2.0",
