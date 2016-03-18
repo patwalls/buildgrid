@@ -33,10 +33,14 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/create_project', 'ProjectController@store')->name('postCreateProject');
 
 
-    Route::get('/bom/{id}', 'ProjectController@showBom');
+    Route::get('/bom/{id}', 'ProjectController@showBom')->name('getShowBom');
     Route::get('/add_bom', 'ProjectController@bom')->name('getAddBom');
 
     Route::post('/bom_file_upload', 'BomController@bomFileUpload')->name('postBomUploadFile');
+
+
+    Route::get('/bom_supplier_view/{hashid}', 'BomController@displayBomForSupplier' )->name('supplierBomView');
+    Route::get('/bom/{bom_id}/file_download', 'BomController@fileDownload')->name('bomFileDownload');
 
 
     // Admin
