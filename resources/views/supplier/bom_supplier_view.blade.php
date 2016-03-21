@@ -2,10 +2,18 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>BuildGrid - {{ $supplier->bom->project->name }}</title>
+
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+    <link rel="shortcut icon" href="/images/buildgrid-favicon-01.png">
+
     <style>
 
         @font-face {
@@ -49,7 +57,7 @@
             text-align: center;
             border: 2px dashed #666970;
             border-radius: 8px;
-            padding: 40px;
+            padding: 30px;
             cursor: pointer;
             margin: 20px 0;
         }
@@ -90,9 +98,9 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div id="dropzone" class="dropzone"></div>
-                    <form action="">
+                    <form onsubmit="return false;">
                         <div class="form-group">
-                            <textarea class="form-control" name="comments" id="" rows="5" placeholder="Comments..."></textarea>
+                            <textarea class="form-control" name="comment" id="comment" rows="5" placeholder="Comments..."></textarea>
                         </div>
                         <button id="postResponseBtn" class="btn btn-default pull-right">Send my response</button>
                     </form>
@@ -105,26 +113,35 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 
         <script>
+
             Dropzone.autoDiscover = false;
 
-            var bgDropzone = new Dropzone("div#dropzone", {
+            var bomResponseDropzone = new Dropzone("div#dropzone", {
                 url: "/bom_response_upload",
                 autoProcessQueue: false,
                 maxFiles: 1,
                 maxfilesexceeded: function maxfilesexceeded(file) {
-                    undefined.removeAllFiles();
-                    undefined.addFile(file);
+                    this.removeAllFiles();
+                    this.addFile(file);
                 },
                 dictDefaultMessage: "<i class='fa fa-upload fa-4x'></i><br/><h3>Drag & Drop</h3> your response or <span class='underline'>browse...</span>",
                 success: function success(file, response) {
-
+                    swal({title : "Thank you!", text : "Your response file and comments were submitted!", type : "success"}, function(){
+                        window.location.href = "/";
+                    })
                 },
                 error: function error(file, errorMessage) {
-
+                    swal("Oops...", "Something went wrong! Please try again later.", "error");
                 }
-            }).on('addedfile', function (file) {
-                $('input[name=filename]').val(file.name.toString());
-            });
+            }).on("sending", function(file, xhr, formData) {
+                formData.append("_token", '{{csrf_token()}}');
+                formData.append("comment", document.getElementById('comment').value);
+                formData.append("hashid", '{{$supplier->hashid}}');
+            });;
+
+            document.getElementById('postResponseBtn').onclick = function(){
+                bomResponseDropzone.processQueue();
+            };
 
         </script>
 
