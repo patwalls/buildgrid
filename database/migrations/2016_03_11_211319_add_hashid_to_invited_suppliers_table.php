@@ -14,7 +14,7 @@ class AddHashidToInvitedSuppliersTable extends Migration
     {
         //
         Schema::table('invited_suppliers', function ($table) {
-            $table->string('hashid')->nullable();
+            $table->string('hashid')->unique();
         });
 
     }
