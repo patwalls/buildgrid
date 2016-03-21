@@ -5,20 +5,21 @@ namespace BuildGrid\Http\Controllers;
 use BuildGrid\Bom;
 use BuildGrid\Http\Requests;
 use BuildGrid\Http\Requests\CreateNewProjectRequest;
-use BuildGrid\InvitedSupplier;
 use BuildGrid\Project;
+use BuildGrid\Repositories\InvitedSupplierRepository;
 
 
 class ProjectController extends Controller
 {
+
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * ProjectController constructor.
+     * @param InvitedSupplierRepository $supplierRepository
      */
-    public function __construct()
+    public function __construct(InvitedSupplierRepository $supplierRepository)
     {
         $this->middleware('auth');
+        $this->supplierRepository = $supplierRepository;
     }
 
     /**
@@ -42,7 +43,6 @@ class ProjectController extends Controller
 
     public function store(CreateNewProjectRequest $request)
     {
-
         $project = new Project();
         $project->user_id = \Auth::id();
         $project->name = $request->get('project_name');
@@ -54,13 +54,8 @@ class ProjectController extends Controller
         $bom->filename = $request->get('filename');
         $bom->save();
 
-        foreach($request->get('supplier') as $supplier){
-            $bom_supplier = new InvitedSupplier();
-            $bom_supplier->name = $supplier['name'];
-            $bom_supplier->email = $supplier['email'];
-            $bom_supplier->bom_id = $bom->id;
-            $bom_supplier->save();
-        }
+        // Save the suppliers associated with this newly created Project/Bom
+        $this->supplierRepository->store($request->get('supplier'), $bom->id);
 
         return response(['bom_id' => $bom->id, '_token' => csrf_token() ], 200);
     }
