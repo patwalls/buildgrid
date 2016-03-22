@@ -3,8 +3,10 @@
 namespace BuildGrid\Http\Controllers;
 
 use BuildGrid\Bom;
+use BuildGrid\BomResponse;
 use BuildGrid\InvitedSupplier;
 use BuildGrid\Repositories\BomRepository;
+use BuildGrid\Repositories\BomResponseRepository;
 use Illuminate\Http\Request;
 use BuildGrid\Http\Requests;
 use Illuminate\Support\Facades\File;
@@ -17,9 +19,10 @@ class BomController extends Controller {
      * BomController constructor.
      * @param BomRepository $bomRepository
      */
-    public function __construct(BomRepository $bomRepository)
+    public function __construct(BomRepository $bomRepository, BomResponseRepository $bomResponseRepository)
     {
         $this->bomRepository = $bomRepository;
+        $this->bomResponseRepository = $bomResponseRepository;
     }
 
     /**
@@ -47,9 +50,24 @@ class BomController extends Controller {
 
     public function bomResponseUpload(Request $request)
     {
-        dd( $request->all() );
-    }
+        $supplier = InvitedSupplier::where('hashid', $request->get('hashid'))->first();
+        $bom = Bom::find($supplier->bom_id);
 
+        $file = $request->file('file');
+
+        $bom_response = BomResponse::create([
+            'bom_id'              => $bom->id,
+            'invited_supplier_id' => $supplier->id,
+            'filename'            => $file->getClientOriginalName(),
+            'comment'             => $request->get('comment')
+        ]);
+
+        if($bom_response && $this->bomResponseRepository->storeBomResponseFile($bom_response, $file)){
+            return response('OK', 200);
+        }
+
+        return response('Error', 500);
+    }
 
 
     /**
