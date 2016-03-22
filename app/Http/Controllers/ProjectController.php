@@ -43,16 +43,16 @@ class ProjectController extends Controller
 
     public function store(CreateNewProjectRequest $request)
     {
-        $project = new Project();
-        $project->user_id = \Auth::id();
-        $project->name = $request->get('project_name');
-        $project->save();
+        $project = Project::create([
+            'user_id' => \Auth::id(),
+            'name'    => $request->get('project_name')
+        ]);
 
-        $bom = new Bom();
-        $bom->name= $request->get('bom_name');
-        $bom->project_id =  $project->id;
-        $bom->filename = $request->get('filename');
-        $bom->save();
+        $bom = Bom::create([
+            'name'       => $request->get('bom_name'),
+            'project_id' => $project->id,
+            'filename'   => $request->get('filename')
+        ]);
 
         // Save the suppliers associated with this newly created Project/Bom
         $this->supplierRepository->store($request->get('supplier'), $bom->id);
