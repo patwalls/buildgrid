@@ -51,7 +51,7 @@ class ProjectController extends Controller
         $bom = Bom::create([
             'name'            => $request->get('bom_name'),
             'project_id'      => $project->id,
-            'bom_description' => $request->get('bom_description');
+            'bom_description' => $request->get('bom_description'),
             'filename'        => $request->get('filename')
         ]);
 
