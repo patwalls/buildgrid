@@ -11,13 +11,31 @@ class BomResponseRepository {
      * @param $file
      * @return bool
      */
-    public function storeBomResponse($bom_response_id, $file)
+    public function storeBomResponseFile($response, $file)
     {
-        $path = $this->getBomResponseStoragePath($bom);
+        $path = $this->getBomResponseStoragePath($response);
 
         return \Storage::disk(env('DOCUMENTS_STORAGE'))->put($path, file_get_contents($file));
 
     }
+
+
+
+    /**
+     * @param $bom
+     * @return array|bool
+     */
+    public function retrieveBomResponseFile($response)
+    {
+        $path = $this->getBomResponseStoragePath($response);
+
+        if(! \Storage::disk(env('DOCUMENTS_STORAGE'))->exists( $path )){
+            return false;
+        }
+
+        return ['mimeType' => \Storage::mimeType($path), 'contents' => \Storage::disk(env('DOCUMENTS_STORAGE'))->get($path)];
+    }
+
 
 
     /**
@@ -25,17 +43,21 @@ class BomResponseRepository {
      * @param $bom
      * @return string
      */
-    public function getBomResponseStoragePath($bom)
+    public function getBomResponseStoragePath($response)
     {
         $file_storage_path = 'Boms'
             . DIRECTORY_SEPARATOR
-            . $bom->project->user->id
+            . $response->bom->project->user->id
             . DIRECTORY_SEPARATOR
-            . $bom->project->id
+            . $response->bom->project->id
             . '-'
-            . snake_case(camel_case($bom->project->name))
+            . snake_case(camel_case($response->bom->project->name))
             . DIRECTORY_SEPARATOR
-            . 'responses';
+            . 'Responses'
+            . DIRECTORY_SEPARATOR
+            . $response->id
+            . '-'
+            . $response->filename;
 
         return $file_storage_path;
     }
