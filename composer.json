@@ -34,7 +34,8 @@
         "mathiasgrimm/laravel-dot-env-gen": "dev-master",
         "venturecraft/revisionable": "^1.26",
         "sleeping-owl/admin" : "dev-laravel-5.2",
-        "barryvdh/laravel-elfinder": "^0.3.5"
+        "barryvdh/laravel-elfinder": "^0.3.5",
+        "vinkla/hashids": "2.2.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "v2.1.2",

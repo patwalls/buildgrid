@@ -126,6 +126,19 @@ SESSION_DRIVER=file
 
 DROPBOX_TOKEN=
 DROPBOX_SECRET=
+
+
+LINKEDIN_CLIENT_ID=
+LINKEDIN_SECRET=
+LINKEDIN_URL_CALLBACK=
+
+GOOGLE_CLIENT_ID=
+GOOGLE_SECRET=
+GOOGLE_URL_CALLBACK=
+
+DOCUMENTS_STORAGE=local
+PICTURES_PROFILE_STORAGE=local
+
 ```
 You can also use the command `php artisan env:gen` to check your current .env values against the ones used in the code, this command also generates a template which you can copy to a new .env file. If you do this be careful as not every value is needed *hint: most of the values that have a default are the required ones*
 
