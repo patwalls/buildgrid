@@ -40,8 +40,133 @@
   }
 }
 
+
+.transparency-section{
+  .grid-item-44-wrap{
+    @media screen and (max-width: 767px){
+      display: none;
+    }
+  }
+}
+
+.as-easy-123{
+  @media screen and (max-width: 767px){
+    display: none;
+  }
+  .step{
+    @media screen and (min-width: 768px) and (max-width: 970px){
+      min-height: 450px;
+    }
+    @media screen and (min-width: 971px) and (max-width: 1100px){
+      min-height: 400px;
+    }
+  }
+}
+
+.as-easy-123-mob-outer-wrap{
+  .bx-wrapper{
+    box-shadow: none;
+    .bx-viewport{
+      @include display(flex);
+      @include flex-direction(column);
+      @include justify-content(center);
+    }
+    @media screen and (min-width: 768px){
+      display: none;
+    } 
+  }
+  .easy-item-mobile{
+    padding: 0px .25%;
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+    margin-top: -15px;
+    min-height: 300px;
+  }
+} 
+
+.as-easy-123-mob{
+  @media screen and (min-width: 768px){
+    display: none;
+  }  
+  .step{
+    @media screen and (max-width: 767px){
+      width: 100% !important; 
+    }
+    @media screen and (max-width: 480px){
+      padding: 7px 14px;
+      border: none;
+      p{
+        font-size: 16px;
+        line-height: 16px;
+        margin: 7px 0px;
+      }
+      img{
+        margin-bottom: 10px;
+      }
+    }
+    @media screen and (max-width: 480px) and (max-width: 767px){
+
+    }
+  }
+}
 .developer-interest-section{
   border-top: 1px solid $light-gray-border;
   border-bottom: 1px solid $light-gray-border;
   background: $white;
+  @media screen and (max-width: 767px){
+    .grid-item-60-wrap{
+      @include order(2);
+    }
+    .grid-item-40-wrap{
+      @include order(1);
+      height: 50vh;
+    }
+  }
 }
+
+.tran-state{
+  @include transition(.5s background ease-in);
+  
+}
+
+.background-transition{
+  background: $dark-gray;
+}
+
+.background-transition-out{
+  background: transparent;
+}
+
+.contact-social-wrap{
+  @include display(flex);
+  li{
+    margin: 0 5px 0 0px;
+    a{
+      i{
+        color: $blue-light;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px){
+  .contact-form{
+    @include display(flex);
+    @include justify-content(center);
+    form{
+      width: 90%;
+      .form-group{
+        input, textarea{
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+

@@ -46,12 +46,18 @@ h1{
   font-family: AvenirLTStd;
   font-weight: 900;
   font-size: 50px;
+  @media screen and (max-width: 769px){
+    font-size: 30px;
+  }
 }
 
 h2{
   font-family: AvenirLTStd;
   font-weight: 500;
   font-size: 50px;
+  @media screen and (max-width: 769px){
+    font-size: 30px;
+  }
 }
 
 h3{
@@ -63,17 +69,29 @@ h3{
 .b1{
   font-family: AvenirLTStd;
   font-weight: 300;
-  font-size: 16px;
+  font-size: 18px;
+  @media screen and (max-width: 769px){
+    font-size: 16px;
+  }
 }
 
 .b2{
   font-family: AvenirLTStd;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 18px;
+  @media screen and (max-width: 769px){
+    font-size: 16px;
+  }
 }
 
 .b3{
   font-family: AvenirLTStd;
   font-weight: 500;
   font-size: 12px;
+}
+
+.b4{
+  font-family: AvenirLTStd;
+  font-weight: 700;
+  font-size: 14px;
 }

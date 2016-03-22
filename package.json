@@ -8,6 +8,9 @@
     "bootswatch-sass": "^3.2.0",
     "bourbon": "^4.2.6",
     "bourbon-neat": "^1.7.2",
+    "bxslider": "^4.2.6",
+    "jquery-smooth-scroll": "^1.7.2",
+    "smooth-scroll": "^9.1.1",
     "colors": "^1.1.2",
     "dropzone": "^4.2.0",
     "jquery": "^2.2.0",
@@ -15,6 +18,7 @@
     "jquery-router-plugin": "^1.0.0",
     "jquery.inputmask": "^3.2.7",
     "jscroll": "^2.3.2",
+    "jump.js": "^0.3.2",
     "laravel-elixir": "^4.0.0",
     "toastr": "^2.1.2",
     "vanilla-modal": "^1.2.6"

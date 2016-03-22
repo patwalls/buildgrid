@@ -1,56 +1,58 @@
+global.bxslider = require('bxslider');
+global.smoothScroll = require('smooth-scroll');
 
-function menuDisplayControl() {
-    // Find all of a elements in menu-target that have a class of black and iterate over each of them
-    $('#menu-target li.black').each(function() {
-        // Determine if the return of isElementInContainer is false (meaning the element is outside the menu)
-        if (!isElementInContainer($(this))) {
-            // Remove the black
-            $(this).removeClass("black");
-        }
-    });
+$(document).ready(function(){
+  $('.as-easy-123-mob').bxSlider({
+  });
+});
 
-    // Find all the a elements in menu-target that do not have a class of black and iterate over each of them
-    $('#menu-target li').not('.black').each(function() {
-        // Determine if the return of isElementInContainer is true (meaning the elment is within the menu)
-        if (isElementInContainer($(this))) {
-            // add the black 
-            $(this).addClass("black");
-        }
-    });
-}
+// Smooth Scrolling for Nav
+smoothScroll.init({
+  speed: 1100,
+  offset: 60
+});
 
-function isElementInContainer(element) {
+$(document).scroll(function(){
+  var dataPosition = $('#contrast-item').offset().top - $(window).scrollTop();
+  console.log( dataPosition );
+  if (dataPosition <= 500 && dataPosition <= 0){
+    $('#nav-desk').css('position', 'fixed').addClass('background-transition tran-state');
+  }else{
+    $('#nav-desk').css('position', 'absolute').removeClass('background-transition tran-state');
+  }
+});
 
-    // Set the return variable to false
-    var inContainer = false;
-    // Get the position of the top of the element relative to the document by using offset() 
-    // and subtract the distance from the area hidden above the window using scrollTop()
-    // to get the position of the element relative to the window. Set that to elementTop.
-    var elementTop = element.offset().top - $(window).scrollTop() + 25;
-    // Determine the position of the bottom of the element by adding the hieght of the element 
-    // to the elementTop variable
-    var elementBottom = elementTop + element.height();
+$('#mobile-nav-link').click(function(){
 
-    // Use attribute selector to get all of the elements with data-menu='contrast' and iterate
-    // over each of them.
-    $('[data-menu="contrast"]').each(function() {
-        // Take the object passed into the function and get the top position of the
-        // selected element
-        // console.log($(this));
-        var containerTop = $(this).offset().top - $(window).scrollTop();
-        // Bottom position of object passed into function
-        var containerBottom = containerTop + $(this).outerHeight(true);
-        // console.log( containerBottom + " " + containerTop );
-        // If the bottom of the menu element is less than or equal to the top of the container
-        // and the bottom of the menu element is greater than or equal to the bottom of the 
-        // container then return true
-        if ((elementBottom >= containerTop) && (elementBottom <= containerBottom)) {
-            // If return true then this will add the black class to the items
-            inContainer = true;
-        }
-    });
+  // Animation of Menu Icon
+  var startingMenuIcon = 'ion-navicon-round';
+  var endingMenuIcon = 'ion-close-round';
 
-    // if the return is the original value of false it will remove the 
-    // Class of black
-    return inContainer;
-};
+  if ($('#mobile-nav-link i').hasClass( startingMenuIcon )){
+    $('#mobile-nav-link i').removeClass( startingMenuIcon ).addClass( endingMenuIcon );
+  }else if ($('#mobile-nav-link i').hasClass( endingMenuIcon )){
+    $('#mobile-nav-link i').removeClass( endingMenuIcon ).addClass( startingMenuIcon);
+  }else{
+    $('#mobile-nav-link i').addClass( startingMenuIcon);
+  } 
+
+
+  // Fade Toggle the menu on to the screen
+  $('#mobile-menu-wrap').fadeToggle('slow');
+
+  // Animation of Menu Container
+  var mobileMenuInEffect = 'fadeInDown';
+  var mobileMenuOutEffect = 'fadeOutUp';
+  var menuContainer = '#mobile-menu-list';
+
+  if ($( menuContainer ).hasClass( mobileMenuInEffect )){
+    $( menuContainer ).removeClass( mobileMenuInEffect ).addClass( mobileMenuOutEffect );
+  }else if ($( menuContainer ).hasClass( mobileMenuOutEffect )){
+    $( menuContainer ).removeClass( mobileMenuOutEffect ).addClass( mobileMenuInEffect );
+  }else{
+    $( menuContainer ).addClass( mobileMenuInEffect );
+  } 
+});
+$('#mobile-menu-list li a').click(function(){
+  $('#mobile-nav-link').click();
+});
