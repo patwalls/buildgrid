@@ -4,6 +4,7 @@ namespace BuildGrid\Repositories;
 
 
 use BuildGrid\InvitedSupplier;
+use BuildGrid\Mailers\InvitedSupplierMailer;
 
 
 class InvitedSupplierRepository {
@@ -58,6 +59,9 @@ class InvitedSupplierRepository {
         // Generate hashid for this Bom-Supplier relation
         $bom_supplier->hashid = \Hashids::encode([$bom_id, $bom_supplier->id]);
         $bom_supplier->update();
+
+        // Todo: Move this into a Queue to prevent delay on page response.
+        InvitedSupplierMailer::sendBomInvitationToSupplier($bom_supplier->id);
 
         return $bom_supplier->id;
     }
