@@ -1,7 +1,6 @@
 # Created by https://www.gitignore.io/api/laravel,composer,phpstorm,node,textmate,eclipse,sublimetext,jetbrains,kdevelop4,dropbox,rubymine,ruby
 
 ### Laravel ###
-vendor/
 node_modules/
 Homestead.yaml
 Homestead.json

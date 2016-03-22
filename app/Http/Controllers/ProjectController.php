@@ -49,9 +49,10 @@ class ProjectController extends Controller
         ]);
 
         $bom = Bom::create([
-            'name'       => $request->get('bom_name'),
-            'project_id' => $project->id,
-            'filename'   => $request->get('filename')
+            'name'            => $request->get('bom_name'),
+            'project_id'      => $project->id,
+            'bom_description' => $request->get('bom_description');
+            'filename'        => $request->get('filename')
         ]);
 
         // Save the suppliers associated with this newly created Project/Bom
@@ -60,8 +61,10 @@ class ProjectController extends Controller
         return response(['bom_id' => $bom->id, '_token' => csrf_token() ], 200);
     }
 
-    public function showBom()
+    public function showBom($id)
     {
-        return view('boms.show');
+        $bom = Bom::findOrFail($id);
+
+        return view('boms.show', compact('bom'));
     }
 }
