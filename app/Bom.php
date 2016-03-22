@@ -11,7 +11,8 @@ class Bom extends Ardent
     protected $fillable = [
         'name',
         'project_id',
-        'filename'
+        'filename',
+        'bom_description'
     ];
 
     public static $rules = [

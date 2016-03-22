@@ -49,7 +49,8 @@ class ProjectController extends Controller
         $project->save();
 
         $bom = new Bom();
-        $bom->name= $request->get('bom_name');
+        $bom->name = $request->get('bom_name');
+        $bom->bom_description = $request->get('bom_description');
         $bom->project_id =  $project->id;
         $bom->filename = $request->get('filename');
         $bom->save();
