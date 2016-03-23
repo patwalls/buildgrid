@@ -7,10 +7,12 @@ use BuildGrid\BomResponse;
 use BuildGrid\InvitedSupplier;
 use BuildGrid\Repositories\BomRepository;
 use BuildGrid\Repositories\BomResponseRepository;
+use BuildGrid\Repositories\InvitedSupplierRepository;
 use Illuminate\Http\Request;
 use BuildGrid\Http\Requests;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
+use BuildGrid\Http\Requests\AddAdditionalSuppliersRequest;
 
 class BomController extends Controller {
 
@@ -19,10 +21,11 @@ class BomController extends Controller {
      * BomController constructor.
      * @param BomRepository $bomRepository
      */
-    public function __construct(BomRepository $bomRepository, BomResponseRepository $bomResponseRepository)
+    public function __construct(BomRepository $bomRepository, BomResponseRepository $bomResponseRepository, InvitedSupplierRepository $invitedSupplierRepository)
     {
         $this->bomRepository = $bomRepository;
         $this->bomResponseRepository = $bomResponseRepository;
+        $this->invitedSupplierRepository = $invitedSupplierRepository;
     }
 
     /**
@@ -69,6 +72,19 @@ class BomController extends Controller {
         }
 
         return response('Error', 500);
+    }
+
+    public function addNewSupplierToBom(AddAdditionalSuppliersRequest $request)
+    {
+
+        $invited_supplier = $request->get('supplier');
+
+        $bom_id = $request->get('bom_id');
+    
+        $this->invitedSupplierRepository->store($request->get('supplier'), $bom_id);
+
+        return redirect()->route('getShowBom', $bom_id);
+
     }
 
 

@@ -42,6 +42,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/bom/{bom_id}/file_download', 'BomController@fileDownload')->name('bomFileDownload');
     Route::get('/bom/sendSupplierReminder/{invited_supplier_id}', 'InvitedSuppliersController@sendReminderEmail')->name('sendSupplierReminder');
 
+    Route::post('/bom/addNewSuppliers/{id}', 'BomController@addNewSupplierToBom')->name('addNewSuppliers');
+
     Route::post('/bom_response_upload', 'BomController@bomResponseUpload')->name('postBomUploadResponse');
 
 
