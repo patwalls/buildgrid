@@ -51,6 +51,8 @@ class BomController extends Controller {
     public function bomResponseUpload(Request $request)
     {
         $supplier = InvitedSupplier::where('hashid', $request->get('hashid'))->first();
+        $supplier->status = 'responded';
+        $supplier->update();
         $bom = Bom::find($supplier->bom_id);
 
         $file = $request->file('file');
@@ -81,6 +83,11 @@ class BomController extends Controller {
 
         if(! $supplier){
             return response('Not Found', 404);
+        }
+
+        if($supplier->status == 'notViewed'){
+            $supplier->status = 'viewed';
+            $supplier->update();
         }
 
         return View::make('supplier.bom_supplier_view', compact(['supplier']));

@@ -38,11 +38,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('/bom_file_upload', 'BomController@bomFileUpload')->name('postBomUploadFile');
 
-
-
     Route::get('/bom_supplier_view/{hashid}', 'BomController@displayBomForSupplier' )->name('supplierBomView');
     Route::get('/bom/{bom_id}/file_download', 'BomController@fileDownload')->name('bomFileDownload');
-
+    Route::get('/bom/sendSupplierReminder/{invited_supplier_id}', 'InvitedSuppliersController@sendReminderEmail')->name('sendSupplierReminder');
 
     Route::post('/bom_response_upload', 'BomController@bomResponseUpload')->name('postBomUploadResponse');
 
