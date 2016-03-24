@@ -33,4 +33,22 @@ class AddAdditionalSuppliersRequest extends Request
             'supplier.*.email'     => 'required|email'
         ];
     }
+    /**
+     * Attempting to make custom error messages
+     * @return array
+     */
+    // public function messages()
+    // {
+    //     return [
+    //         'email.required' => 'Er, you forgot your email address!'
+    //     ];
+    // }
+    
+
 }
+
+
+
+
+
+
