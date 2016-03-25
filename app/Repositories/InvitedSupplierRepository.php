@@ -17,7 +17,7 @@ class InvitedSupplierRepository {
     public function store($suppliers, $bom_id)
     {
 
-        if( isset(array_values($suppliers)[0]) && is_array(array_values($suppliers)[0])){
+        if( isset(array_values($suppliers)[1]) && is_array(array_values($suppliers)[1])){
             return $this->storeMany($suppliers, $bom_id);
         }
 

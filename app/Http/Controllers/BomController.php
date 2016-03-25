@@ -42,6 +42,7 @@ class BomController extends Controller {
 
         $file = $request->file('file');
 
+
         if( $this->bomRepository->storeBomFile($bom, $file) == true){
             return response('OK');
         }
