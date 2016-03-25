@@ -11,3 +11,9 @@ $.router.add("/create_project", () => {
 
 });
 
+$.router.add("/home", () => {
+
+    require('./modules/create_project')();
+
+});
+
