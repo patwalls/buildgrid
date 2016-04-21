@@ -50,20 +50,31 @@ class InvitedSupplierRepository {
      */
     private function storeOne($supplier, $bom_id)
     {
-        $bom_supplier = InvitedSupplier::create([
-            'name'   => $supplier['name'],
-            'email'  => $supplier['email'],
-            'bom_id' => $bom_id
-        ]);
 
-        // Generate hashid for this Bom-Supplier relation
-        $bom_supplier->hashid = \Hashids::encode([$bom_id, $bom_supplier->id]);
-        $bom_supplier->update();
+        if(isset($supplier[1]) && is_array($supplier[1])){
+            $supplier = $supplier[1];
+        }
 
-        // Todo: Move this into a Queue to prevent delay on page response.
-        InvitedSupplierMailer::sendBomInvitationToSupplier($bom_supplier->id);
+        if(strlen($supplier['name']) && strlen($supplier['email'])){
+            $bom_supplier = InvitedSupplier::create([
+                'name'   => $supplier['name'],
+                'email'  => $supplier['email'],
+                'bom_id' => $bom_id
+            ]);
+        }
 
-        return $bom_supplier->id;
+        if(isset($bom_supplier)){
+            // Generate hashid for this Bom-Supplier relation
+            $bom_supplier->hashid = \Hashids::encode([$bom_id, $bom_supplier->id]);
+            $bom_supplier->update();
+
+            // Todo: Move this into a Queue to prevent delay on page response.
+            InvitedSupplierMailer::sendBomInvitationToSupplier($bom_supplier->id);
+
+            return $bom_supplier->id;
+        }
+
+        return false;
     }
 
 
