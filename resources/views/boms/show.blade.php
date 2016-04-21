@@ -2,7 +2,6 @@
 
 @section ('content')
 
-
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-md-4 col-lg-4">
@@ -46,7 +45,7 @@
       @endforeach
     </div>
     <div class="col-sm-8 col-md-8 col-lg-8">
-      <span class="b1">{{ $user->first_name . " " .  $user->last_name . " | "}}</span><span class="b2"> {{ $bom->project->name }}</span>
+      <span class="b1">{{ $user->fullName}} |</span>  <span class="b2"> {{ $bom->project->name }}</span>
       <h2>{{ $bom->name }}</h2>
       @if ($errors->any())
         @foreach( $errors->all() as $error)
@@ -56,10 +55,44 @@
           </div>
         @endforeach
       @endif
+
+        {{-- project details --}}
+        <div class="row">
+            <div class="col-md-6">
+                <div id="pdf-preview" data-document-url="{{ route('bomDownload', [$bom->id, $bom->filename]) }}"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{{ route('bomDownload', [$bom->id]) }}">Download BOM</a>
+            </div>
+        </div>
+        {{-- / project details--}}
+
+
+        {{-- Responses --}}
+
+        @foreach($responses as $response)
+        <div class="row">
+            <div class="col-md-12 response-detail">
+                <span class="b1">{{ $response->invitedSupplier->name }}</span> Uploaded {{ Date::parse($response->created_at)->ago() }}
+                <span class="b4 response-file"><i class="ion-paperclip"></i> <a href="{{ route('bomResponseDownload', [$response->id]) }}">{{ $response->filename }}</a></span>
+                @if($response->comment)
+                    <p class="b3">
+                        {{$response->comment}}
+                    </p>
+                @endif
+            </div>
+        </div>
+        @endforeach
+
+        {{-- /Responses --}}
+
       <form method="post" action="{{ route('addNewSuppliers', [$bom->id]) }}">
         <div class="row supplier-item-wrap">
           <div class="form-group col-md-6">
-              <label>Invite suppliers to your BOM</label>
+              <label>Invite more suppliers to your BOM</label>
               <input type="text" class="form-control" name="supplier[1][name]" placeholder="Supplier Name">
           </div>
           <div class="form-group col-md-6">
