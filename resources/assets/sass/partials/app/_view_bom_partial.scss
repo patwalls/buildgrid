@@ -24,12 +24,28 @@
   margin-top: 20px;
   .response-file {
     display: block;
-    border-top: thin solid #ecf0f1;
-    border-bottom: thin solid #ecf0f1;
-    padding: 10px 0;
+    border: thin solid #ecf0f1;
+    padding: 10px;
+    background: #ecf0f1;
+  }
+  .b2{
+    background: #2C3E50;
+    color: white;
+    margin-bottom: 2%;
+    padding: 2%;
   }
 }
 
 .supplier-item-wrap{
 
 }
+
+.resend-email-notification{
+  margin-top: 3%;
+}
+
+.response-header-wrap{
+  @include display(flex);
+  @include justify-content(space-between); 
+  @include align-items(center);
+} 
