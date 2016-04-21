@@ -9,7 +9,6 @@
     "bourbon": "^4.2.6",
     "bourbon-neat": "^1.7.2",
     "bxslider": "^4.2.6",
-    "smooth-scroll": "github:cferdinandi/smooth-scroll",
     "colors": "^1.1.2",
     "dropzone": "^4.2.0",
     "jquery": "^2.2.0",
@@ -19,6 +18,8 @@
     "jscroll": "^2.3.2",
     "jump.js": "^0.3.2",
     "laravel-elixir": "^4.0.0",
+    "pdfobject": "^2.0.201604172",
+    "smooth-scroll": "github:cferdinandi/smooth-scroll",
     "toastr": "^2.1.2",
     "vanilla-modal": "^1.2.6"
   }
