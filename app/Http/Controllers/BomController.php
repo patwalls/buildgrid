@@ -75,10 +75,9 @@ class BomController extends Controller {
         return response('Error', 500);
     }
 
+
     public function addNewSupplierToBom(AddAdditionalSuppliersRequest $request)
     {
-
-        $invited_supplier = $request->get('supplier');
 
         $bom_id = $request->get('bom_id');
     
@@ -117,15 +116,10 @@ class BomController extends Controller {
      * @param $bom_id
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */
-    public function fileDownload($hashid)
+    private function bomFileDownload($bom_id, $attach)
     {
-        $invited_supplier = InvitedSupplier::where('hashid', $hashid)->first();
 
-        if (! $invited_supplier ) {
-            return response('Not Found', 404);
-        }
-
-        $bom = Bom::findOrFail($invited_supplier->bom_id);
+        $bom = Bom::findOrFail($bom_id);
 
         $file = $this->bomRepository->retrieveBomFile($bom);
 
@@ -133,9 +127,57 @@ class BomController extends Controller {
             return response('Not Found', 404);
         }
 
+        $headers = [ 'Content-Type' => $file['mimeType'] ];
+
+        if ($attach != 'attach'){
+            return response($file['contents'], 200, $headers);
+        }
+
+        $headers['Content-Disposition'] = 'attachment; filename="' . $bom->filename .'"';
+
+        return response($file['contents'], 200, $headers);
+
+    }
+
+
+    public function bomDownload($bom_id, $attach = 'attach')
+    {
+        $bom = Bom::findOrFail($bom_id);
+
+        if (! \Auth::id() == $bom->project->user_id){
+            return response('Not Found', 404);
+        }
+
+        return $this->bomFileDownload($bom->id, $attach);
+    }
+
+
+    public function supplierBomDownload($hashid, $attach = 'attach')
+    {
+        $invited_supplier = InvitedSupplier::where('hashid', $hashid)->first();
+
+        if (! $invited_supplier ) {
+            return response('Not Found', 404);
+        }
+
+        return $this->bomFileDownload($invited_supplier->bom_id, $attach);
+
+    }
+
+
+    public function bomResponseDownload($response_id)
+    {
+        $response = BomResponse::findOrFail($response_id);
+
+        $file = $this->bomResponseRepository->retrieveBomResponseFile($response);
+
+        if (! $file ) {
+            return response('Not Found', 404);
+        }
+
         $headers = [
             'Content-Type' => $file['mimeType'],
-            'Content-Disposition' => 'attachment; filename="' . $bom->filename .'"'
+            'Content-Disposition' => 'attachment; filename="' . $response->filename .'"'
         ];
 
         return response($file['contents'], 200, $headers);
