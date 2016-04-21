@@ -13,6 +13,7 @@ class InvitedSupplierMailer extends Mailer {
     public static function sendBomInvitationToSupplier($invited_supplier_id)
     {
         $supplier = InvitedSupplier::find($invited_supplier_id);
+
         $email = $supplier->email;
         $subject = 'Invitation to bid as supplier on project '. $supplier->bom->project->name;
         $view = 'email.supplier.bom_invitation';

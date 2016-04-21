@@ -91,7 +91,7 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-2">
                     {{ $supplier->bom->filename }}
-                    <a class="download-link" href="{{ route('bomFileDownload', [$supplier->hashid]) }}">Download file</a>
+                    <a class="download-link" href="{{ route('supplierBomDownload', [$supplier->hashid]) }}">Download file</a>
                 </div>
             </div>
 

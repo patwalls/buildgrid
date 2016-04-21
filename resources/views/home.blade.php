@@ -5,9 +5,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            @if( $projects->isEmpty() )
+
                 @include('partials.first_login_partial')
-            @else
+
                 <span class="b2">Current BOM's</span>
                 @foreach($projects as $project)
                     <div class="row project-grid-item">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-            @endif
+
         </div>
     </div>
 </div>

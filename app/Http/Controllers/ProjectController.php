@@ -9,6 +9,7 @@ use BuildGrid\Project;
 use BuildGrid\Repositories\InvitedSupplierRepository;
 
 
+
 class ProjectController extends Controller
 {
 
@@ -65,6 +66,11 @@ class ProjectController extends Controller
     {
         $bom = Bom::findOrFail($id);
 
-        return view('boms.show', compact('bom'));
+        $invited_suppliers = $bom->invitedSuppliers;
+        $responses = $bom->responses;
+
+        $user = $bom->project->user;
+
+        return view('boms.show', compact(['bom', 'invited_suppliers', 'responses', 'user']));
     }
 }

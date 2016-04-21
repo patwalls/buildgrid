@@ -43,10 +43,10 @@
     </div>
     <div class="row">
         <div class="form-group col-md-4">
-            <input type="text" class="form-control" name="supplier[2][name]" placeholder="Supplier Name">
+            <input type="text" class="form-control" name="supplier[3][name]" placeholder="Supplier Name">
         </div>
         <div class="form-group col-md-4">
-            <input type="text" class="form-control" name="supplier[2][email]" placeholder="Supplier Email">
+            <input type="text" class="form-control" name="supplier[3][email]" placeholder="Supplier Email">
         </div>
     </div>
     {!! csrf_field() !!}

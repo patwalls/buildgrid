@@ -12,6 +12,7 @@
     <link href="" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
+    <link href="/css/vendor.css" rel="stylesheet">
     <link href="{{  elixir('css/app.css') }}" rel="stylesheet">
 
 </head>

@@ -13,3 +13,19 @@
 	}
 	color: #fff;
 }
+
+.resend-email-notification{
+  i{
+    color: $dark-gray;
+    font-size: 24px; 
+  }
+}
+
+.add-supplier-to-bom{
+  border:none;
+  background-color: transparent;
+}
+
+.update-suppliers-btn{
+  float:right;
+}
