@@ -23,6 +23,7 @@ class Bom extends Ardent
 
     public static $relationsData = [
         'invitedSuppliers' => [self::HAS_MANY, 'BuildGrid\InvitedSupplier'],
+        'responses' => [self::HAS_MANY, 'BuildGrid\BomResponse'],
         'project' => [self::BELONGS_TO, 'BuildGrid\Project']
     ];
 }
