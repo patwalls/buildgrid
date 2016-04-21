@@ -67,9 +67,10 @@ class ProjectController extends Controller
         $bom = Bom::findOrFail($id);
 
         $invited_suppliers = $bom->invitedSuppliers;
+        $responses = $bom->responses;
 
         $user = $bom->project->user;
 
-        return view('boms.show', compact(['bom', 'invited_suppliers', 'user']));
+        return view('boms.show', compact(['bom', 'invited_suppliers', 'responses', 'user']));
     }
 }
