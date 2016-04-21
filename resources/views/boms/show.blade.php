@@ -20,7 +20,7 @@
              <div class="col-md-6">
               <div class="b3">Status</div>
               <div class="b2">
-                {{ $invited_supplier->status }}
+                {{ ucwords(preg_replace(['/(?<=[^A-Z])([A-Z])/', '/(?<=[^0-9])([0-9])/'], ' $0', $invited_supplier->status)) }}
               </div>
             </div>
           </div>
