@@ -30,7 +30,7 @@
                             <div class="row">
                             @endif
                             <div class="col-sm-6 col-md-3">
-                                <a class="add" href="#">
+                                <a class="add" href="{{ route('getCreateProject') }}">
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>

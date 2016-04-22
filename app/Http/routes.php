@@ -34,7 +34,9 @@ Route::group(['middleware' => 'web'], function () {
 
 
     Route::get('/bom/{id}', 'ProjectController@showBom')->name('getShowBom');
-    Route::get('/add_bom', 'ProjectController@bom')->name('getAddBom');
+
+    // Add BOM to existing project 
+    Route::get('/bom/add', 'ProjectController@addBomToProject')->name('addBomToProject');
 
     Route::post('/bom_file_upload', 'BomController@bomFileUpload')->name('postBomUploadFile');
 
