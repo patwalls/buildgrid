@@ -35,11 +35,6 @@ class ProjectController extends Controller
         return view('home', ['projects' => $projects]);
     }
 
-    public function addBomToProject(){
-        return 'foo';
-    }
-
-
     public function create()
     {
         return view('create_project');
@@ -48,16 +43,6 @@ class ProjectController extends Controller
 
     public function store(CreateNewProjectRequest $request)
     {
-        // Add check for does project name + user ID already exist,
-        //  if yes set $project->id if no project exists
-        //  
-        
-        // $project = DB::table('projects')->where('id', '=', \Auth::id())
-        //             ->where('name', $request->get('project_name'))
-        //             ->get();
-
-        // print_r($project);
-
         $project = Project::create([
             'user_id' => \Auth::id(),
             'name'    => $request->get('project_name')

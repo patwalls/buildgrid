@@ -18,7 +18,7 @@
             </div>
              <div class="col-md-6">
               <div class="b3">Status</div>
-              <div class="b2">
+              <div class="b2 bom-status-color">
                 {{ ucwords(preg_replace(['/(?<=[^A-Z])([A-Z])/', '/(?<=[^0-9])([0-9])/'], ' $0', $invited_supplier->status)) }}
               </div>
             </div>
@@ -58,8 +58,8 @@
         <input type="hidden" name="bom_id" value="{{ $bom->id }}">
         {!! csrf_field() !!}
         <div class="row">
-          <div class="col-md-12">
-            <button type="submit" class="btn btn-primary btn-sm update-suppliers-btn">Update Suppliers</button>
+          <div class="col-md-12 submit-new-supplier-btn">
+            
           </div>
         </div>
       </form>
