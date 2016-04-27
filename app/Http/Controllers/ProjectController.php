@@ -4,6 +4,7 @@ namespace BuildGrid\Http\Controllers;
 
 use BuildGrid\Bom;
 use BuildGrid\Http\Requests;
+use Illuminate\Http\Request;
 use BuildGrid\Http\Requests\CreateNewProjectRequest;
 use BuildGrid\Project;
 use BuildGrid\Repositories\InvitedSupplierRepository;
@@ -35,19 +36,26 @@ class ProjectController extends Controller
         return view('home', ['projects' => $projects]);
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('create_project');
+        $project = Project::find($request->id);
+        
+        return view('create_project', compact('project'));
     }
 
 
     public function store(CreateNewProjectRequest $request)
     {
-        $project = Project::create([
-            'user_id' => \Auth::id(),
-            'name'    => $request->get('project_name')
-        ]);
 
+        $project = Project::where('name', '=', $request->get('project_name'))->first();
+        
+        if ($project === null) {
+ 
+            $project = Project::create([
+                'user_id' => \Auth::id(),
+                'name'    => $request->get('project_name')
+            ]);
+        }
         $bom = Bom::create([
             'name'            => $request->get('bom_name'),
             'project_id'      => $project->id,

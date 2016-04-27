@@ -1,9 +1,10 @@
 <div id="notifications"></div>
+
 <form name="createNewProjectForm" method="post" action="{{ route('postCreateProject') }}">
     <div class="row">
         <div class="form-group col-md-6">
             <label for="project_name">Project Name</label>
-            <input type="text" class="form-control" name="project_name">
+            <input type="text" class="form-control" name="project_name" value="{{ $project->name or '' }}">
         </div>
     </div>
     {{-- Dropzone --}}

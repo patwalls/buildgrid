@@ -184,20 +184,4 @@ class BomController extends Controller {
         return response($file['contents'], 200, $headers);
     }
 
-    public function showAddBomToProject(Request $request)
-    {
-        $project = Project::find($request->id);
-
-        return view('boms.create', compact('project'));
-
-    }
-
-    public function addBomToProject(Request $request)
-    {
-        $bom = Bom::findOrFail($request->project_id);
-
-        return redirect()->action('ProjectController@index');
-
-    }
-
 }

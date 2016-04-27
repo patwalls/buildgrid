@@ -33,12 +33,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', ['uses' => 'ProjectController@index', 'as' => 'home']);
 
-    Route::get('/create_project', 'ProjectController@create')->name('getCreateProject');
+    Route::get('/create_project/{id?}', 'ProjectController@create')->name('getCreateProject');
 
     Route::post('/create_project', 'ProjectController@store')->name('postCreateProject');
-
-    // Add BOM to existing project 
-    Route::post('/bom/add', 'BomController@addBomToProject')->name('addBomToProject');
 
     Route::get('/bom/add/{id}', 'BomController@showAddBomToProject')->name('showAddBomToProject');
     

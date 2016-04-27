@@ -11,7 +11,7 @@ $.router.add("/create_project", () => {
 
 });
 
-$.router.add("/bom/add", () => {
+$.router.add("/create_project/:bom_id", () => {
 
     require('./modules/create_project')();
 

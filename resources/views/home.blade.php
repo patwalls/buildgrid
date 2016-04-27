@@ -12,8 +12,8 @@
                 @foreach($projects as $project)
                     <div class="row project-grid-item">
                         <div class="b2 project-title">{{ $project->name }}</div>
-                        @foreach($project->boms->chunk(4) as $chunk)
-                            <div class="row">
+                        <div class="row">
+                            @foreach($project->boms->chunk(4) as $chunk)
                                 @foreach($chunk as $bom)
                                     <div class="col-sm-6 col-md-3">
                                         <div class="info-card">
@@ -25,25 +25,13 @@
                                         </div>
                                     </div>
                                 @endforeach
-
-                            @if($chunk->count() == 4)
-                                </div>
-                            <div class="row">
-                            @endif
+                            @endforeach
                             <div class="col-sm-6 col-md-3">
-                                <a class="add" href="{{ route('showAddBomToProject', [$project->id]) }}">
+                                <a class="add" href="{{ route('getCreateProject', [$project->id]) }}">
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>
-                            @if($chunk->count() == 4)
-                                </div>
-                            @endif
-
-                            @if( $chunk->count() < 4)
-                                </div>
-                            @endif
-
-                        @endforeach
+                        </div>
                     </div>
                 @endforeach
                 <div class="row spaced">
