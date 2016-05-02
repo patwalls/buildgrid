@@ -4,6 +4,7 @@ namespace BuildGrid\Http\Controllers;
 
 use BuildGrid\Bom;
 use BuildGrid\BomResponse;
+use BuildGrid\Project;
 use BuildGrid\InvitedSupplier;
 use BuildGrid\Repositories\BomRepository;
 use BuildGrid\Repositories\BomResponseRepository;

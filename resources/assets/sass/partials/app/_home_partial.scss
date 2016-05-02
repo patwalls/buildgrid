@@ -20,7 +20,6 @@
     font-size: 18px;
 }
 
-
 .add i {
     font-size: 80px;
     display: block;
@@ -47,6 +46,11 @@
     a{
         color: $dark-gray;
     }
+}
+
+.project-title{
+    margin: 10px 0;
+    font-weight: 800;
 }
 .new-login-wrap{ 
 

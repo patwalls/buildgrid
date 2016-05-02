@@ -24,5 +24,24 @@ module.exports = (data) => {
 
 
     pdfObject.embed($('#pdf-preview').data('document-url'), '#pdf-preview', { height: "320px" });
+    
+    $(document).ready(function(){
+
+        var status = $(".bom-status-color").html().trim();
+
+        if ( status == 'Not Viewed' ){
+            $(".bom-status-color").css('color', 'red');
+        }
+        else if ( status == 'Viewed'){
+            $(".bom-status-color").css('color', 'green');
+        }
+        else if ( status == 'Responded' ){
+            $(".bom-status-color").css('color', 'darkgreen');
+        }
+    });
+
+    $( ".add-supplier-to-bom" ).one( "click", function() {
+        $('.submit-new-supplier-btn').append('<button type="submit" class="btn btn-primary btn-sm update-suppliers-btn">Update Suppliers</button>');
+    });
 
 };
