@@ -11,8 +11,12 @@
           <li><a data-scroll href="#how-it-works"><span class="b1">How it Works</span></a></li>
           <li><a data-scroll href="#developer-interest"><span class="b1">Developer Interest</span></a></li>
           <li><a data-scroll href="#contact-us"><span class="b1">Contact Us</span></a></li>
-          <li><a href="/login"><span class="b1">Login</span></a></li>
-          <li><a href="/signup"><span class="b1 signup">Sign Up</span></a></li>
+          @if (Auth::check())          
+            <li><a href="/home"><span class="b1">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} </span></a></li>
+          @else
+            <li><a href="/login"><span class="b1">Login</span></a></li>
+            <li><a href="/signup"><span class="b1 signup">Sign Up</span></a></li>
+          @endif
         </ul>
       </div>
       <div id="mobile-nav-icon">
