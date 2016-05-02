@@ -4,12 +4,12 @@ Route::group(['middleware' => 'web'], function () {
 
 
     // Site's main page
-
     Route::get('/',      function () { return view('welcome'); });
 
+    // Contact Form
+    Route::post('/contact_request', 'ContactRequestController@addContactRequest')->name('addContactRequest');
 
     // Auth
-
     Route::auth();
     
     Route::get('signup', 'Auth\AuthController@showRegistrationForm');

@@ -18,15 +18,16 @@
             </ul>
         </div>
     </div>
-    <div class="grid-item-40-wrap fcenter contact-form">
-        <form action="">
+    <div class="grid-item-40-wrap fcenter contact-form contact-form-right">
+        <form method="post" action="{{ route('addContactRequest') }}" data-form="contact" id="contactForm">
+            {!! csrf_field() !!}
             <div class="form-group">
                 <label for="name" class="b4">Name</label>
                 <input type="text" name="name">
             </div>
             <div class="form-group">
-                <label for="name" class="b4">Email</label>
-                <input type="email" name="email">
+                <label for="email" class="b4">Email</label>
+                <input type="text" name="email">
             </div>
             <div class="form-group">
                 <label for="name" class="b4">Message</label>
@@ -34,5 +35,14 @@
             </div>
             <button class="submit b4" type="submit">Submit <i class="icon ion-ios-arrow-right"></i></button>
         </form>
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     </div>
 </div>
