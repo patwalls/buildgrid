@@ -38,9 +38,15 @@ class ProjectController extends Controller
 
     public function create(Request $request)
     {
-        $project = Project::find($request->id);
+        $projects = Project::where('user_id', \Auth::id())->with('boms')->get();
+
+        if ( $projects === null or $request !== null )
+        {
+            $project = Project::find($request->id);
+        }
         
-        return view('create_project', compact('project'));
+        return view('create_project', compact(['projects', 'project']));
+
     }
 
 
