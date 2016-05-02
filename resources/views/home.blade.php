@@ -6,7 +6,9 @@
     <div class="row">
         <div class="col-md-12">
 
-                @include('partials.first_login_partial')
+                @if( $projects->isEmpty() )
+                    @include('partials.first_login_partial')
+                @endif
 
                 <span class="b2">Current BOM's</span>
                 @foreach($projects as $project)

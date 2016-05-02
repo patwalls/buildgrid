@@ -42,7 +42,9 @@ class ProjectController extends Controller
 
     public function create()
     {
-        return view('create_project');
+        $projects = Project::where('user_id', \Auth::id())->with('boms')->get();
+
+        return view('create_project', compact('projects'));
     }
 
 
