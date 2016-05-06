@@ -31,8 +31,13 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url( Auth::guest() ? '/' :'/home' ) }}">
-                    BuildGrid
+                    <img src="/images/logo.png" alt="">
                 </a>
+                <div class="navbar-link-wrap">
+                    <a href="{{ url('/') }}" target="_blank">Home</a>
+                    <a href="{{ url('/home') }}">Current Projects <span id="project-counter">4</span></a>
+                    <a href="{{ url('/#contact-us') }}" target="_blank">Contact</a>
+                </div>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -49,7 +54,9 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span>
+                                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} 
+                                <img src="/images/sample_profile.png" alt="">
+                                <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
@@ -65,6 +72,12 @@
     </nav>
 
     @yield('content')
+
+    <footer>
+       <div class="b2">
+            &#169; {{  date('Y') }} Build <span>Grid</span> / All Rights Reserved.
+       </div>  
+    </footer>
 
     <!-- JavaScripts -->
 

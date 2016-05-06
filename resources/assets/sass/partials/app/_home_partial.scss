@@ -1,3 +1,61 @@
+$admin-blue: #0575bd;
+$admin-red: #de3314;
+$admin-green: #37b148;
+$admin-head-foot: #333740;
+
+#app-layout{
+    .navbar-header{
+        @include display(flex);
+        @include align-items(center);
+        width: 40%;
+        min-height: 74px;
+        .navbar-link-wrap{
+            margin: 0 3%;
+            a{
+                margin: 0 10px;
+                color: white;
+            }
+        }
+        a{
+            &:hover, &:active{
+                color: white !important;
+            }
+        }
+    }
+    .navbar-brand{
+        padding: 0;
+        @include display(flex);
+        @include flex-direction(column);
+        @include justify-content(center);
+        img{
+            margin-top: -7px;
+        }
+    }
+}
+
+footer{
+    @include display(flex);
+    @include justify-content(center);
+    @include flex-direction(column);
+    @include align-items(center);
+    min-height: 60px;
+    background: $admin-head-foot;
+   .b2{
+        color: white;
+        font-weight: 100;
+   }
+}
+
+#project-counter{
+    background: $admin-red;
+    border-radius: 20px;
+    position:relative;
+    top: -6px;
+    left: -6px;
+    padding: 4px 6px 1px 6px;
+}
+
+
 .info-card {
     width: 100%;
     border: 1px solid rgb(215, 215, 215);
@@ -63,3 +121,4 @@
         margin: 0 auto;
     }
 }
+
