@@ -18,7 +18,7 @@
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default">
-        <div class="container">
+        <div class="container" id="app-content-wrap">
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
@@ -50,6 +50,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
+                        <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Sign Up</a></li>
                     @else
                         <li class="dropdown">

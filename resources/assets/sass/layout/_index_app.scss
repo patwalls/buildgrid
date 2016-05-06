@@ -5,3 +5,143 @@
 body{
   background: #F4F4F4;
 }
+.app-current-proj-outer-wrap{
+  width: 100%;
+  background: white;
+  #app-current-proj-wrap{
+    background: white;
+    padding: 1% 0px;
+    .inner-wrap{
+      @include display(flex);
+      @include align-items(center);
+      .item-wrap{
+        &:nth-of-type(2){
+          @include display(flex);
+          @include justify-content(flex-end);
+        }
+      }
+      .new-proj-btn{
+        background: $admin-green;
+        border: 0px;
+      }
+    }
+  }
+}
+.project-title{
+  color: $blue;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px !important;
+}
+
+.veritcal-separator-wrap{
+  height: 100vh;
+  @include display(flex);
+  @include flex-direction(column);
+  @include justify-content(space-between);
+}
+
+#app-layout{
+  .navbar{
+    min-height: 110px;
+    margin-bottom: 0px;
+    @include display(flex);
+    @include align-items(center);
+  }
+  .navbar-header{
+      @include display(flex);
+      @include align-items(baseline);
+      width: 70%;
+      padding: 0 15px;
+      @media screen and (max-width: 767px){
+        width: 100%;
+        @include justify-content(space-between);
+        button{
+          @include order(2);
+        }
+      }
+
+      .navbar-link-wrap{
+          margin: 0 3%;
+          @media screen and (max-width: 767px){
+            display: none;
+          }
+          a{
+              margin: 0 10px;
+              color: white;
+          }
+      }
+      a{
+          &:hover, &:active{
+              color: white !important;
+          }  
+      }
+  }
+  .navbar-brand{
+    padding: 0;
+    @include display(flex);
+    @include flex-direction(column);
+    @include justify-content(flex-end);
+    margin-left: 0;
+    img{
+        margin-top: 0;
+    }
+    @media screen and (max-width: 767px){
+      margin-left: -26%;
+    }
+  }
+}
+
+
+#app-content-wrap{
+  @include display(flex);
+  @include align-items(flex-end);
+  @include justify-content(space-between);
+  padding: 0px 0 30px 0;
+  @media screen and (max-width: 767px){
+    width: 100%;
+  }
+}
+#app-navbar-collapse{
+    width: 40%;
+  a{
+    padding: 0;
+    margin: 0 10px;
+  }
+  .navbar-right{
+    .dropdown{
+      margin-bottom: -8px;
+      .dropdown-toggle{
+        background: $dark-gray;
+        &:hover, &:active, &:visited{
+          color: white !important;
+        }
+      }
+      .dropdown-menu{
+        background: $dark-gray;
+        margin-top: 28px;
+        li{
+          a{
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+footer{
+    @include display(flex);
+    @include justify-content(center);
+    @include flex-direction(column);
+    @include align-items(center);
+    min-height: 60px;
+    background: $admin-head-foot;
+    position: static;
+    bottom: 0px;
+    width: 100%;
+   .b2{
+        color: white;
+        font-weight: 100;
+   }
+}
