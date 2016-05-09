@@ -58,7 +58,8 @@
         ],
         "psr-4": {
             "BuildGrid\\": "app/"
-        }
+        },
+        "files":["app/Http/helpers.php"]
     },
     "autoload-dev": {
         "classmap": [

@@ -18,7 +18,7 @@
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default">
-        <div class="container">
+        <div class="container" id="app-content-wrap">
             <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
@@ -31,8 +31,15 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url( Auth::guest() ? '/' :'/home' ) }}">
-                    BuildGrid
+                    <img src="/images/logo.png" alt="">
                 </a>
+                <div class="navbar-link-wrap">
+                    <a href="{{ url('/') }}" target="_blank">Home</a>
+                    <a href="{{ url('/home') }}">Current Projects </a>
+                    {{-- This was the project counter, commented it out --}}
+                    {{-- <span class="red-counter">4</span> --}}
+                    <a href="{{ url('/#contact-us') }}" target="_blank">Contact</a>
+                </div>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -45,11 +52,14 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
+                        <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Sign Up</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span>
+                                {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} 
+                                <img src="/images/sample_profile.png" alt="">
+                                <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
@@ -65,6 +75,12 @@
     </nav>
 
     @yield('content')
+
+    <footer>
+       <div class="b2">
+            &#169; {{  date('Y') }} Build <span>Grid</span> / All Rights Reserved.
+       </div>  
+    </footer>
 
     <!-- JavaScripts -->
 
