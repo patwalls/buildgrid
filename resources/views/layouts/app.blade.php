@@ -35,7 +35,9 @@
                 </a>
                 <div class="navbar-link-wrap">
                     <a href="{{ url('/') }}" target="_blank">Home</a>
-                    <a href="{{ url('/home') }}">Current Projects <span id="project-counter">4</span></a>
+                    <a href="{{ url('/home') }}">Current Projects </a>
+                    {{-- This was the project counter, commented it out --}}
+                    {{-- <span class="red-counter">4</span> --}}
                     <a href="{{ url('/#contact-us') }}" target="_blank">Contact</a>
                 </div>
             </div>
