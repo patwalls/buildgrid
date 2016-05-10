@@ -34,7 +34,7 @@
                                     <div class="info-card" onclick="location.href='{{ route('getShowBom', [$bom->id]) }}'">
                                         <div class="info-card-header">
                                             <a href="{{ route('getShowBom', [$bom->id]) }}" class="b2">{{ $bom->name }}</a>
-                                            <p class="b4"><span>Last Updated:</span> {{ getDateToHuman($bom->updated_at) }}</p>
+                                            <p class="b4"><span>Last Updated:</span> {{ getDaysAgo($bom->updated_at) }}</p>
                                         </div>
                                         @if( count($bom->responses) == null )
                                             <div class="info-card-footer">
