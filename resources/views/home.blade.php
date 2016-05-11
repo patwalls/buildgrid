@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container footer-align">
     <div class="row">
         <div class="col-md-12">
             @if( $projects->isEmpty() )

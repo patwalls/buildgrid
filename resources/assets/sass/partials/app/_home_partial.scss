@@ -59,11 +59,15 @@
 }
 
 .new-project-wrap{
-    background: $admin-blue;
+    @include linear-gradient(to top, $admin-plus-dark-blue, $admin-plus-light-blue);
     width: 70px;
     height: 80px;
     border-radius: 5px;
     margin-bottom: 5px;
+    border: 1px solid $admin-plus-stroke-blue;
+    &:hover{
+        @include linear-gradient(to top, $admin-plus-light-blue, $admin-plus-dark-blue);
+    } 
     a{
         @include display(flex);
         @include align-items(center);

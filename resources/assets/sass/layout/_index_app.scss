@@ -102,6 +102,12 @@ body{
     width: 100%;
   }
 }
+
+.app-inner-wrap{
+  min-height: 100%;
+  position: relative;
+}
+
 #app-navbar-collapse{
     width: 40%;
   a{
@@ -137,11 +143,19 @@ footer{
     @include align-items(center);
     min-height: 60px;
     background: $admin-head-foot;
-    position: static;
-    bottom: 0px;
+    position: absolute;
+    bottom: 0px;  
     width: 100%;
    .b2{
-        color: white;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      span{
         font-weight: 100;
+      }
    }
+}
+
+.footer-align{
+  padding-bottom: 75px;
 }
