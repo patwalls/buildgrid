@@ -6,3 +6,10 @@ function getDateToHuman($updated){
 
   return $formatted;
 }
+
+function getDaysAgo($days)
+{
+  $formatted = Date::parse($days)->ago();
+
+  return $formatted;
+}

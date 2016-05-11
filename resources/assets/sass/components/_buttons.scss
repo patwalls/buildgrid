@@ -24,8 +24,33 @@
 .add-supplier-to-bom{
   border:none;
   background-color: transparent;
+  color: $white;
+  @include display(flex);
+  @include align-items(center);
+  i{
+    font-size: 32px;
+    margin-bottom: -5px;
+    margin-right: 5px;
+  }
 }
 
 .update-suppliers-btn{
   float:right;
+}
+
+.btn-decline{
+  background-color: $admin-blue;
+  border: 0;
+  &:hover, &:active, &:focus, &:visited{
+    background-color: $admin-blue;
+  }
+}
+
+.btn-confirm{
+  background-color: $admin-red;
+  border: 0;
+  color: white;
+  &:hover, &:active, &:focus, &:visited{
+    background-color: $admin-red;
+  }
 }
