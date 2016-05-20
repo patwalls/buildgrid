@@ -183,10 +183,6 @@ return [
          */
         'SleepingOwl\Admin\AdminServiceProvider',
 
-        /*
-         * El Finder
-         */
-        'Barryvdh\Elfinder\ElfinderServiceProvider',
 
         /*
          *  Hashid service
