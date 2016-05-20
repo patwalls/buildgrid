@@ -1,0 +1,31 @@
+    
+.create-project-outer-wrap{
+  background: white;
+  color: black;
+  padding: 2%;
+  border: 1px solid #cccccc;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  margin-top: 2%;
+  input{
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+  }
+  #dropzone{
+    border: 2px dashed $dark-gray;
+    border-radius: 5px;
+    background: white;
+    padding: 20px;
+    margin: 0; 
+  }
+}
+#app-current-proj-wrap{
+    .b2{
+      font-weight: 800;
+      font-size: 16px;
+    }
+}
+.new-project-header{
+  margin-left: -14px;
+  margin-top: 22px;
+}

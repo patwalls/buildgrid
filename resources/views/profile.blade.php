@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container footer-align">
   <div class="row">
     <div class="col-md-12">
     	<img src="/images/plus-icon.png" class="plus-icon" alt="">
