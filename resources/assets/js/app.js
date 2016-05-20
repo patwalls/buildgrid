@@ -3,4 +3,4 @@
 require('./config');
 require('./router');
 
-  });
+  
