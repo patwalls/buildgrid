@@ -4,9 +4,16 @@
   font-size: 14px;
 }
 
-.standard-blue-button {
-    border: none;
-    border-radius: 0;
+.btn-green{
+  @include background(linear-gradient($admin-light-green, $admin-green));
+  &:hover {
+    @include background(linear-gradient($admin-green, $admin-light-green));
+  } 
+}
+
+.standard-blue-button{
+  border: none;
+  border-radius: 0;
 	background-color: $bg_light-blue;
 	&:hover {
 		background-color: $bg_dark-blue ;

@@ -1,3 +1,65 @@
+.as-easy-123{
+  @media screen and (max-width: 767px){
+    display: none;
+  }
+  .step{
+    @media screen and (min-width: 768px) and (max-width: 970px){
+      min-height: 450px;
+    }
+    @media screen and (min-width: 971px) and (max-width: 1100px){
+      min-height: 400px;
+    }
+  }
+}
+
+.as-easy-123-mob-outer-wrap{
+  .bx-wrapper{
+    box-shadow: none;
+    .bx-viewport{
+      @include display(flex);
+      @include flex-direction(column);
+      @include justify-content(center);
+    }
+    @media screen and (min-width: 768px){
+      display: none;
+    } 
+  }
+  .easy-item-mobile{
+    padding: 0px .25%;
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+    margin-top: -15px;
+    min-height: 300px;
+  }
+} 
+
+.as-easy-123-mob{
+  @media screen and (min-width: 768px){
+    display: none;
+  }  
+  .step{
+    @media screen and (max-width: 767px){
+      width: 100% !important; 
+    }
+    @media screen and (max-width: 480px){
+      padding: 7px 14px;
+      border: none;
+      p{
+        font-size: 16px;
+        line-height: 16px;
+        margin: 7px 0px;
+      }
+      img{
+        margin-bottom: 10px;
+      }
+    }
+    @media screen and (max-width: 480px) and (max-width: 767px){
+
+    }
+  }
+}
+
 .red-counter{
     background: $admin-red;
     border-radius: 20px;
@@ -105,15 +167,122 @@
 .project-title{
     margin: 4% 0 2% 0;
 }
-.new-login-wrap{ 
-
-    h2{
-        text-align:center;
+.new-login-outer-wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
+    height: 100vh;
+    background: rgba(37, 37, 37, 0.71);
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+    @media screen and (max-width: 767px){
+        height: initial;
+        padding: 4%;
     }
-    .b1{
-        text-align:center;   
-        width: 60%;
-        margin: 0 auto;
+    .new-login-wrap{ 
+        width: 80%;
+        @media screen and (max-width: 767px){
+            width: 95%;
+        }
+        h2{
+            text-align:center;
+        }
+        .b1{
+            text-align:center;   
+            width: 60%;
+            margin: 0 auto;
+        }
+        .new-login-header-wrap{
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            background: $new-user-bg-head;
+            @include display(flex);
+            @include justify-content(center);
+            position: relative;
+            img{
+                max-height: 165px;
+                margin: 5% 0;
+            }
+            i{
+                position: absolute;
+                top: 10px; 
+                right: 20px;
+            }
+        }
+        .new-login-content-wrap{
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            background: white;
+            .getting-started-btn-wrap{
+                @include display(flex);
+                @include justify-content(center);
+                padding: 1% 0 5% 0;
+                .btn{
+                    color: white;
+                    height: 40px;
+                    width: 150px;
+                    &:hover, &:active, &:focus, &:visited{
+                        color: white !important;
+                    }
+                }
+            }
+            .first-time-head-link{
+                @include display(flex);
+                @include justify-content(center);
+                padding: 2% 0 0% 0;
+            }
+            .as-easy-123{
+                @include display(flex);
+                @include justify-content(center);
+                padding: 3% 0 1% 0;
+                @media screen and (max-width: 767px){
+                    @include flex-wrap(wrap);
+                }
+                a{
+                    width: 30%;
+                    @media screen and (max-width: 767px){
+                        width: 95%;
+                    }
+                    border: 1px solid $light-gray-border;
+                    border-radius: 4px;
+                    margin: 10px;
+                    padding: 3% 2%;
+                    position: relative;
+                    @include display(flex);
+                    @include flex-direction(column);
+                    @include align-items(flex-start);
+                    @include justify-content(center);
+                    strong{
+                        margin: 3% 0;
+                    }
+                    p{
+                        font-size: 16px;
+                        line-height: 24px;
+                        font-weight: 100;
+                    }
+                }
+                .first-login-number-wrap{
+                    position: absolute;
+                    top: -25px;
+                    width: 100%;
+                    left: 0px;
+                    @include display(flex);
+                    @include justify-content(center);
+                    p{
+                        background: $blue;
+                        color: white;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 37px;
+                        @include display(flex);
+                        @include align-items(center);
+                        @include justify-content(center);
+                    }
+                }
+            }
+        }
     }
 }
-
