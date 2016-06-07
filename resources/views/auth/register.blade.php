@@ -2,6 +2,9 @@
 
 @section('content')
 
+  <!-- Hero Wrap -->
+  @include('partials.marketing-index.hero-wrap')
+
 <div class="container">
     <div class="row main-row">
         <div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">

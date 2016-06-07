@@ -38,3 +38,12 @@ p {
 strong {
   color:  #333740;
 }
+
+.utility-center-row{
+  @include display(flex);
+  @include justify-content(center); 
+}
+.utility--stack-col{
+  @include display(flex);
+  @include flex-direction(column);
+}
