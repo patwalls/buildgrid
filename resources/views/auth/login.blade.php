@@ -18,11 +18,11 @@
                     @endif
                     <div class="@if ($errors->has('email')) has-error @endif utility--stack-col">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}">
+                        <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                     </div>
                     <div class="@if ($errors->has('password')) has-error @endif utility--stack-col">
                         <label for="password">Password</label>
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" name="password">
                     </div>
                     <button type="submit" class="auth-form__submit">Sign in</button>
                     <div class="auth-form__social-logins">
