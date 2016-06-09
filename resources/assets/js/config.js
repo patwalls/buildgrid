@@ -8,6 +8,7 @@ global.dropzone  = require('dropzone');
 global.jscroll   = require('jscroll');
 global.bootstrap = require('bootstrap-sass');
 global.pdfObject = require('pdfobject');
+global.swal      = require('sweetalert');
 
 // ** Options and overrides ** //
 
