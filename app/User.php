@@ -29,9 +29,12 @@ class User extends Authenticatable
         'full_name',
         'total_boms',
         'active_boms_count',
-         'invited_suppliers_count'
+        'invited_suppliers_count'
     ];
 
+    protected $dates = [
+        'last_login'
+    ];
 
     public function getFullNameAttribute()
     {
