@@ -2,8 +2,10 @@
 
 @section('content')
 
+ @include('partials.add-project-header')
+
   <!-- Add new BOM Partial -->
-  <div class="container">
+  <div class="container footer-align">
     <div class="col-md-12">
       @if( $projects->isEmpty() )
           @include('partials.first_login_partial')

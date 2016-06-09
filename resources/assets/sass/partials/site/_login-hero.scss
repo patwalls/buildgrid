@@ -1,0 +1,153 @@
+#login-hero-wrap{
+  background: url('../../images/home-how-buildgrid-works.jpg');
+  background-size: cover;
+  background-position: center center;
+  padding: 15% 0;
+  @media screen and (max-width: 767px){
+    background: url('../../images/home-how-buildgrid-works.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+  .hero-content-wrap{
+    @include display(flex);
+    @include flex-direction(column);
+    @include align-items(center);
+    h2{
+      color: $white;
+      margin: 0px;
+      span{
+        @extend h1;
+      }
+    }
+    img{
+      margin-bottom: 15px;
+    }
+    .b1{
+      color: $white;
+      font-weight: 700;
+      // font-size: 18px;
+      span{
+        font-weight: 100;
+        // font-size: 18px;
+      }
+      @media screen and (max-width: 480px){
+        text-align: center;
+        max-width: 350px;
+        margin-top: 10px;
+      }
+    }
+    a{
+      margin-top: 40px;
+      span{
+        color: $white;
+      }
+    }
+    .icon{
+      color: white;
+    }
+  }
+}
+
+.auth-form{
+  width: $mobile-auth-width;
+  margin: 75px 0 200px 0;
+  @media screen and (max-width: 480px){
+    width: 360px;
+    margin: 20px 0;
+  }
+  &__header{
+    background: $dark-gray;
+    padding: 15px 10px;
+    color: $white; 
+    @include display(flex);
+    @include justify-content(center);
+    span{
+      color: $white; 
+      strong{
+        color: $white; 
+      }
+    }
+  }
+  &__fields{
+    padding: 20px 25px;
+    border: 1px solid darkgray;
+  }
+  &__content{
+    form{
+      box-shadow: 0px 1px 9px darkgray;
+      border-bottom-right-radius: 4px;
+      border-bottom-left-radius: 4px;
+      color: $blue-text;
+      input{
+        height: 35px;
+        border: 1px solid darkgray;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+      }
+    }
+  }
+  &__footer{
+  }
+  &__password{
+    padding: 15px;
+    @include justify-content(center);
+    @include display(flex);
+    background: $light-blue-login;
+    border-left: 1px solid darkgray;
+    border-right: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    a{
+      color: $blue-text;
+      cursor:pointer;
+      &:visited, &:active, &:focus, &:hover{
+        color: $blue-text;
+      }
+    }
+  }
+  &__submit{
+    width: 100%;
+    height: 35px;
+    background: $admin-green;
+    border: none;
+    border-radius: 4px;
+    margin: 10px 0;
+    color: $white;
+    font-size: 100%;
+    margin: 5px 0 15px 0;
+  }
+  &__social-logins{
+    @include display(flex);
+    @include justify-content(space-between);
+    @include align-items(center);
+    a{
+      color: $white;
+    }
+  }
+  &__social-logins--google{
+    width: 50%;
+    background: url("../../images/btn_google+_signin_light_normal_web.png");
+    height: 40px;
+    border-radius: 4px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  &__social-logins--linkedin{
+    width: 56%;
+    background: url("../../images/linkedin-Sign-in-Large---Default.png");
+    height: 36px;
+    border-radius: 4px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+
+
