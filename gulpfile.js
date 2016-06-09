@@ -1,5 +1,13 @@
 var elixir = require('laravel-elixir');
 
+
+elixir.config.js.browserify.watchify = {
+    enabled: true,
+    options: {
+        poll: true
+    }
+}
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
