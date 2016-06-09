@@ -181,7 +181,13 @@ return [
         /*
          *  Hashid service
          */
-        Vinkla\Hashids\HashidsServiceProvider::class
+        Vinkla\Hashids\HashidsServiceProvider::class,
+
+        /*
+         *  Datatables Service
+         */
+
+        Yajra\Datatables\DatatablesServiceProvider::class
 
     ],
 
@@ -235,7 +241,13 @@ return [
          * Hashid
          */
 
-        'Hashids' => Vinkla\Hashids\Facades\Hashids::class
+        'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
+
+        /*
+         * Datatables
+         */
+
+        'Datatables'=> Yajra\Datatables\Facades\Datatables::class
     ],
 
 ];
