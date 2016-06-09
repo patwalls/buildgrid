@@ -52,9 +52,13 @@ class AdminUserController extends Controller
      * @param  \BuildGrid\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show(User $user, Request $request)
     {
-        return response( $user );
+        if( $request->ajax() ) {
+            return \Datatables::collection($user->boms()->get())->make(true);
+        }
+
+        return \View::make('admin.users.show', compact('user'));
     }
 
     /**
@@ -77,7 +81,7 @@ class AdminUserController extends Controller
      */
     public function update(Request $request, BuildGrid\User $user)
     {
-        dd($id);
+
     }
 
     /**
