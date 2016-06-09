@@ -145,7 +145,7 @@ class BomController extends Controller {
     {
         $bom = Bom::findOrFail($bom_id);
 
-        if (! \Auth::id() == $bom->project->user_id){
+        if (! \Auth::id() == $bom->project->user_id || ! \Auth::user()->is_admin){
             return response('Not Found', 404);
         }
 

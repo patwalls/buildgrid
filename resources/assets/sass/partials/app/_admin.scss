@@ -1,0 +1,44 @@
+.admin-content {
+
+  .container{
+    margin-top: 20px;
+    padding-bottom: 80px;
+  }
+
+  h2 {
+    margin-bottom: 40px;
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  table {
+    background-color: $bg_light-gray;
+    font-size: 0.9em;
+
+    th {
+      background-color:  #333740;
+      color: white;
+      cursor: pointer;
+    }
+
+  }
+
+
+  .dataTables_wrapper .row:first-child {
+    margin-bottom: 20px;
+
+    input {
+      width: 390px;
+    }
+
+    select, input {
+      margin-left: 10px;
+    }
+
+  }
+
+
+}

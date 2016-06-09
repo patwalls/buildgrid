@@ -179,19 +179,15 @@ return [
         'Jenssegers\Date\DateServiceProvider',
 
         /*
-         * Admin
-         */
-        'SleepingOwl\Admin\AdminServiceProvider',
-
-        /*
-         * El Finder
-         */
-        'Barryvdh\Elfinder\ElfinderServiceProvider',
-
-        /*
          *  Hashid service
          */
-        Vinkla\Hashids\HashidsServiceProvider::class
+        Vinkla\Hashids\HashidsServiceProvider::class,
+
+        /*
+         *  Datatables Service
+         */
+
+        Yajra\Datatables\DatatablesServiceProvider::class
 
     ],
 
@@ -242,24 +238,16 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
         /*
-         * Admin
-         */
-
-        'Admin'         => 'SleepingOwl\Admin\Admin',
-        'AdminAuth'     => 'SleepingOwl\AdminAuth\Facades\AdminAuth',
-        'Column'        => 'SleepingOwl\Admin\Columns\Column',
-        'ColumnFilter'  => 'SleepingOwl\Admin\ColumnFilters\ColumnFilter',
-        'Filter'        => 'SleepingOwl\Admin\Filter\Filter',
-        'AdminDisplay'  => 'SleepingOwl\Admin\Display\AdminDisplay',
-        'AdminForm'     => 'SleepingOwl\Admin\Form\AdminForm',
-        'AdminTemplate' => 'SleepingOwl\Admin\Templates\Facade\AdminTemplate',
-        'FormItem'      => 'SleepingOwl\Admin\FormItems\FormItem',
-
-        /*
          * Hashid
          */
 
-        'Hashids' => Vinkla\Hashids\Facades\Hashids::class
+        'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
+
+        /*
+         * Datatables
+         */
+
+        'Datatables'=> Yajra\Datatables\Facades\Datatables::class
     ],
 
 ];

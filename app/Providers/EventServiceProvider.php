@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'BuildGrid\Events\SomeEvent' => [
             'BuildGrid\Listeners\EventListener',
         ],
+        'Illuminate\Auth\Events\Login' => [
+            'BuildGrid\Listeners\LogSuccessfulLogin',
+        ],
     ];
 
     /**

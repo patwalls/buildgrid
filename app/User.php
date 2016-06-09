@@ -12,7 +12,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'phone', 'company_name', 'position_title', 'password','linkedin_id', 'linkedin_token', 'google_id', 'google_token',
+        'first_name', 'last_name', 'email', 'phone', 'company_name', 'position_title', 'password','linkedin_id', 'linkedin_token', 'google_id', 'google_token', 'is_admin'
     ];
 
     /**
@@ -21,13 +21,34 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'google_token', 'google_id', 'linkedin_id', 'linkedin_token'
     ];
 
+
+    protected $appends = [
+        'full_name',
+        'total_boms',
+        'active_boms_count',
+        'invited_suppliers_count'
+    ];
+
+    protected $dates = [
+        'last_login'
+    ];
 
     public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getTotalBomsAttribute()
+    {
+        return $this->boms()->count();
+    }
+
+    public function getActiveBomsCountAttribute()
+    {
+        return $this->active_boms()->count();
     }
 
     /**
@@ -39,7 +60,6 @@ class User extends Authenticatable
         return $this->hasMany('BuildGrid\Project');
     }
 
-
     /**
      *
      * A user has many Boms through its Projects
@@ -48,6 +68,26 @@ class User extends Authenticatable
      */
     public function boms(){
         return $this->hasManyThrough('BuildGrid\Bom', 'BuildGrid\Project');
+    }
+
+    public function active_boms()
+    {
+        return $this->hasManyThrough('BuildGrid\Bom', 'BuildGrid\Project')->where('status', 'active');
+    }
+
+    public function getisAdministratorAttribute(){
+        return (bool) $this->is_admin;
+    }
+
+    public function getInvitedSuppliersCountAttribute()
+    {
+        $total = 0;
+
+        foreach($this->boms()->get() as $bom){
+            $total += $bom->invited_suppliers_count;
+        };
+
+        return $total;
     }
 
 }
