@@ -10,6 +10,7 @@
     "bourbon-neat": "^1.7.2",
     "bxslider": "^4.2.6",
     "colors": "^1.1.2",
+    "datatables.net-bs": "^1.10.12",
     "dropzone": "^4.2.0",
     "jquery": "^2.2.0",
     "jquery-modal": "^0.6.1",

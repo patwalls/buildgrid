@@ -20,12 +20,14 @@ elixir(function(mix) {
         
         // NPM JS packages
         .browserify('app.js')
+        .browserify('admin.js')
         .browserify('site.js')
         .version([
             'public/css/site.css',
             'public/css/app.css',
-            'public/js/site.js',
-            'public/js/app.js'
+            'public/js/app.js',
+            'public/js/admin.js',
+            'public/js/site.js'
         ])
 
         // 3rd party CSS libraries
@@ -33,5 +35,7 @@ elixir(function(mix) {
             'vendor/animate.css',
             'vendor/ionicons.css',
             'vendor/jquery.bxslider.css'
-        ], 'public/css/vendor.css');
+        ], 'public/css/vendor.css')
+
+        .browserSync({proxy:'buildgrid.local.com'});
 });
