@@ -18,6 +18,8 @@
 
                 <table class='table table-condensed table-hover table-striped'
                        data-datatables-enabled
+                       data-ajax = '{{ route('admin.boms.index') }}'
+                       data-show-url = '{{ route('admin.boms.index') }}'
                        data-columns = '[
                                 {"data": "id"},
                                 {"data": "bom_purchaser" },
@@ -28,7 +30,7 @@
                                 {"data": "created_at"},
                                 {"data": "updated_at"},
                                 {"data": "status"},
-                                {"defaultContent": "<button class=\"btn btn-default btn-xs\"><i class=\"fa fa-eye\"></i></button> <button class=\"btn btn-danger btn-xs\"><i class=\"fa fa-times\"></i></button>"}
+                                {"defaultContent": "<button data-action-show class=\"btn btn-default btn-xs\"><i class=\"fa fa-eye\"></i></button> <button data-action-delete class=\"btn btn-danger btn-xs\"><i class=\"fa fa-times\"></i></button>"}
                             ]'
                        data-column-defs = '[
                                 { "visible": false, "targets": 0 }
