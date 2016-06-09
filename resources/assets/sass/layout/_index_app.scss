@@ -5,6 +5,14 @@
 body{
   background: $bg;
 }
+
+/* We may need to remove this and figure out how to correctly position the footer so that id doesn't overlap elements at the bottom --Marte */
+.app-content {
+  margin-top: 20px;
+  padding-bottom: 80px;
+}
+/* ------------ */
+
 .app-current-proj-outer-wrap{
   width: 100%;
   background: white;
