@@ -49,3 +49,8 @@ img.logo {
 .plus-icon{
     margin: 5% 0;
 }
+
+.dropdown-menu > li > a:hover{
+  background: transparent;
+  color: white !important;
+}

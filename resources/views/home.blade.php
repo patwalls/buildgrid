@@ -1,135 +1,71 @@
 @extends('layouts.app')
 
 @section('content')
-
-    <style>
-
-        .info-card {
-            width: 100%;
-            border: 1px solid rgb(215, 215, 215);
-            margin-bottom: 20px;
-            overflow: hidden;
-            min-height: 200px;
-            border-radius: 10px;
-        }
-
-        .info-card-header {
-            display: block;
-            bottom: 15px;
-            position: absolute;
-            padding: 15px;
-        }
-
-        .info-card-header a {
-            font-weight: 700;
-            font-size: 18px;
-        }
-
-
-        .add i {
-            font-size: 80px;
-            display: block;
-            height: 200px;
-            border: 2px dashed lightblue;
-            border-radius: 10px;
-            width: 100%;
-            padding-top: 60px;
-            text-align: center;
-            font-weight: normal;
-        }
-
-        .add p{
-            margin: 15px 0;
-            text-decoration: underline;
-        }
-
-        .spaced {
-            margin-top: 60px;
-        }
-
-    </style>
-
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-
-            <div class="row">
-                <h1>Current BOM's</h1>
-            </div>
-
-            @if( $projects->isEmpty() )
-                <div class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong>Notice:</strong> You don't have any projects yet.
+<div class="app-current-proj-outer-wrap">
+    <div class="container" id="app-current-proj-wrap">
+        <div class="row">
+            <div class="col-md-12 inner-wrap">
+                <div class="col-md-6 item-wrap">
+                    <span class="b2">Current Projects</span><span> | @if(count( $projects ) == null ) No Projects @elseif (count( $projects ) == 1) Project  @else {{ count( $projects ) }} Projects @endif</span>
                 </div>
-            @endif
+                <div class="col-md-6 item-wrap">
+                    <a href="{{ route('getCreateProject') }}"><button class="btn btn-success new-proj-btn">New Project</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-            @foreach($projects as $project)
-                <div class="row">
-
-                    <h2>{{ $project->name }}</h2>
-
-                    @foreach($project->boms->chunk(4) as $chunk)
-                        <div class="row">
+<div class="container footer-align">
+    <div class="row">
+        <div class="col-md-12">
+            @if( $projects->isEmpty() )
+                @include('partials.first_login_partial')
+                @include('create_project')
+            @else
+                @foreach($projects as $project)
+                    <div class="row project-grid-item">
+                        <div class="col-md-12">
+                            <div class="b2 project-title">{{ $project->name }}</div>
+                        </div>
+                        @foreach($project->boms->chunk(4) as $chunk)
                             @foreach($chunk as $bom)
-                                <div class="col-sm-6  col-md-3">
-                                    <div class="info-card">
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="info-card" onclick="location.href='{{ route('getShowBom', [$bom->id]) }}'">
                                         <div class="info-card-header">
-                                            <a href="{{ route('getShowBom', [$bom->id]) }}">{{ $bom->name }}</a>
-                                            <p>Added on {{ Date::parse($bom->created_at)->format('F j, Y') }}</p>
+                                            <a href="{{ route('getShowBom', [$bom->id]) }}" class="b2">{{ $bom->name }}</a>
+                                            <p class="b4"><span>Last Updated:</span> {{ getDaysAgo($bom->updated_at) }}</p>
                                         </div>
+                                        @if( count($bom->responses) == null )
+                                            <div class="info-card-footer">
+                                                <p>No Responses</p>
+                                            </div>
+                                        @elseif ( count($bom->responses) == 1 )
+                                            <div class="info-card-footer info-footer-updates">
+                                                <p> <span class="red-counter">{{ count($bom->responses) }}</span> Response</p>
+                                            </div>
+                                        @else
+                                            <div class="info-card-footer info-footer-updates">
+                                                <p> <span class="red-counter">{{ count($bom->responses) }}</span> Responses</p>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             @endforeach
-
-                        @if($chunk->count() == 4)
-                            </div>
-                            <div class="row">
-                        @endif
-
+                        @endforeach
                         <div class="col-sm-6 col-md-3">
-                            <a class="add" href="#">
-                                <i class="fa fa-plus"></i>
-                            </a>
-                        </div>
-
-                        @if($chunk->count() == 4)
+                            <div class="new-project-wrap">
+                                <a class="add" href="{{ route('getCreateProject', [$project->id]) }}">
+                                    <i class="fa fa-plus"></i>
+                                </a>
                             </div>
-                        @endif
-
-                        @if( $chunk->count() < 4)
-                            </div>
-                        @endif
-
-                    @endforeach
-
-
-                </div>
-            @endforeach
-
-            <div class="row spaced">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3">
-                            <a class="add" href="{{ route('getCreateProject') }}">
-                                <i class="fa fa-plus"></i>
-                                <p>New Project</p>
-                            </a>
+                            <a id="add-new-bom" href="{{ route('getCreateProject', [$project->id]) }}">Add BOM</a>
                         </div>
-                </div>
-            </div>
-
-
+                    </div>
+                @endforeach
+            @endif
         </div>
-
-
-
-
-
     </div>
-
-
-
 </div>
 
 @endsection

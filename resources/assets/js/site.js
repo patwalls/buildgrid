@@ -4,7 +4,18 @@ global.smoothScroll = require('smooth-scroll');
 $(document).ready(function(){
   $('.as-easy-123-mob').bxSlider({
   });
-});
+
+  $("form[data-form='contact']").submit(function(evt){
+    evt.preventDefault();
+    var url = $(this).attr("action");
+    var data = $(this).serialize();
+    $.post(url, data, function(response){
+      $("form[data-form='contact']").before("<h4>Thank you for contacting us.  Someone will be in touch with you shortly.</h4>");
+    });
+  });
+  
+});   // end ready
+
 
 // Smooth Scrolling for Nav
 smoothScroll.init({
@@ -14,7 +25,6 @@ smoothScroll.init({
 
 $(document).scroll(function(){
   var dataPosition = $('#contrast-item').offset().top - $(window).scrollTop();
-  console.log( dataPosition );
   if (dataPosition <= 500 && dataPosition <= 0){
     $('#nav-desk').css('position', 'fixed').addClass('background-transition tran-state');
   }else{

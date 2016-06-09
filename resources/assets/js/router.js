@@ -11,3 +11,21 @@ $.router.add("/create_project", () => {
 
 });
 
+$.router.add("/create_project/:bom_id", () => {
+
+    require('./modules/create_project')();
+
+});
+
+$.router.add("/home", () => {
+
+    require('./modules/create_project')();
+
+});
+
+
+$.router.add("/bom/:bom_id", (data) => {
+
+    require('./modules/view_bom')(data);
+
+});

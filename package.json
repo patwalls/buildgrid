@@ -9,9 +9,8 @@
     "bourbon": "^4.2.6",
     "bourbon-neat": "^1.7.2",
     "bxslider": "^4.2.6",
-    "jquery-smooth-scroll": "^1.7.2",
-    "smooth-scroll": "^9.1.1",
     "colors": "^1.1.2",
+    "datatables.net-bs": "^1.10.12",
     "dropzone": "^4.2.0",
     "jquery": "^2.2.0",
     "jquery-modal": "^0.6.1",
@@ -20,6 +19,9 @@
     "jscroll": "^2.3.2",
     "jump.js": "^0.3.2",
     "laravel-elixir": "^4.0.0",
+    "pdfobject": "^2.0.201604172",
+    "smooth-scroll": "github:cferdinandi/smooth-scroll",
+    "sweetalert": "^1.1.3",
     "toastr": "^2.1.2",
     "vanilla-modal": "^1.2.6"
   }

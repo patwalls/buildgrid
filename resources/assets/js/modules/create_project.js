@@ -13,11 +13,12 @@ module.exports = () => {
         },
         dictDefaultMessage: "<i class='fa fa-upload fa-4x'></i><br/><h3>Drag & Drop</h3> files anywhere or <span class='underline'>browse...</span>",
         success: (file, response) => {
-            toastr.success('Your project has been succesfully created.', '', { onHidden: () => { window.location.href = "/home"; } });
+            toastr.success('Your project has been succesfully created.', '', { onHidden: () => { window.location.href = "/bom/"+bgDropzone.options.params.bom_id; } });
         },
         error: (file, errorMessage) => {
-            toastr.error('There was an error processing your request: ' + errorMessage, '', { onHidden: () => { window.location.href = "/home"; } });
+            toastr.error('There was an error processing your request: ' + errorMessage, '');
         }
+        
     })
         .on('addedfile', (file) => {
 

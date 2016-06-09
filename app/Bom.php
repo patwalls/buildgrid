@@ -11,7 +11,15 @@ class Bom extends Ardent
     protected $fillable = [
         'name',
         'project_id',
-        'filename'
+        'filename',
+        'bom_description'
+    ];
+
+    protected $appends = [
+        'bom_purchaser',
+        'project_name',
+        'invited_suppliers_count',
+        'bg_responded_yes_no'
     ];
 
     public static $rules = [
@@ -22,6 +30,32 @@ class Bom extends Ardent
 
     public static $relationsData = [
         'invitedSuppliers' => [self::HAS_MANY, 'BuildGrid\InvitedSupplier'],
+        'responses' => [self::HAS_MANY, 'BuildGrid\BomResponse'],
         'project' => [self::BELONGS_TO, 'BuildGrid\Project']
     ];
+
+
+    public function getBomPurchaserAttribute()
+    {
+        return $this->project->user->full_name;
+    }
+
+
+    public function getProjectNameAttribute()
+    {
+        return $this->project->name;
+    }
+
+
+    public function getInvitedSuppliersCountAttribute()
+    {
+        return $this->invited_suppliers->count();
+    }
+
+
+    public function getBgRespondedYesNoAttribute()
+    {
+        return ($this->bg_responded == 1) ? 'Yes' : 'No';
+    }
+
 }

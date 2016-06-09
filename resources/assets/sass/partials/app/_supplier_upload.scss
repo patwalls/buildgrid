@@ -1,0 +1,53 @@
+  .supplier-head-wrap{
+    @include display(flex);
+    @include align-items(baseline);
+    h2{
+      font-weight: lighter;
+    }
+    .b2{
+      margin-left: 5px;
+      color: $gray;
+      span{
+        color: $dark-gray;
+      }
+    }
+  }
+#supplier-upload-wrap{
+  background: white;
+  padding: 2%;
+  border: 1px solid $gray; 
+  border-radius: 4px;
+  .download-link{
+    color: $dark-gray;
+    text-decoration: underline;
+    &:active, &:visited, &:hover, &:focus{
+      text-decoration: underline;
+    }
+  }
+  .upload-wrap{
+    width: 35%;
+    .b2{
+      margin: 30px 0 10px 0;
+      color: $dark-gray;
+    }
+    #dropzone{
+      border: 2px dashed $dark-gray;
+      border-radius: 5px;
+      background: white;
+      padding: 20px;
+      margin: 10px 0;
+    }
+  }
+  .response-text-wrap{
+    .b2{
+      margin: 30px 0 10px 0;
+      color: $dark-gray;
+    }
+    .form-group{
+      margin-top:0;
+    }
+  }
+  #postResponseBtn{
+    background: #36af46;
+  }
+}

@@ -35,7 +35,11 @@ class CreateNewProjectRequest extends Request
             'supplier.1.email'     => 'required|email',
             'supplier.2.name'      => 'required_with:supplier.2.email',
             'supplier.2.email'     => 'required_with:supplier.2.name|email',
+            'supplier.3.name'      => 'required_with:supplier.3.email',
+            'supplier.3.email'     => 'required_with:supplier.3.name|email',
             'filename'             => 'required'
         ];
     }
+
+
 }

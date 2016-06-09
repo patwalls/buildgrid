@@ -11,7 +11,8 @@ class InvitedSupplier extends Ardent
     protected $fillable = [
         'name',
         'email',
-        'bom_id'
+        'bom_id',
+        'hashid'
     ];
 
     public static $rules = [

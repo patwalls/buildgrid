@@ -1,6 +1,4 @@
 // Brand colors
-
-
 $blue-light: #bfd1e1;
 $blue: #0076be;
 $dark-blue: #00468b;
@@ -9,15 +7,31 @@ $gray: #666970;
 $light-gray-border: #cccccc;
 $white: #fafafa;
 $red: #dc3522;
+$blue-text: #7f8ea3;
 
 // Dev added colors
 $main-nav-hover: #D0D0D0;
-
-
+$bg: #F4F4F4;
 $bg_light-blue: rgb(0, 118, 190);
 $bg_dark-blue : rgb(0, 70, 139);
+$light-blue-login: #dfe3e9;
 $bg_light-gray: rgb(236, 240, 241);
 $bg_dark-gray : rgb(35, 31, 32);
+$admin-light-blue: #0574bc;
+$admin-light-blue: #0574bc; 
+$new-user-bg-head: #fbfbfb;
+$admin-blue: #0575bd;
+$admin-red: #de3314;
+$admin-light-green: #3ab54a;
+$admin-green: #37b148;
+$admin-head-foot: #333740;
+$admin-plus-light-blue: #0574bc;
+$admin-plus-dark-blue: #2362b7;
+$admin-plus-stroke-blue: #194789;
 
+$container-width: 1170px;
+$mobile-auth-width: 400px;
 
-
+.bg-success {
+    background-color: #dff0d8 !important;
+}

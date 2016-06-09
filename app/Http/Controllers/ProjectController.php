@@ -4,21 +4,24 @@ namespace BuildGrid\Http\Controllers;
 
 use BuildGrid\Bom;
 use BuildGrid\Http\Requests;
+use Illuminate\Http\Request;
 use BuildGrid\Http\Requests\CreateNewProjectRequest;
-use BuildGrid\InvitedSupplier;
 use BuildGrid\Project;
+use BuildGrid\Repositories\InvitedSupplierRepository;
+
 
 
 class ProjectController extends Controller
 {
+
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * ProjectController constructor.
+     * @param InvitedSupplierRepository $supplierRepository
      */
-    public function __construct()
+    public function __construct(InvitedSupplierRepository $supplierRepository)
     {
         $this->middleware('auth');
+        $this->supplierRepository = $supplierRepository;
     }
 
     /**
@@ -33,40 +36,54 @@ class ProjectController extends Controller
         return view('home', ['projects' => $projects]);
     }
 
-
-    public function create()
+    public function create(Request $request)
     {
-        return view('create_project');
+        $projects = Project::where('user_id', \Auth::id())->with('boms')->get();
+
+        if ( $projects === null or $request !== null )
+        {
+            $project = Project::find($request->id);
+        }
+        
+        return view('create_project', compact(['projects', 'project']));
+
     }
 
 
     public function store(CreateNewProjectRequest $request)
     {
 
-        $project = new Project();
-        $project->user_id = \Auth::id();
-        $project->name = $request->get('project_name');
-        $project->save();
-
-        $bom = new Bom();
-        $bom->name= $request->get('bom_name');
-        $bom->project_id =  $project->id;
-        $bom->filename = $request->get('filename');
-        $bom->save();
-
-        foreach($request->get('supplier') as $supplier){
-            $bom_supplier = new InvitedSupplier();
-            $bom_supplier->name = $supplier['name'];
-            $bom_supplier->email = $supplier['email'];
-            $bom_supplier->bom_id = $bom->id;
-            $bom_supplier->save();
+        $project = Project::where('name', '=', $request->get('project_name'))->first();
+        
+        if ($project === null) {
+ 
+            $project = Project::create([
+                'user_id' => \Auth::id(),
+                'name'    => $request->get('project_name')
+            ]);
         }
+        $bom = Bom::create([
+            'name'            => $request->get('bom_name'),
+            'project_id'      => $project->id,
+            'bom_description' => $request->get('bom_description'),
+            'filename'        => $request->get('filename')
+        ]);
+
+        // Save the suppliers associated with this newly created Project/Bom
+        $this->supplierRepository->store($request->get('supplier'), $bom->id);
 
         return response(['bom_id' => $bom->id, '_token' => csrf_token() ], 200);
     }
 
-    public function showBom()
+    public function showBom($id)
     {
-        return view('boms.show');
+        $bom = Bom::findOrFail($id);
+
+        $invited_suppliers = $bom->invitedSuppliers;
+        $responses = $bom->responses;
+
+        $user = $bom->project->user;
+
+        return view('boms.show', compact(['bom', 'invited_suppliers', 'responses', 'user']));
     }
 }
