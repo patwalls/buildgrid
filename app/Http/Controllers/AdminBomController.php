@@ -55,7 +55,14 @@ class AdminBomController extends Controller
      */
     public function show($id)
     {
-        //
+        $bom = Bom::findOrFail($id);
+
+        $invited_suppliers = $bom->invitedSuppliers;
+        $responses = $bom->responses;
+
+        $user = $bom->project->user;
+
+        return view('admin.boms.show', compact(['bom', 'invited_suppliers', 'responses', 'user']));
     }
 
     /**
