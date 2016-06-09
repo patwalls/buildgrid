@@ -28,7 +28,8 @@ class User extends Authenticatable
     protected $appends = [
         'full_name',
         'total_boms',
-        'active_boms_count'
+        'active_boms_count',
+         'invited_suppliers_count'
     ];
 
 
@@ -56,7 +57,6 @@ class User extends Authenticatable
         return $this->hasMany('BuildGrid\Project');
     }
 
-
     /**
      *
      * A user has many Boms through its Projects
@@ -72,10 +72,19 @@ class User extends Authenticatable
         return $this->hasManyThrough('BuildGrid\Bom', 'BuildGrid\Project')->where('status', 'active');
     }
 
-
     public function getisAdministratorAttribute(){
         return (bool) $this->is_admin;
     }
 
+    public function getInvitedSuppliersCountAttribute()
+    {
+        $total = 0;
+
+        foreach($this->boms()->get() as $bom){
+            $total += $bom->invited_suppliers_count;
+        };
+
+        return $total;
+    }
 
 }
