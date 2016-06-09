@@ -58,7 +58,24 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('/bom_response_upload', 'BomController@bomResponseUpload')->name('postBomUploadResponse');
 
 
-    // Admin
+
+    /*
+     *   Admin Routes
+     */
+
+    Route::group(['middleware' => 'BuildGrid\Http\Middleware\AdminMiddleware'], function()
+    {
+        Route::group(['prefix' => 'admin'], function () {
+
+            Route::get('/', 'AdminController@index')->name('admin.dashboard');
+
+            Route::resource('users', 'AdminUserController', ['parameters' => 'singular']);
+            Route::resource('boms', 'AdminBomController', ['parameters' => 'singular']);
+
+        });
+
+    });
+
 
 
 });
