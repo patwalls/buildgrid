@@ -5,6 +5,8 @@ require('datatables.net-bs')(window, $);
 
 $(document).ready( () => {
 
+    pdfObject.embed($('#pdf-preview').data('document-url'), '#pdf-preview', { height: "400px" });
+
     $('table[data-datatables-enabled]').DataTable({
         "processing": true,
         "serverSide": true,
