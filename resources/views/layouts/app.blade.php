@@ -75,7 +75,9 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="app-content">
+            @yield('content')
+        </div>
 
         <footer>
            <div class="b2">
