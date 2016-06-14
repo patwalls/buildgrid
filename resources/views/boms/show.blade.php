@@ -118,10 +118,12 @@
                           </p>
                       @endif
                     </div>
-                    <div class="right-response-inner-wrap">
-                      <button class="btn btn-primary new-proj-btn">Accept</button>
-                      <button class="btn btn-confirm">Decline</button>
-                    </div>
+                    @if($response->status == 'pending')
+                        <div class="right-response-inner-wrap">
+                           <button class="btn btn-primary new-proj-btn btn-accept-response">Accept</button>
+                           <button class="btn btn-confirm btn-decline-response">Decline</button>
+                        </div>
+                    @endif
                   </div>
                 </div>
                 <span class="b4 response-file"><i class="ion-paperclip"></i> <a href="{{ route('bomResponseDownload', [$response->id]) }}">Download Response</a></span>
