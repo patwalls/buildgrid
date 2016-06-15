@@ -120,9 +120,13 @@
                     </div>
                     @if($response->status == 'pending')
                         <div class="right-response-inner-wrap">
-                           <button class="btn btn-primary new-proj-btn btn-accept-response">Accept</button>
-                           <button class="btn btn-confirm btn-decline-response">Decline</button>
+                           <button class="btn btn-primary new-proj-btn btn-accept-response" data-href="{{route ('setResponseAccepted', $response->id)}}">Accept</button>
+                           <button class="btn btn-confirm btn-decline-response" data-href="{{route('setResponseRejected', $response->id)}}">Decline</button>
                         </div>
+                    @else
+                          <div class="right-response-inner-wrap">
+                              <span class="b1">{{ucfirst($response->status)}}</span>
+                          </div>
                     @endif
                   </div>
                 </div>

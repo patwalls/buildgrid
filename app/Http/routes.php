@@ -76,6 +76,8 @@ Route::group(['middleware' => 'web'], function () {
 
     });
 
-
-
+    //BomResponses
+    Route::get('/bom_response/accepted/{id}', 'BomResponseController@responseAccepted')->name('setResponseAccepted');
+    Route::get('/bom_response/rejected/{id}', 'BomResponseController@responseRejected')->name('setResponseRejected');
+    Route::get('/bom_response/pending/{id}', 'BomResponseController@responsePending')->name('setResponsePending');
 });

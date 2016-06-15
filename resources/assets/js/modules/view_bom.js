@@ -44,4 +44,54 @@ module.exports = (data) => {
         $('.submit-new-supplier-btn').append('<button type="submit" class="btn btn-primary btn-sm update-suppliers-btn">Update Suppliers</button>');
     });
 
+    $( ".btn-accept-response" ).click((e) => {
+        e.preventDefault();
+        var url = $( ".btn-accept-response" ).data('href');
+        swal({  title: "Accept Response",
+            text: "Please confirm you want to accept this response",
+            type: "info",
+            showCancelButton: true,
+            confirmButtonColor: "#8CD4F5",
+            confirmButtonText: "Yes, accept it!",
+            closeOnConfirm: false,
+            closeOnCancel: true,
+            showLoaderOnConfirm: true,
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url: url
+                }).done(function() {
+                    swal("Accepted!", "This response was accepted", "success");
+                    location.reload();
+                });
+            }
+        });
+    });
+
+    $( ".btn-decline-response" ).click((e) => {
+        e.preventDefault();
+        var url = $( ".btn-decline-response" ).data('href');
+        swal({  title: "Decline Response",
+            text: "Please confirm you want to decline this response",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, decline it!",
+            closeOnConfirm: false,
+            closeOnCancel: true,
+            showLoaderOnConfirm: true,
+        },
+            function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url: url
+                    }).done(function() {
+                        swal("Declined!", "This response was declined", "success");
+                        location.reload();
+                    });
+                }
+         });
+    });
+
 };

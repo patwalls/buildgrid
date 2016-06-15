@@ -80,7 +80,7 @@ class ProjectController extends Controller
         $bom = Bom::findOrFail($id);
 
         $invited_suppliers = $bom->invitedSuppliers;
-        $responses = $bom->responses;
+        $responses = $bom->responses->sortBy('created_at')->sortBy('status');
 
         $user = $bom->project->user;
 
