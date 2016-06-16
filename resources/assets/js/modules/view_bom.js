@@ -106,10 +106,11 @@ module.exports = (data) => {
     });
 
     $(document).on('click', "#btn-archive", function() {
-        var url = ( "#archive-bom" ).data('href');
+        var url = $( "#archive-bom" ).data('href');
         $.ajax({
             url: url
         }).done(function() {
+            $( "#archive-bom" ).popover('hide');
             swal("Archived!", "This BOM was archived", "success");
             location.reload();
         });

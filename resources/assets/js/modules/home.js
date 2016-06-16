@@ -2,7 +2,8 @@ module.exports = () => {
 
     "use strict";
 
-    $( "#archive-icon" ).click(function() {
+    $(document).on('click', "#archive-icon",function(e) {
+        e.preventDefault();
         $( "#archive-bom" ).popover({
             trigger: 'manual',
             html: true,
@@ -11,18 +12,25 @@ module.exports = () => {
         $( "#archive-bom" ).popover('show');
     });
 
-    $(document).on('click', "#btn-archive", function() {
-        var url = ( "#archive-bom" ).data('href');
+    $(document).on('click', "#btn-archive", function(e) {
+        e.preventDefault();
+        var url = $( "#archive-bom" ).data('href');
         $.ajax({
             url: url
         }).done(function() {
+            $( "#archive-bom" ).popover('hide');
             swal("Archived!", "This BOM was archived", "success");
             location.reload();
         });
     });
 
-    $(document).on('click', "#btn-decline", function() {
+    $(document).on('click', "#btn-decline", function(e) {
+        e.preventDefault();
         $( "#archive-bom" ).popover('hide');
     });
 
+    $( ".info-card" ).click(function(e){
+        e.preventDefault();
+        alert(1);
+    });
 };
