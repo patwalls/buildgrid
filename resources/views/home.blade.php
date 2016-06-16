@@ -31,9 +31,12 @@
                         @foreach($project->boms->chunk(4) as $chunk)
                             @foreach($chunk as $bom)
                                 <div class="col-sm-6 col-md-3">
-                                    <div class="info-card" onclick="location.href='{{ route('getShowBom', [$bom->id]) }}'">
+                                    <div class="info-card" data-href ="{{ route('getShowBom', [$bom->id]) }}">
                                         <div class="info-card-header">
                                             <a href="{{ route('getShowBom', [$bom->id]) }}" class="b2">{{ $bom->name }}</a>
+                                            <a id="archive-icon" class="archive-icon" tabindex="0" role="button" data-href="{{route('setArchiveBom', $bom->id)}}" data-toggle="popover" data-trigger="focus" data-placement="top" data-content='Hello'>
+                                                <i class="b2 ion-ios-trash-outline"></i>
+                                            </a>
                                             <p class="b4"><span>Last Updated:</span> {{ getDaysAgo($bom->updated_at) }}</p>
                                         </div>
                                         @if( count($bom->responses) == null )

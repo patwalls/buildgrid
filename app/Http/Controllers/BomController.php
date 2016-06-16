@@ -184,4 +184,14 @@ class BomController extends Controller {
         return response($file['contents'], 200, $headers);
     }
 
+    public function archiveBom(Request $request)
+    {
+        $id = $request->id;
+
+        $bom = Bom::findOrFail($id);
+        $bom->status = 'archived';
+        $bom->save();
+
+        return response('OK', 200);
+    }
 }

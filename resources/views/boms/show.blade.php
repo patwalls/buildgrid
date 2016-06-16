@@ -10,7 +10,7 @@
                   <span class="b2">{{ $bom->project->name }}</span>
                 </div>
                 <div class="col-md-6 item-wrap">
-                  <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content='<button id="fake-target" class="btn btn-success btn-decline">Don&#39;t Archive</button> <button class="btn btn-success btn-confirm">Yes, Archive</button>'><span class="b2"><i class="icon ion-archive"></i>Archive BOM</span></a>
+                  <a id="archive-bom" tabindex="0" role="button" data-toggle="popover" data-href="{{route('setArchiveBom', $bom->id)}}" data-placement="bottom" title="Are you sure?" data-container="body" - data-content=''><span class="b2"><i class="icon ion-archive"></i>Archive BOM</span></a>
                   <a href="{{ route('getCreateProject') }}"><button class="btn btn-success new-proj-btn">New Project</button></a>
                 </div>
             </div>
