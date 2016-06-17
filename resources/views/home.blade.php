@@ -40,18 +40,24 @@
                                             <p class="b4" onclick="location.href='{{ route('getShowBom', [$bom->id]) }}'"><span>Last Updated:</span> {{ getDaysAgo($bom->updated_at) }}</p>
                                         </div>
                                         <div class="info-card-body" onclick="location.href='{{ route('getShowBom', [$bom->id]) }}'"></div>
-                                        @if( count($bom->responses) == null )
-                                            <div class="info-card-footer">
-                                                <p>No Responses</p>
-                                            </div>
-                                        @elseif ( count($bom->responses) == 1 )
-                                            <div class="info-card-footer info-footer-updates">
-                                                <p> <span class="red-counter">{{ count($bom->responses) }}</span> Response</p>
+                                        @if($bom->status == 'accepted')
+                                            <div class="info-card-footer info-footer-accepted">
+                                                <p><i class="ion-checkmark-round"></i> Accepted</p>
                                             </div>
                                         @else
-                                            <div class="info-card-footer info-footer-updates">
-                                                <p> <span class="red-counter">{{ count($bom->responses) }}</span> Responses</p>
-                                            </div>
+                                            @if( count($bom->responses) == null )
+                                                <div class="info-card-footer">
+                                                    <p>No Responses</p>
+                                                </div>
+                                            @elseif ( count($bom->responses) == 1 )
+                                                <div class="info-card-footer info-footer-updates">
+                                                    <p> <span class="red-counter">{{ count($bom->responses) }}</span> Response</p>
+                                                </div>
+                                            @else
+                                                <div class="info-card-footer info-footer-updates">
+                                                    <p> <span class="red-counter">{{ count($bom->responses) }}</span> Responses</p>
+                                                </div>
+                                            @endif
                                         @endif
                                     </div>
                                 </div>

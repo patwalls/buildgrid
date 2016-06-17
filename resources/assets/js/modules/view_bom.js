@@ -121,4 +121,28 @@ module.exports = (data) => {
         $( "#archive-bom" ).popover('hide');
     });
 
+    $( ".btn-undo-response" ).click((e) => {
+        e.preventDefault();
+        var url = $( ".btn-undo-response" ).data('href');
+        swal({  title: "Undo Response",
+                text: "Please confirm you want to undo this response",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#8CD4F5",
+                confirmButtonText: "Yes, undo!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true,
+            },
+            function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url: url
+                    }).done(function() {
+                        swal("Undo!", "This response is pending", "success");
+                        location.reload();
+                    });
+                }
+            });
+    });
 };

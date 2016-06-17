@@ -118,16 +118,16 @@
                           </p>
                       @endif
                     </div>
+                      <div class="right-response-inner-wrap">
                     @if($response->status == 'pending')
-                        <div class="right-response-inner-wrap">
                            <button class="btn btn-primary new-proj-btn btn-accept-response" data-href="{{route ('setResponseAccepted', $response->id)}}">Accept</button>
                            <button class="btn btn-confirm btn-decline-response" data-href="{{route('setResponseRejected', $response->id)}}">Decline</button>
-                        </div>
-                    @else
-                          <div class="right-response-inner-wrap">
-                              <span class="b1">{{ucfirst($response->status)}}</span>
-                          </div>
+                    @elseif($response->status == 'accepted')
+                           <button class="btn btn-primary new-proj-btn btn-undo-response" data-href="{{route('setResponsePending', $response->id)}}">{{ucfirst($response->status)}}</button>
+                    @elseif($response->status == 'rejected')
+                            <button class="btn btn-primary btn-confirm btn-undo-response" data-href="{{route('setResponsePending', $response->id)}}">{{ucfirst($response->status)}}</button>
                     @endif
+                      </div>
                   </div>
                 </div>
                 <span class="b4 response-file"><i class="ion-paperclip"></i> <a href="{{ route('bomResponseDownload', [$response->id]) }}">Download Response</a></span>
