@@ -3,8 +3,6 @@ module.exports = () => {
     "use strict";
 
     $(document).on('click', "#archive-icon",function(e) {
-        e.preventDefault();
-        e.stopPropagation();
         $( "#archive-icon" ).popover({
             trigger: 'manual',
             html: true,
