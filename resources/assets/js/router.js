@@ -19,7 +19,8 @@ $.router.add("/create_project/:bom_id", () => {
 
 $.router.add("/home", () => {
 
-    require('./modules/create_project')();
+   // require('./modules/create_project')();
+    require('./modules/home')();
 
 });
 

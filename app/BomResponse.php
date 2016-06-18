@@ -8,6 +8,8 @@ class BomResponse extends Ardent
 {
     protected $table = 'bom_responses';
 
+    protected $touches = ['bom'];
+
     protected $fillable = [
         'bom_id',
         'invited_supplier_id',

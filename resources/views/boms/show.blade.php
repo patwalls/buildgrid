@@ -10,7 +10,7 @@
                   <span class="b2">{{ $bom->project->name }}</span>
                 </div>
                 <div class="col-md-6 item-wrap">
-                  <a tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-placement="bottom" data-content='<button id="fake-target" class="btn btn-success btn-decline">Don&#39;t Archive</button> <button class="btn btn-success btn-confirm">Yes, Archive</button>'><span class="b2"><i class="icon ion-archive"></i>Archive BOM</span></a>
+                  <a id="archive-bom" tabindex="0" role="button" data-toggle="popover" data-href="{{route('setArchiveBom', $bom->id)}}" data-placement="bottom" title="Are you sure?" data-container="body" - data-content=''><span class="b2"><i class="icon ion-archive"></i>Archive BOM</span></a>
                   <a href="{{ route('getCreateProject') }}"><button class="btn btn-success new-proj-btn">New Project</button></a>
                 </div>
             </div>
@@ -27,9 +27,18 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-md-12">
-              <div class="b2 supplier-link">
-                {{ $invited_supplier->name }} | <span>{{ ucwords(preg_replace(['/(?<=[^A-Z])([A-Z])/', '/(?<=[^0-9])([0-9])/'], ' $0', $invited_supplier->status)) }}</span>
-              </div>
+                  <div class="b2 supplier-link">
+                      <div class="b2 supplier-link">
+                          {{ $invited_supplier->name }} |
+                          <span>
+                              @if(count($invited_supplier->responseAcceptedFromBom) >= 1 )
+                                  Accepted
+                              @else
+                                  {{ ucwords(preg_replace(['/(?<=[^A-Z])([A-Z])/', '/(?<=[^0-9])([0-9])/'], ' $0', $invited_supplier->status)) }}
+                              @endif
+                          </span>
+                      </div>
+                  </div>
             </div>
           </div>
           <div class="row">
@@ -118,10 +127,16 @@
                           </p>
                       @endif
                     </div>
-                    <div class="right-response-inner-wrap">
-                      <button class="btn btn-primary new-proj-btn">Accept</button>
-                      <button class="btn btn-confirm">Decline</button>
-                    </div>
+                      <div class="right-response-inner-wrap">
+                    @if($response->status == 'pending')
+                           <button class="btn btn-primary new-proj-btn btn-accept-response" data-href="{{route ('setResponseAccepted', $response->id)}}">Accept</button>
+                           <button class="btn btn-confirm btn-decline-response" data-href="{{route('setResponseRejected', $response->id)}}">Decline</button>
+                    @elseif($response->status == 'accepted')
+                           <button class="btn btn-primary new-proj-btn btn-undo-response" data-href="{{route('setResponsePending', $response->id)}}">{{ucfirst($response->status)}}</button>
+                    @elseif($response->status == 'rejected')
+                            <button class="btn btn-primary btn-confirm btn-undo-response" data-href="{{route('setResponsePending', $response->id)}}">{{ucfirst($response->status)}}</button>
+                    @endif
+                      </div>
                   </div>
                 </div>
                 <span class="b4 response-file"><i class="ion-paperclip"></i> <a href="{{ route('bomResponseDownload', [$response->id]) }}">Download Response</a></span>
