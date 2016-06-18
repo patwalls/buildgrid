@@ -27,9 +27,18 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-md-12">
-              <div class="b2 supplier-link">
-                {{ $invited_supplier->name }} | <span>{{ ucwords(preg_replace(['/(?<=[^A-Z])([A-Z])/', '/(?<=[^0-9])([0-9])/'], ' $0', $invited_supplier->status)) }}</span>
-              </div>
+                  <div class="b2 supplier-link">
+                      <div class="b2 supplier-link">
+                          {{ $invited_supplier->name }} |
+                          <span>
+                              @if(count($invited_supplier->responseAcceptedFromBom) >= 1 )
+                                  Accepted
+                              @else
+                                  {{ ucwords(preg_replace(['/(?<=[^A-Z])([A-Z])/', '/(?<=[^0-9])([0-9])/'], ' $0', $invited_supplier->status)) }}
+                              @endif
+                          </span>
+                      </div>
+                  </div>
             </div>
           </div>
           <div class="row">

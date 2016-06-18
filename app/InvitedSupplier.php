@@ -22,6 +22,12 @@ class InvitedSupplier extends Ardent
     ];
 
     public static $relationsData = [
-        'bom' => [self::BELONGS_TO, 'BuildGrid\Bom']
+        'bom' => [self::BELONGS_TO, 'BuildGrid\Bom'],
+        'bomResponses' => [self::HAS_MANY, 'BuildGrid\BomResponse'],
     ];
+
+    public function responseAcceptedFromBom()
+    {
+        return $this->hasManyThrough( 'BuildGrid\BomResponse', 'BuildGrid\Bom', 'id', 'id')->where('bom_responses.status', 'accepted');
+    }
 }

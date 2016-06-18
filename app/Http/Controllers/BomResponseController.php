@@ -26,10 +26,6 @@ class BomResponseController extends Controller
         $bom->status = $status;
         $bom->update();
 
-        $invited_supplier = $bom_response->invited_supplier;
-        $invited_supplier->status = 'responded';
-        $invited_supplier->update();
-
         return response('OK', 200);
     }
 
@@ -65,9 +61,6 @@ class BomResponseController extends Controller
             $bom->status = 'active';
             $bom->update();
 
-            $invited_supplier = $bom_response->invited_supplier;
-            $invited_supplier->status = 'viewed';
-            $invited_supplier->update();
         }
 
         return response('OK', 200);
