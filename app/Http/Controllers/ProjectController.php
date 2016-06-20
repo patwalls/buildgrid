@@ -33,6 +33,11 @@ class ProjectController extends Controller
     {
         $projects = Project::where('user_id', \Auth::id())->with('boms')->get();
 
+        if ($projects->isEmpty())
+        {
+            return view('create_project', ['projects' => $projects]);
+        }
+
         return view('home', ['projects' => $projects]);
     }
 
