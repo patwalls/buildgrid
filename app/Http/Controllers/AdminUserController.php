@@ -90,8 +90,14 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user, Request $request)
     {
-        //
+        $user;
+    }
+
+    public function delete(User $user, Request $request)
+    {
+        $user;
+
     }
 }

@@ -19,31 +19,51 @@
                         <h3>{{ $user->full_name }}</h3>
 
                     <div class="row">
-                    <div class="col-md-4">
-                        <img src="/images/sample_profile.png" alt="" style="width:100%"/>
-                    </div>
+                        <div class="col-md-4">
+                            <img src="/images/sample_profile.png" alt="" style="width:100%"/>
+                        </div>
 
-                    <div class="col-md-5 col-md-offset-1">
-                        <p>
-                            <strong>Email: </strong><br>
-                            {{$user->email}}
-                        </p>
-                        <p>
-                            <strong>Company:</strong> <br>
-                            {{$user->company_name }}
-                        </p>
-                        <p>
-                            <strong>Phone:</strong> <br>
-                            {{$user->phone }}
-                        </p>
-                        <p>
-                            <strong>Position:</strong> <br>
-                            {{$user->position_title }}
-                        </p>
-                    </div>
+                        <div class="col-md-5 col-md-offset-1">
+                            <p>
+                                <strong>Email: </strong><br>
+                                {{$user->email}}
+                            </p>
+                            <p>
+                                <strong>Company:</strong> <br>
+                                {{$user->company_name }}
+                            </p>
+                            <p>
+                                <strong>Phone:</strong> <br>
+                                {{$user->phone }}
+                            </p>
+                            <p>
+                                <strong>Position:</strong> <br>
+                                {{$user->position_title }}
+                            </p>
+
+                        </div>
 
                     </div>
+                        <span class="edit-user" title="Edit User" data-toggle="modal" data-target="#edit-form-modal"><i class="ion-edit"></i>  Edit</span>
 
+                        <div class="modal fade" id="edit-form-modal" tabindex="-1" role="dialog" aria-labelledby="edit-form">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="form-title">Edit User</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div id="errors"></div>
+                                                    @include('forms.edit_user')
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
 
 
