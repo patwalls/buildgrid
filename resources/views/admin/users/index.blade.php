@@ -21,17 +21,7 @@
                             data-ajax = '{{ route('admin.users.index') }}'
                             data-show-url = '{{ route('admin.users.index') }}'
                             data-token = '{{ csrf_token() }}'
-                            data-columns = '[
-                                {"data": "id"},
-                                {"data": "full_name"  },
-                                {"data": "email"      },
-                                {"data": "last_login" },
-                                {"data": "created_at" },
-                                {"data": "total_boms" },
-                                {"data": "active_boms_count"},
-                                {"data": "status"},
-                                {"data": "null", "defaultContent": "<button data-action-show class=\"btn btn-default btn-xs\"><i class=\"fa fa-eye\"></i></button> <button data-action-update class=\"btn btn-danger btn-xs\"><i class=\"fa fa-times\"></i></button>"}
-                            ]'
+
                            data-column-defs = '[
                                 { "visible": false, "targets": 0 }
                             ]'
