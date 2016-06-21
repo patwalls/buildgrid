@@ -92,12 +92,10 @@ class AdminUserController extends Controller
      */
     public function destroy(User $user, Request $request)
     {
-        $user;
-    }
+        $user->status = 'inactive';
+        $user->projects()->status = 'inactive';
+        $user->boms()->status = 'archived';
 
-    public function delete(User $user, Request $request)
-    {
-        $user;
-
+        $user->update();
     }
 }

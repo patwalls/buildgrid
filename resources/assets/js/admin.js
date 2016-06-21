@@ -23,6 +23,7 @@ $(document).ready( () => {
             $(this).on('click', 'button[data-action-delete]', function() {
                 var closestRow = $(this).closest('tr');
                 var data = table.row(closestRow).data();
+                var token = $('table[data-datatables-enabled]').data('token');
                 var url = '/admin/users/' + data.id;
                 swal({  title: "Delete Record",
                         text: "Please confirm you want to delete this record",
@@ -36,10 +37,14 @@ $(document).ready( () => {
                             $.ajax({
                                 type: "DELETE",
                                 url: url,
+                                data: data,
+                                headers:
+                                {
+                                    'X-CSRF-Token': token
+                                },
                                 success: function()
                                 {
                                     swal("Deleted!", "The record you selected has been deleted.", "success");
-                                    $('#DataTables_Table_0_wrapper').html('#DataTables_Table_0_wrapper');
                                 },
                                 error: function()
                                 {
