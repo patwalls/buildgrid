@@ -90,4 +90,11 @@ class User extends Authenticatable
         return $total;
     }
 
+    public function getProfilePicture()
+    {
+        $userRepositories = new Repositories\UserRepository();
+        $path = $userRepositories->retrievePictureProfile($this);
+        return  $path;
+    }
+
 }

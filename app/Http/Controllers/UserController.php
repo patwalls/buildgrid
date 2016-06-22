@@ -3,6 +3,7 @@
 namespace BuildGrid\Http\Controllers;
 
 use Auth;
+use BuildGrid\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use BuildGrid\User;
 
@@ -11,11 +12,12 @@ class UserController extends Controller
 	/**
 	 * Create a new controller instance.
 	 *
-	 * @return void
+	 * @param UserRepository $userRepository
 	 */
-	public function __construct()
+	public function __construct(UserRepository $userRepository)
 	{
 		$this->middleware('auth');
+		$this->userRepository = $userRepository;
 	}
 	
 	public function edit()
@@ -65,4 +67,26 @@ class UserController extends Controller
           		'message' =>  "The passwords doesn't match." ]);
         }
     }
+
+	/**
+	 * @param Request $request
+	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+	public function uploadProfilePicture(Request $request)
+	{
+		$user = User::findOrFail($request->id);
+
+		if($user->id !== \Auth::id() ){
+			return response('Unauthorized', 403);
+		}
+
+		$file = $request->file('picture');
+
+
+		if( $this->userRepository->storePictureProfile($user, $file) == true){
+			return response('OK');
+		}
+
+		return response('We could not store the picture', 500);
+	}
 }	

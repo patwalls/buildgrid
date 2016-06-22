@@ -85,4 +85,6 @@ Route::group(['middleware' => 'web'], function () {
 
     //to archive a Bom
     Route::get('/bom/archive/{id}', 'BomController@archiveBom')->name('setArchiveBom');
+
+    Route::post('/user/upload_profile_picture/{id}', 'UserController@uploadProfilePicture')->name('postUploadProfilePicture');
 });

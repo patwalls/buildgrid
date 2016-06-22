@@ -30,3 +30,9 @@ $.router.add("/bom/:bom_id", (data) => {
     require('./modules/view_bom')(data);
 
 });
+
+$.router.add("/profile", () => {
+
+    require('./modules/update_profile')();
+
+});

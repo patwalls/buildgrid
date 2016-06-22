@@ -5,8 +5,40 @@
 <div class="container footer-align">
   <div class="row">
     <div class="col-md-12">
-    	<img src="/images/plus-icon.png" class="plus-icon" alt="">
-		  <h2>Edit profile</h2>
+		<div class="profile-picture">
+			<span id="button-upload" class="button-upload" data-toggle="modal" data-target="#modal-picture"><i class="ion-camera"></i></span>
+			@if(!$user->getProfilePicture())
+    			<img id="image-profile" src="/images/plus-icon.png" class="circle-profile" alt="">
+			@else
+				<img id="image-profile" src="{{$user->getProfilePicture()}}" class="circle-profile" alt="">
+			@endif
+
+			<div id="modal-picture" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="uploadPicture">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div id="image-cropper">
+							<div class="cropit-preview">
+								<div class="cropit-preview-background-container">
+									<img class="cropit-preview-background" />
+								</div>
+								<div class="cropit-preview-image-container">
+									<img class="cropit-preview-image" />
+								</div>
+							</div>
+							<input type="range" class="cropit-image-zoom-input" />
+							<input type="file" class="cropit-image-input" />
+							<div class="btn btn-default select-image-btn">Upload picture</div>
+							<div class="btn btn-default btn-primary save-image-btn" data-href="{{@route('postUploadProfilePicture', $user->id)}}">Save picture</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	  </div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Edit profile</h2>
 			@if (count($errors) > 0)
 				<div class="row">
 					<div class="col-sm-6 col-md-6">
