@@ -40,8 +40,8 @@ class UserController extends Controller
 	    	$user->fill($request->all());
 	    	$user->save();
 	    }
-	    
-	    return view('profile', ['user' => $user]);
+
+		return back()->with('message','Operation Successful !');
 	}
 
   public function updatePassword(Request $request, $id)

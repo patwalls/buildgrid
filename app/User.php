@@ -72,7 +72,7 @@ class User extends Authenticatable
 
     public function active_boms()
     {
-        return $this->hasManyThrough('BuildGrid\Bom', 'BuildGrid\Project')->where('status', 'active');
+        return $this->hasManyThrough('BuildGrid\Bom', 'BuildGrid\Project')->where('boms.status', 'active');
     }
 
     public function getisAdministratorAttribute(){

@@ -67,9 +67,14 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user, Request $request)
     {
-        //
+        $user->status = 'active';
+
+            $user->projects()->status = 'active';
+            $user->boms()->status = 'active';
+
+        $user->update();
     }
 
     /**
@@ -90,8 +95,12 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user, Request $request)
     {
-        //
+        $user->status = 'inactive';
+        $user->projects()->status = 'inactive';
+        $user->boms()->status = 'archived';
+
+        $user->update();
     }
 }
