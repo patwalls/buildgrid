@@ -31,8 +31,17 @@ $.router.add("/bom/:bom_id", (data) => {
 
 });
 
+
 $.router.add("/profile", () => {
 
     require('./modules/update_profile')();
 
 });
+
+
+$.router.add("/admin/boms/:bom_id", () => {
+
+    require('./modules/add_response')();
+
+});
+
