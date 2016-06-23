@@ -184,6 +184,11 @@ return [
         Vinkla\Hashids\HashidsServiceProvider::class,
 
         /*
+         *  Intervention Image
+         */
+        Intervention\Image\ImageServiceProvider::class,
+
+        /*
          *  Datatables Service
          */
 
@@ -242,6 +247,14 @@ return [
          */
 
         'Hashids' => Vinkla\Hashids\Facades\Hashids::class,
+
+
+        /*
+         * Intervention image
+         *
+         */
+
+        'Image' => Intervention\Image\Facades\Image::class,
 
         /*
          * Datatables
