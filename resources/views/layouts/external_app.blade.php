@@ -89,41 +89,6 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
         <script src="{{ elixir('js/app.js') }}"></script>
-
-        <script>
-
-            Dropzone.autoDiscover = false;
-
-            var bomResponseDropzone = new Dropzone("div#dropzone", {
-                url: "/bom_response_upload",
-                autoProcessQueue: false,
-                maxFiles: 1,
-                maxfilesexceeded: function maxfilesexceeded(file) {
-                    this.removeAllFiles();
-                    this.addFile(file);
-                },
-                dictDefaultMessage: "<i class='fa fa-upload fa-4x'></i><br/><h3>Drag & Drop</h3> your response or <span class='underline'>browse...</span>",
-                success: function success(file, response) {
-                    swal({title : "Thank you!", text : "Your response file and comments were submitted!", type : "success"}, function(){
-                        window.location.href = "/";
-                    })
-                },
-                error: function error(file, errorMessage) {
-                    swal("Oops...", "Something went wrong! Please try again later.", "error");
-                }
-            }).on("sending", function(file, xhr, formData) {
-                formData.append("_token", '{{csrf_token()}}');
-                formData.append("comment", document.getElementById('comment').value);
-                formData.append("hashid", '{{$supplier->hashid}}');
-            });;
-
-            document.getElementById('postResponseBtn').onclick = function(){
-                bomResponseDropzone.processQueue();
-            };
-
-            pdfObject.embed($('#pdf-preview').data('document-url'), '#pdf-preview', { height: "540px" });
-
-        </script>
         
     </body>
 </html>
