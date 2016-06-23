@@ -30,3 +30,10 @@ $.router.add("/bom/:bom_id", (data) => {
     require('./modules/view_bom')(data);
 
 });
+
+
+$.router.add("/admin/boms/:bom_id", () => {
+
+    require('./modules/add_response')();
+
+});
