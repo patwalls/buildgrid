@@ -7,12 +7,7 @@
     <div class="col-md-12">
 		<div class="profile-picture">
 			<span id="button-upload" class="button-upload" data-toggle="modal" data-target="#modal-picture"><i class="ion-camera"></i></span>
-			@if(!$user->getProfilePicture())
-    			<img id="image-profile" src="/images/plus-icon.png" class="circle-profile" alt="">
-			@else
-				<img id="image-profile" src="{{$user->getProfilePicture()}}" class="circle-profile" alt="">
-			@endif
-
+			<img id="image-profile" src="{{ route('getProfilePicture', [$user->id, 'full']) }}" class="profile-picture-full" alt="">
 			<div id="modal-picture" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="uploadPicture">
 				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
