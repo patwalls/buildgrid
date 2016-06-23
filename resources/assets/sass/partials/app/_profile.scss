@@ -1,8 +1,4 @@
-.profile-picture-full {
-  height: 200px;
-  position: relative;
-  width: 200px;
-  border-radius: 50%;
+.profile-picture {
 
   .button-upload {
     bottom: 0px;
@@ -18,17 +14,9 @@
     }
   }
 }
-
-.profile-picture-thumbnail {
-  border-radius: 50%;
-  height: 36px;
-  width: 36px;
-}
-
 #image-cropper{
   width: 300px;
   height: auto;
-  margin: 15px auto;
   overflow: hidden;
 
   .cropit-preview {
@@ -50,6 +38,12 @@
      overflow: hidden;
   }
 
+  .cropit-image-zoom-input{
+    width: 80%;
+    display: block;
+    float: left;
+  }
+
   .cropit-image-zoom-input[disabled] {
     opacity: .2;
   }
@@ -62,8 +56,14 @@
     opacity: .2;
   }
 
-  input.cropit-image-zoom-input {
+  .cropit-controller {
     position: relative;
+    display: none;
+    .icons{
+      display: block;
+      float: left;
+      margin: 0 5px;
+    }
   }
 
   .select-image-btn, .save-image-btn{

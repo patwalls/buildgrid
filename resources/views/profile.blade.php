@@ -6,30 +6,26 @@
   <div class="row">
     <div class="col-md-12">
 		<div class="profile-picture">
-			<span id="button-upload" class="button-upload" data-toggle="modal" data-target="#modal-picture"><i class="ion-camera"></i></span>
-			<img id="image-profile" src="{{ route('getProfilePicture', [$user->id, 'full']) }}" class="profile-picture-full" alt="">
-			<div id="modal-picture" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="uploadPicture">
-				<div class="modal-dialog modal-lg">
-					<div class="modal-content">
 						<div id="image-cropper">
 							<div class="cropit-preview">
 								<div class="cropit-preview-background-container">
 									<img class="cropit-preview-background" />
 								</div>
 								<div class="cropit-preview-image-container">
-									<img class="cropit-preview-image" />
+									<img class="cropit-preview-image  profile-picture-full" src="{{ route('getProfilePicture', [$user->id, 'full']) }}" />
 								</div>
 							</div>
-							<input type="range" class="cropit-image-zoom-input" />
+							<div class="cropit-controller">
+								<i class="icons ion-minus-circled"></i>
+								<input type="range" class="cropit-image-zoom-input" />
+								<i class="icons ion-plus-circled"></i>
+							</div>
 							<input type="file" class="cropit-image-input" />
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<div class="btn btn-default select-image-btn">Upload picture</div>
-							<div class="btn btn-default btn-primary save-image-btn" data-href="{{@route('postUploadProfilePicture', $user->id)}}">Save picture</div>
+							<div class="btn btn-default standard-blue-button save-image-btn" data-href="{{@route('postUploadProfilePicture', $user->id)}}">Save picture</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
 	  </div>
 	</div>
 	<div class="row">

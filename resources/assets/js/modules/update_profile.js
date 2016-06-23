@@ -1,30 +1,23 @@
 module.exports = () => {
     "use strict";
 
-    $(".profile-picture").hover(function () {
-        $("#button-upload").show();
-    }, function(){
-        $("#button-upload").hide();
-    });
-
     $(document).ready(function () {
-        var img_src = $('#image-profile').attr('src');
-
         $('#image-cropper').cropit({
-            imageState:{
-            },
             imageBackground: true
         });
 
         $('.select-image-btn').click(function () {
             $('.cropit-image-input').click();
+            $('.cropit-controller').show();
         });
 
         $('.save-image-btn').click(function () {
             var picture = $('#image-cropper').cropit('export', {type: 'image/png'});
+
             var url = $(this).data('href');
+
             var data = {
-                'picture': picture
+                'picture': picture,
             };
             var token = $('#image-cropper input[name=_token]').val();
 
@@ -40,5 +33,9 @@ module.exports = () => {
                     location.reload();
             });
         });
+    });
+
+    $('.cropit-preview-background').change(function(){
+        alert("none");
     });
 };

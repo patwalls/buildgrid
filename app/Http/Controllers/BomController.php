@@ -9,6 +9,7 @@ use BuildGrid\InvitedSupplier;
 use BuildGrid\Repositories\BomRepository;
 use BuildGrid\Repositories\BomResponseRepository;
 use BuildGrid\Repositories\InvitedSupplierRepository;
+use BuildGrid\User;
 use Illuminate\Http\Request;
 use BuildGrid\Http\Requests;
 use Illuminate\Support\Facades\File;
