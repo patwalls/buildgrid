@@ -14,21 +14,25 @@ Route::group(['middleware' => 'web'], function () {
     
     Route::get('signup', 'Auth\AuthController@showRegistrationForm');
     
-    //User profile
+    // User profile
     Route::get('profile', ['uses' => 'UserController@edit', 'as' => 'edit.profile']);    Route::put('profile', ['uses' => 'UserController@update', 'as' => 'update.profile']);
 
     Route::put('profile/updatePassword/{id}', ['uses' => 'UserController@updatePassword', 'as'=>'update.password']);
+
+    Route::post('/user/upload_profile_picture/{id}', 'UserController@uploadProfilePicture')->name('postUploadProfilePicture');
+
     
-    //LinkedIn Login
+    // LinkedIn Login
     Route::get('login/linkedin', ['uses' => 'Auth\SocialLoginController@redirectToLinkedIn', 'as' => 'login.linkedin'] );
 
     Route::get('linkedin/callback', 'Auth\SocialLoginController@handleLinkedInCallback');
     
-    //Google+ Login
+    // Google+ Login
     Route::get('login/google', ['uses' => 'Auth\SocialLoginController@redirectToGoogle', 'as' => 'login.google'] );
 
     Route::get('google/callback', 'Auth\SocialLoginController@handleGoogleCallback');
     
+
     // User
 
     Route::get('/home', ['uses' => 'ProjectController@index', 'as' => 'home']);
@@ -57,6 +61,14 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('/bom_response_upload', 'BomController@bomResponseUpload')->name('postBomUploadResponse');
 
+    Route::get('/bom_response/accepted/{id}', 'BomResponseController@responseAccepted')->name('setResponseAccepted');
+
+    Route::get('/bom_response/rejected/{id}', 'BomResponseController@responseRejected')->name('setResponseRejected');
+
+    Route::get('/bom_response/pending/{id}', 'BomResponseController@responsePending')->name('setResponsePending');
+
+    Route::get('/bom/archive/{id}', 'BomController@archiveBom')->name('setArchiveBom');
+
 
 
     /*
@@ -70,21 +82,11 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('/', 'AdminController@index')->name('admin.dashboard');
 
             Route::resource('users', 'AdminUserController', ['parameters' => 'singular']);
-            Route::resource('boms', 'AdminBomController', ['parameters' => 'singular']);
+            Route::resource('boms', 'AdminBomController',   ['parameters' => 'singular']);
 
         });
 
     });
 
-    //BomResponses
-    Route::get('/bom_response/accepted/{id}', 'BomResponseController@responseAccepted')->name('setResponseAccepted');
 
-    Route::get('/bom_response/rejected/{id}', 'BomResponseController@responseRejected')->name('setResponseRejected');
-
-    Route::get('/bom_response/pending/{id}', 'BomResponseController@responsePending')->name('setResponsePending');
-
-    //to archive a Bom
-    Route::get('/bom/archive/{id}', 'BomController@archiveBom')->name('setArchiveBom');
-
-    Route::post('/user/upload_profile_picture/{id}', 'UserController@uploadProfilePicture')->name('postUploadProfilePicture');
 });

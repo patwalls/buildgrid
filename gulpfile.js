@@ -23,9 +23,6 @@ elixir(function(mix) {
     mix.sass('site.scss')
         .sass('app.scss')
 
-        // Non NPM 3rd party JS packages
-        // .scripts(['/vendor/jquery.sticky.js'], 'public/js/vendor.js')
-        
         // NPM JS packages
         .browserify('app.js')
         .browserify('admin.js')
@@ -45,5 +42,5 @@ elixir(function(mix) {
             'vendor/jquery.bxslider.css'
         ], 'public/css/vendor.css')
 
-        .browserSync({proxy:'buildgrid.local.com'});
+        .browserSync({ proxy:'buildgrid.local.com'} );
 });
