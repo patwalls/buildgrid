@@ -22,13 +22,9 @@ module.exports = () => {
 
         $('.save-image-btn').click(function () {
             var picture = $('#image-cropper').cropit('export', {type: 'image/png'});
-            var picture_thumbnail = $('#image-cropper').cropit('previewSize', { width: 40, height: 40 } );
-            picture_thumbnail = picture_thumbnail.cropit('export');
             var url = $(this).data('href');
-
             var data = {
-                'picture': picture,
-                'picture_thumbnail': picture_thumbnail,
+                'picture': picture
             };
             var token = $('#image-cropper input[name=_token]').val();
 
