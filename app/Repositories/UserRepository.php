@@ -12,28 +12,35 @@ class UserRepository
      * @return bool
      * @internal param $user
      */
-    public function storePictureProfile($user, $file)
+    public function storeProfilePicture($user, $file)
     {
-        $path = $this->getPictureProfileStoragePath($user);
+        $path = $this->getProfilePictureStoragePath($user);
+        $file_content = file_get_contents($file);
 
-        return \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->put($path, file_get_contents($file));
+        $full_image = \Image::make($file_content)->resize(200, 200)->encode('png');
+        $thumbnail_image = \Image::make($file_content)->resize(36, 36)->encode('png');
 
+        return ( \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->put( $path . 'full.png', $full_image) &&
+                 \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->put( $path . 'thumbnail.png', $thumbnail_image)
+                );
     }
 
 
     /**
      * @param $user
+     * @param string $size
      * @return array|bool
      */
-    public function retrievePictureProfile($user)
+    public function retrieveProfilePicture($user, $size = 'full')
     {
-        $path = $this->getPictureProfileStoragePath($user);
+        $path = $this->getProfilePictureStoragePath($user);
 
-        if(! \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->exists( $path )){
-            return false;
+        if(! \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->exists( $path . $size . '.png' )){
+           return false;
         }
 
-        return ['mimeType' => \Storage::mimeType($path), 'contents' => \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->get($path)];
+        return \Storage::disk(env('DOCUMENTS_STORAGE'))->get($path . $size . '.png');
+
     }
 
 
@@ -42,53 +49,16 @@ class UserRepository
      * @param $user
      * @return string
      */
-    public function getPictureProfileStoragePath($user)
+    public function getProfilePictureStoragePath($user)
     {
 
-        $file_storage_path = 'User'
+        $file_storage_path = 'Users'
             . DIRECTORY_SEPARATOR
             . $user->id
-            . DIRECTORY_SEPARATOR
-            . snake_case(camel_case($user->id))
-            . '.png';
+            . DIRECTORY_SEPARATOR;
 
         return $file_storage_path;
 
     }
 
-    public function storeThumbnailProfile($user, $file)
-    {
-        $path = $this->getPictureThumbnailProfilePath($user);
-
-        return \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->put($path, file_get_contents($file));
-
-    }
-
-    public function getThumbnailProfileStoragePath($user)
-    {
-
-        $file_storage_path = 'User'
-            . DIRECTORY_SEPARATOR
-            . $user->id
-            . '-'
-            . snake_case(camel_case($user->id))
-            . DIRECTORY_SEPARATOR
-            . snake_case(camel_case($user->picture))
-            . '-thumbnail.png';
-
-        return $file_storage_path;
-
-    }
-
-    public function retrieveThumbailProfile($user)
-    {
-        $path = $this->getPictureProfileStoragePath($user);
-
-
-        if(! \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->exists( $path )){
-            return false;
-        }
-
-        return ['mimeType' => \Storage::mimeType($path), 'contents' => \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->get($path)];
-    }
 }
