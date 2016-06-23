@@ -1,9 +1,12 @@
 // Admin Scripts
 
 require('./config.js');
+require('./router.js');
+
 require('datatables.net-bs')(window, $);
 
 $(document).ready( () => {
+
 
     pdfObject.embed($('#pdf-preview').data('document-url'), '#pdf-preview', { height: "400px" });
 
