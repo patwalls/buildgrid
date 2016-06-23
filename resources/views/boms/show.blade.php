@@ -77,7 +77,7 @@
     </div>
     <div class="col-sm-12 col-md-9 col-lg-9 right-app-dash-outer-wrap">
       <h2>{{ $bom->name }}</h2>
-      <div class="b2 update-wrap"><span>Updated:</span> {{ getDaysAgo($bom->updated_at) }}</div> 
+      <div class="b2 update-wrap"><span>Updated:</span> {{ $bom->updated_at->diffForHumans() }}</div>
       @if ($errors->any())
         @foreach( $errors->all() as $error)
           <div class="alert alert-warning alert-dismissible" role="alert">
@@ -119,7 +119,7 @@
                     <div class="left-response-inner-wrap">
                       <div class="response-header-content">
                         <span class="b1">{{ $response->invitedSupplier->name }}</span> 
-                        <span class="b1">{{ getDaysAgo($response->created_at) }}</span>
+                        <span class="b1">{{ $response->created_at->diffForHumans() }}</span>
                       </div>
                       @if($response->comment)
                           <p class="b3">
