@@ -80,10 +80,11 @@ class UserController extends Controller
 			return response('Unauthorized', 403);
 		}
 
-		$file = $request->file('picture');
+		$picture = $request->picture;
+		$thumbnail = $request->thumbnail;
 
 
-		if( $this->userRepository->storePictureProfile($user, $file) == true){
+		if( $this->userRepository->storePictureProfile($user, $picture) && $this->userRepository->storeThumbnailProfile($user, $thumbnail)){
 			return response('OK');
 		}
 

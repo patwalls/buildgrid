@@ -27,6 +27,7 @@
 							</div>
 							<input type="range" class="cropit-image-zoom-input" />
 							<input type="file" class="cropit-image-input" />
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 							<div class="btn btn-default select-image-btn">Upload picture</div>
 							<div class="btn btn-default btn-primary save-image-btn" data-href="{{@route('postUploadProfilePicture', $user->id)}}">Save picture</div>
 						</div>

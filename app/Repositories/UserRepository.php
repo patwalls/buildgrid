@@ -48,12 +48,19 @@ class UserRepository
         $file_storage_path = 'User'
             . DIRECTORY_SEPARATOR
             . $user->id
-            . '-'
-            . snake_case(camel_case($user->id))
             . DIRECTORY_SEPARATOR
-            . snake_case(camel_case($user->picture));
+            . snake_case(camel_case($user->id))
+            . '.png';
 
         return $file_storage_path;
+
+    }
+
+    public function storeThumbnailProfile($user, $file)
+    {
+        $path = $this->getPictureThumbnailProfilePath($user);
+
+        return \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->put($path, file_get_contents($file));
 
     }
 
@@ -67,7 +74,7 @@ class UserRepository
             . snake_case(camel_case($user->id))
             . DIRECTORY_SEPARATOR
             . snake_case(camel_case($user->picture))
-            . '-thumbnail';
+            . '-thumbnail.png';
 
         return $file_storage_path;
 
