@@ -15,12 +15,15 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('signup', 'Auth\AuthController@showRegistrationForm');
     
     // User profile
-    Route::get('profile', ['uses' => 'UserController@edit', 'as' => 'edit.profile']);    Route::put('profile', ['uses' => 'UserController@update', 'as' => 'update.profile']);
+    Route::get('profile', ['uses' => 'UserController@edit', 'as' => 'edit.profile']);
+
+    Route::put('profile', ['uses' => 'UserController@update', 'as' => 'update.profile']);
 
     Route::put('profile/updatePassword/{id}', ['uses' => 'UserController@updatePassword', 'as'=>'update.password']);
 
-    Route::post('/user/upload_profile_picture/{id}', 'UserController@uploadProfilePicture')->name('postUploadProfilePicture');
+    Route::post('/user/upload_profile_picture/{user}', 'UserController@uploadProfilePicture')->name('postUploadProfilePicture');
 
+    Route::get('/user/{user}/get_profile_picture/{size}', 'UserController@getProfilePicture')->name('getProfilePicture');
     
     // LinkedIn Login
     Route::get('login/linkedin', ['uses' => 'Auth\SocialLoginController@redirectToLinkedIn', 'as' => 'login.linkedin'] );
