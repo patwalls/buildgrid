@@ -37,7 +37,7 @@
                                             <a id="archive-icon" class="archive-icon" tabindex="0" role="button" data-href="{{route('setArchiveBom', $bom->id)}}" data-toggle="popover" title="Are you sure?" data-placement="top" data-container="body" data-content=''>
                                                 <i class="b2 ion-ios-trash-outline"></i>
                                             </a>
-                                            <p class="b4" onclick="location.href='{{ route('getShowBom', [$bom->id]) }}'"><span>Last Updated:</span> {{ getDaysAgo($bom->updated_at) }}</p>
+                                            <p class="b4" onclick="location.href='{{ route('getShowBom', [$bom->id]) }}'"><span>Last Updated:</span> {{ $bom->updated_at->diffForHumans() }}</p>
                                         </div>
                                         <div class="info-card-body" onclick="location.href='{{ route('getShowBom', [$bom->id]) }}'"></div>
                                         @if($bom->status == 'accepted')

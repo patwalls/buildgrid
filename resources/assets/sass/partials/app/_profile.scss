@@ -1,0 +1,72 @@
+.profile-picture {
+
+  .button-upload {
+    bottom: 0px;
+    display: none;
+    font-weight: bold;
+    position: absolute;
+    padding: 5px;
+    right: 35px;
+    width: auto;
+    z-index: 1000;
+    i {
+      font-size: 28px;
+    }
+  }
+}
+#image-cropper{
+  width: 300px;
+  height: auto;
+  overflow: hidden;
+
+  .cropit-preview {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+  }
+
+  .cropit-preview.cropit-image-loading .spinner {
+    opacity: 1;
+  }
+
+  .cropit-preview.cropit-image-loaded {
+    cursor: move;
+  }
+
+  .cropit-preview-image-container {
+     cursor: move;
+     overflow: hidden;
+  }
+
+  .cropit-image-zoom-input{
+    width: 80%;
+    display: block;
+    float: left;
+  }
+
+  .cropit-image-zoom-input[disabled] {
+    opacity: .2;
+  }
+
+  input[type="file"], .cropit-image-input {
+    visibility: hidden;
+  }
+
+  .cropit-preview-background {
+    opacity: .2;
+  }
+
+  .cropit-controller {
+    position: relative;
+    display: none;
+    .icons{
+      display: block;
+      float: left;
+      margin: 0 5px;
+    }
+  }
+
+  .select-image-btn, .save-image-btn{
+    margin: 10px;
+  }
+}

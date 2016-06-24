@@ -5,8 +5,32 @@
 <div class="container footer-align">
   <div class="row">
     <div class="col-md-12">
-    	<img src="/images/plus-icon.png" class="plus-icon" alt="">
-		  <h2>Edit profile</h2>
+		<div class="profile-picture">
+						<div id="image-cropper">
+							<div class="cropit-preview">
+								<div class="cropit-preview-background-container">
+									<img class="cropit-preview-background" />
+								</div>
+								<div class="cropit-preview-image-container">
+									<img class="cropit-preview-image  profile-picture-full" src="{{ route('getProfilePicture', [$user->id, 'full']) }}" />
+								</div>
+							</div>
+							<div class="cropit-controller">
+								<i class="icons ion-minus-circled"></i>
+								<input type="range" class="cropit-image-zoom-input" />
+								<i class="icons ion-plus-circled"></i>
+							</div>
+							<input type="file" class="cropit-image-input" />
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
+							<div class="btn btn-default select-image-btn">Upload picture</div>
+							<div class="btn btn-default standard-blue-button save-image-btn" data-href="{{@route('postUploadProfilePicture', $user->id)}}">Save picture</div>
+						</div>
+					</div>
+	  </div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Edit profile</h2>
 			@if (count($errors) > 0)
 				<div class="row">
 					<div class="col-sm-6 col-md-6">
