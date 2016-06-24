@@ -20,6 +20,7 @@
                        data-datatables-enabled
                        data-ajax = '{{ route('admin.boms.index') }}'
                        data-show-url = '{{ route('admin.boms.index') }}'
+                       data-token = '{{ csrf_token() }}'
                        data-columns = '[
                                 {"data": "id"},
                                 {"data": "bom_purchaser" },
