@@ -35,6 +35,7 @@
                 <textarea class="form-control" name="comment" id="comment" rows="5" placeholder="Comments..."></textarea>
             </div>
             <button id="postResponseBtn" class="btn btn-default">Send</button>
+            <input type="hidden" name="hashid" id="hashid" value="{{ $supplier->hashid }}">
             {{ csrf_field() }}
         </form>
     </div>
