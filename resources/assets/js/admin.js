@@ -60,9 +60,7 @@ $(document).ready( () => {
                 var token = $('table[data-datatables-enabled]').data('token');
                 var url = '/admin/users/' + data.id + '/edit';
                 swal({  title: "Reactive User",
-                        type: "input",
-                        inputType:"checkbox",
-                        inputName: "active",
+                        type: "info",
                         text: 'Check if you want to active its Projects and BOMs too',
                         showCancelButton: true,
                         confirmButtonColor: "#DD6B55",
@@ -122,5 +120,68 @@ $(document).ready( () => {
                 $('#errors').html(errorsHtml);
             }
         })
+    });
+
+    $("#button-action-delete").click( function() {
+        var token = $("#_token").val();
+        var url   = $(this).data('action-delete');
+        swal({  title: "Delete User",
+                text: "Please confirm you want to delete user",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false },
+            function(isConfirm){
+                if(isConfirm) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: url,
+                        headers: {
+                            'X-CSRF-Token': token
+                        },
+                        success: function () {
+                            swal({ title: "Deleted!",
+                                text: "The record you selected has been deleted.",
+                                type: "success"}, () => window.location.reload() );
+
+                        },
+                        error: function () {
+                        },
+                    });
+                }
+            });
+    });
+
+    $("#button-action-active").click( function() {
+        var token = $("#_token").val();
+        var url   = $(this).data('action-active');
+        console.log(url);
+        swal({  title: "Reactive User",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, active it!",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false},
+            function(isConfirm){
+                if(isConfirm) {
+                    $.ajax({
+                        type: "PUT",
+                        url: url,
+                        headers: {
+                            'X-CSRF-Token': token
+                        },
+                        success: function () {
+                         swal({ title: "Active!",
+                                text: "The record you selected has been actived.",
+                                type: "success"}, () => window.location.reload() );
+                        },
+                        error: function () {
+                        },
+                    });
+                }
+            });
     });
 });
