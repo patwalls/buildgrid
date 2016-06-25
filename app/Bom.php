@@ -22,6 +22,12 @@ class Bom extends Ardent
         'bg_responded_yes_no'
     ];
 
+
+    protected $casts = [
+        'bg_responded' => 'boolean',
+    ];
+
+
     public static $rules = [
         'name'       => 'required',
         'project_id' => 'required|numeric|exists:projects,id',
@@ -55,7 +61,7 @@ class Bom extends Ardent
 
     public function getBgRespondedYesNoAttribute()
     {
-        return ($this->bg_responded == 1) ? 'Yes' : 'No';
+        return ($this->bg_responded == true) ? 'Yes' : 'No';
     }
 
 }

@@ -7,12 +7,14 @@ class BomResponseRepository {
 
 
     /**
-     * @param $bom
+     * @param $response
      * @param $file
      * @return bool
+     * @internal param $bom
      */
     public function storeBomResponseFile($response, $file)
     {
+
         $path = $this->getBomResponseStoragePath($response);
 
         return \Storage::disk(env('DOCUMENTS_STORAGE'))->put($path, file_get_contents($file));
@@ -20,10 +22,10 @@ class BomResponseRepository {
     }
 
 
-
     /**
-     * @param $bom
+     * @param $response
      * @return array|bool
+     * @internal param $bom
      */
     public function retrieveBomResponseFile($response)
     {
@@ -37,11 +39,11 @@ class BomResponseRepository {
     }
 
 
-
     /**
      * Gets the storage path for the a Bom response in the Storage
-     * @param $bom
+     * @param $response
      * @return string
+     * @internal param $bom
      */
     public function getBomResponseStoragePath($response)
     {
