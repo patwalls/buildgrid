@@ -16,7 +16,7 @@ module.exports = () => {
                 text: "Your response file and comments were submitted!",
                 type: "success"
             }, function () {
-                window.location.href = "/";
+                if(document.getElementById('hashid')) window.location.href = "/"; else window.location.reload();
             })
         },
         error: function error(file, errorMessage) {
@@ -25,7 +25,10 @@ module.exports = () => {
     }).on("sending", function (file, xhr, formData) {
         formData.append("_token",  document.getElementsByName('_token')[0].value);
         formData.append("comment", document.getElementById('comment').value);
-        formData.append("hashid", '{{$supplier->hashid}}');
+
+        if(document.getElementById('hashid')) formData.append("hashid", document.getElementById('hashid').value);
+        if(document.getElementsByName('bom_id')[0]) formData.append('bom_id', document.getElementsByName('bom_id')[0].value);
+
     });
     ;
 
