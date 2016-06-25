@@ -36,6 +36,11 @@ class User extends Authenticatable
         'last_login'
     ];
 
+    protected $casts = [
+        'is_admin' => 'boolean',
+    ];
+
+
     public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
@@ -75,9 +80,6 @@ class User extends Authenticatable
         return $this->hasManyThrough('BuildGrid\Bom', 'BuildGrid\Project')->where('boms.status', 'active');
     }
 
-    public function getisAdministratorAttribute(){
-        return (bool) $this->is_admin;
-    }
 
     public function getInvitedSuppliersCountAttribute()
     {
