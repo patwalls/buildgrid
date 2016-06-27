@@ -43,6 +43,6 @@ $.router.add("/admin/boms/:bom_id", () => {
 
     pdfObject.embed($('#pdf-preview').data('document-url'), '#pdf-preview', { height: "400px" });
 
-
+    require("./modules/add_response")();
 });
 
