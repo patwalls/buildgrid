@@ -40,7 +40,7 @@ elixir(function(mix) {
             'vendor/animate.css',
             'vendor/ionicons.css',
             'vendor/jquery.bxslider.css'
-        ], 'public/css/vendor.css')
+        ], 'public/css/vendor.css');
 
-        .browserSync({ proxy:'buildgrid.local.com'} );
+        //.browserSync({ proxy:'buildgrid.local.com'} );
 });
