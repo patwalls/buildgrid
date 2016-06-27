@@ -19,8 +19,9 @@ class AdminController extends Controller
         $new_boms  = Bom::whereBetween('created_at', [\Date::now()->subDays(15),\Date::now()] )->count();
         $invited_suppliers = InvitedSupplier::whereBetween('created_at', [\Date::now()->subDays(15),\Date::now()] )->count();
         $bom_responses = BomResponse::whereBetween('created_at', [\Date::now()->subDays(15),\Date::now()] )->count();
+        $accepted_responses = BomResponse::where('status', 'accepted')->whereBetween('created_at', [\Date::now()->subDays(15),\Date::now()] )->count();
 
-        return View::make('admin.dashboard', compact('new_users', 'new_boms', 'invited_suppliers', 'bom_responses'));
+        return View::make('admin.dashboard', compact('new_users', 'new_boms', 'invited_suppliers', 'bom_responses', 'accepted_responses'));
     }
 
 
