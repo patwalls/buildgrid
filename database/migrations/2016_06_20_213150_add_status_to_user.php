@@ -13,7 +13,7 @@ class AddStatusToUser extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table){
-            $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->softDeletes();
         });
     }
 
@@ -25,7 +25,7 @@ class AddStatusToUser extends Migration
     public function down()
     {
         Schema::table('users', function(Blueprint $table){
-            $table->dropColumn('status');
+            $table->dropColumn('deleted_at');
         });
     }
 }

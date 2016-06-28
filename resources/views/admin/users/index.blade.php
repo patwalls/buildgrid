@@ -29,7 +29,7 @@
                             {"data": "created_at" },
                             {"data": "total_boms" },
                             {"data": "active_boms_count"},
-                            {"data": "status"},
+                            {"data": "user_status"},
                             {"defaultContent": "<button id=\"button-show\" data-action-show class=\"btn btn-default btn-xs\"><i class=\"fa fa-eye\"></i></button> <button id=\"button-edit\" data-action-delete class=\"btn btn-danger btn-xs\"><i class=\"fa fa-times\"></i></button>"}
                             ]'
                         data-column-defs = '[

@@ -44,7 +44,7 @@
                                             <div class="info-card-footer info-footer-accepted">
                                                 <p><i class="ion-checkmark-round"></i> Accepted</p>
                                             </div>
-                                        @else
+                                        @elseif($bom->status == 'active')
                                             @if( count($bom->responses) == null )
                                                 <div class="info-card-footer">
                                                     <p>No Responses</p>
@@ -58,6 +58,10 @@
                                                     <p> <span class="red-counter">{{ count($bom->responses) }}</span> Responses</p>
                                                 </div>
                                             @endif
+                                        @elseif($bom->status == 'archived')
+                                            <div class="info-card-footer info-footer-updates">
+                                                <p> Archived </p>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>

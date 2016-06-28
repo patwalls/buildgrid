@@ -42,11 +42,11 @@
                             </p>
                             <p>
                                 <strong>Status:</strong> <br>
-                                {{ ucfirst($user->status) }}
+                                {{$user->user_status}}
 
                                 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 
-                                @if($user->status == 'active')
+                                @if(!$user->trashed())
                                     <button  id="button-action-delete" data-action-delete="{{ route('admin.users.destroy', [$user->id]) }}" class="btn btn-sm btn-danger">Delete User</button>
                                 @else
                                     <button id="button-action-active" data-action-active="{{route('admin.users.update', $user->id)}}" class="btn btn-sm standard-blue-button">Active User</button>

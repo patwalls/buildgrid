@@ -88,14 +88,8 @@ $(document).ready( () => {
             });
 
         },
-        "createdRow": function ( row, data, index ) {
-         /*   if (data['status'] == "active") {
-                $('td', row).eq(7).html("<button id=\"button-edit\" data-action-delete class=\"btn btn-danger btn-xs\"><i class=\"fa fa-times\"></i></button>");
-            }else{
-                $("td", row).eq(7).html("<button id=\"button-edit\" data-action-active class=\"btn btn-success btn-xs\"><i class=\"fa fa-check\"></i></button>");
-            }*/
-        }
-        });
+    });
+
     $('#user-submit').click(function(e){
        e.preventDefault();
         var url = $('#user-edit-form').attr('action');

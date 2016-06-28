@@ -3,20 +3,21 @@ module.exports = () => {
     "use strict";
 
     $(document).on('click', "#archive-icon",function(e) {
-        $( "#archive-icon" ).popover({
+        var url = $( this ).data('href');
+        $( this ).popover({
             trigger: 'manual',
             html: true,
-            content: '<button id="btn-decline" class="btn btn-success btn-decline">Don&#39;t Archive</button> <button id="btn-archive" class="btn btn-success btn-confirm">Yes, Archive</button>',
+            content: '<button id="btn-decline" class="btn btn-success btn-decline">Don&#39;t Archive</button> <button id="btn-archive" data-href="'+ url +'" class="btn btn-success btn-confirm">Yes, Archive</button>',
         });
-        $( "#archive-icon" ).popover('show');
+        $( this ).popover('show');
     });
 
     $(document).on('click', "#btn-archive", function(e) {
-        var url = $( "#archive-icon" ).data('href');
+        var url = $( this ).data('href');
         $.ajax({
             url: url
         }).done(function() {
-            $( "#archive-icon" ).popover('hide');
+            $( this ).popover('hide');
             swal("Archived!", "This BOM was archived", "success");
             location.reload();
         });
