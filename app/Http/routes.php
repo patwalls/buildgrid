@@ -86,6 +86,14 @@ Route::group(['middleware' => 'web'], function () {
 
             Route::get('/', 'AdminController@index')->name('admin.dashboard');
 
+            Route::bind('user', function($id){
+                return \BuildGrid\User::withTrashed()->find($id);
+            });
+
+            Route::bind('bom', function($id){
+                return \BuildGrid\Bom::withTrashed()->find($id);
+            });
+
             Route::resource('users', 'AdminUserController', ['parameters' => 'singular']);
             Route::resource('boms', 'AdminBomController',   ['parameters' => 'singular']);
 
