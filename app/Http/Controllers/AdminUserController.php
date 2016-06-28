@@ -53,10 +53,8 @@ class AdminUserController extends Controller
      * @param  \BuildGrid\User $user
      * @return \Illuminate\Http\Response
      */
-    public function show($user, Request $request)
+    public function show(User $user, Request $request)
     {
-
-        $user = User::withTrashed()->findOrFail($user);
         if( $request->ajax() ) {
             return \Datatables::collection($user->boms()->get())->make(true);
         }
@@ -72,9 +70,8 @@ class AdminUserController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
-    public function edit($user, Request $request)
+    public function edit(User $user, Request $request)
     {
-        $user = User::withTrashed()->findOrFail($user);
         $user->restore();
             $user->projects()->status = 'active';
             $user->boms()->status = 'active';
@@ -89,10 +86,8 @@ class AdminUserController extends Controller
      * param User $user
      * @return \Illuminate\Http\Response
      */
-    public function update($user, Request $request)
+    public function update(User $user, Request $request)
     {
-        $user = User::withTrashed()->findOrFail($user);
-
         $user->restore();
         $user->projects()->status = 'active';
         $user->boms()->status = 'active';
@@ -108,10 +103,8 @@ class AdminUserController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param int $id
      */
-    public function destroy($user, Request $request)
+    public function destroy(User $user, Request $request)
     {
-        $user = User::withTrashed()->findOrFail($user);
-
         $user->destroy($user->id);
         $user->projects()->status = 'inactive';
         $user->boms()->status = 'archived';
