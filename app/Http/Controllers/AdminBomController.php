@@ -26,6 +26,7 @@ class AdminBomController extends Controller
         return \View::make('admin.boms.index');
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -35,6 +36,7 @@ class AdminBomController extends Controller
     {
         //
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -47,16 +49,15 @@ class AdminBomController extends Controller
         //
     }
 
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Bom $bom)
     {
-        $bom = Bom::findOrFail($id);
-
         $invited_suppliers = $bom->invitedSuppliers;
         $responses = $bom->responses;
 
@@ -64,6 +65,7 @@ class AdminBomController extends Controller
 
         return view('admin.boms.show', compact(['bom', 'invited_suppliers', 'responses', 'user']));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -87,6 +89,7 @@ class AdminBomController extends Controller
     {
         //
     }
+
 
     /**
      * Remove the specified resource from storage.
