@@ -2,10 +2,13 @@
 
 namespace BuildGrid;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use LaravelArdent\Ardent\Ardent;
 
 class Project extends Ardent
 {
+    use SoftDeletes;
+
     protected $table = 'projects';
 
     protected $fillable = [
