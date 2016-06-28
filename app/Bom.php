@@ -2,10 +2,13 @@
 
 namespace BuildGrid;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use LaravelArdent\Ardent\Ardent;
 
 class Bom extends Ardent
 {
+    use SoftDeletes;
+
     protected $table = 'boms';
 
     protected $fillable = [
@@ -43,7 +46,8 @@ class Bom extends Ardent
 
     public function getBomPurchaserAttribute()
     {
-        return $this->project->user->full_name;
+        $user = User::withTrashed()->find($this->project->user_id);
+        return $user->full_name;
     }
 
 
