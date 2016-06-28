@@ -1,6 +1,6 @@
 
 @if( isset($project) )
-    <h4 class="new-project-header">New BOM</h4>
+    <h4 class="new-project-header">Add BOM to project</h4>
 @else
     <h4 class="new-project-header">New Project</h4>
 @endif
@@ -9,13 +9,22 @@
     <div id="notifications"></div>
 
 
-    <form name="createNewProjectForm" method="post" action="{{ route('postCreateProject') }}">
+    <form name="createNewProjectForm" method="post" action="{{ isset($project) ? route('postAddBomToProject', [$project->id]) : route('postCreateProject') }}">
+
+        @unless( $project )
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="project_name">Project Name</label>
                 <input type="text" class="form-control" name="project_name" value="{{ $project->name or '' }}"placeholder="e.g. The Village">
             </div>
         </div>
+        @endunless
+
+        @if( isset($project))
+                <input type="hidden" name="project_name" value="{{$project->name }}">
+                <input type="hidden" name="project_id" value="{{$project->id }}">
+        @endif
+
         {{-- Dropzone --}}
         <div class="row">
             <div class="form-group col-md-6">

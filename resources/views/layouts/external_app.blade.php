@@ -60,8 +60,8 @@
                             @else
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} 
-                                        <img src="/images/sample_profile.png" alt="">
+                                        {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                                        <img src="{{ route('getProfilePicture', [Auth::user()->id, 'thumbnail']) }}" alt="" class="profile-picture-thumbnail">
                                         <span class="caret"></span>
                                     </a>
 

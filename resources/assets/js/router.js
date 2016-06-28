@@ -11,7 +11,7 @@ $.router.add("/create_project", () => {
 
 });
 
-$.router.add("/create_project/:bom_id", () => {
+$.router.add("/project/:bom_id/add_bom", () => {
 
     require('./modules/create_project')();
 
@@ -43,6 +43,6 @@ $.router.add("/admin/boms/:bom_id", () => {
 
     pdfObject.embed($('#pdf-preview').data('document-url'), '#pdf-preview', { height: "400px" });
 
-
+    require("./modules/add_response")();
 });
 

@@ -40,12 +40,14 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', ['uses' => 'ProjectController@index', 'as' => 'home']);
 
-    Route::get('/create_project/{id?}', 'ProjectController@create')->name('getCreateProject');
+    Route::get('/create_project', 'ProjectController@create')->name('getCreateProject');
+
+    Route::get('/project/{project}/add_bom', 'ProjectController@create')->name('getAddBomToProject');
 
     Route::post('/create_project', 'ProjectController@store')->name('postCreateProject');
 
-    Route::get('/bom/add/{id}', 'BomController@showAddBomToProject')->name('showAddBomToProject');
-    
+    Route::post('/project/{project}/add_bom', 'ProjectController@store')->name('postAddBomToProject');
+
     Route::get('/bom/{id}', 'ProjectController@showBom')->name('getShowBom');
 
     Route::post('/bom_file_upload', 'BomController@bomFileUpload')->name('postBomUploadFile');
