@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddStatusToUser extends Migration
+class AddDeletedAtColumnToUserTable extends Migration
 {
     /**
      * Run the migrations.
