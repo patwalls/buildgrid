@@ -100,10 +100,13 @@ class UserController extends Controller
         $file = $this->userRepository->retrieveProfilePicture($user, $size);
 
         if (! $file ) {
-            if( $size == 'full'){
-                $file = \Image::make( public_path() . '/images/profile_full.png' );
-            } else {
-                $file = \Image::make( public_path() . '/images/profile_thumbnail.png' );
+
+            switch($size){
+                case 'full': $file = \Image::make( public_path() . '/images/profile_full.png' );
+                    break;
+                case 'thumbnail': $file = \Image::make( public_path() . '/images/profile_thumbnail.png' );
+                    break;
+                default: $file = \Image::make( public_path() . '/images/profile_medium.png' );
             }
 
             $response = \Response::make($file->encode('png'));

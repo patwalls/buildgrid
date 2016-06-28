@@ -53,7 +53,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
-                                    <img src="{{ route('getProfilePicture', [Auth::user()->id, 'thumbnail']) }}" alt="" class="profile-picture-thumbnail">
+                                    <img src="{{ route('getProfilePicture', [Auth::user()->id, 'thumbnail']) }}" alt="" class="profile-picture">
                                     <span class="caret"></span>
                                 </a>
 

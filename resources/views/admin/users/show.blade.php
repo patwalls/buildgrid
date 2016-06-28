@@ -20,7 +20,7 @@
 
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="/images/sample_profile.png" alt="" style="width:100%"/>
+                            <img src="{{ route('getProfilePicture', [Auth::user()->id, 'medium']) }}" alt="" class="profile-picture">
                         </div>
 
                         <div class="col-md-5 col-md-offset-1">
@@ -125,8 +125,8 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Last login</div>
                             <div class="panel-body">
-                                {{ $user->last_login  }}
-                                <small class="pull-right"> ({{ $user->last_login->diffForHumans()  }})</small>
+                                {{ $user->last_login ? 'No data' : $user->last_login }}
+                                <small class="pull-right">{{ '(' . $user->last_login ? '' : $user->last_login->diffForHumans() . ')' }}</small>
                             </div>
                         </div>
                     </div>
@@ -141,7 +141,6 @@
                        data-show-url = '{{ route('admin.boms.index') }}'
                        data-columns = '[
                                 {"data": "id"},
-                                {"data": "bom_purchaser" },
                                 {"data": "project_name" },
                                 {"data": "name" },
                                 {"data": "bg_responded_yes_no" },
@@ -160,7 +159,6 @@
                     <thead>
                     <tr>
                         <th>id</th>
-                        <th>Purchaser</th>
                         <th>Project</th>
                         <th>Name</th>
                         <th>BG Responded</th>

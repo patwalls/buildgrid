@@ -18,9 +18,11 @@ class UserRepository
         $file_content = file_get_contents($file);
 
         $full_image = \Image::make($file_content)->resize(200, 200)->encode('png');
+        $medium_image = \Image::make($file_content)->resize(100, 100)->encode('png');
         $thumbnail_image = \Image::make($file_content)->resize(36, 36)->encode('png');
 
         return ( \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->put( $path . 'full.png', $full_image) &&
+                 \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->put( $path . 'medium.png', $medium_image) &&
                  \Storage::disk(env('PICTURES_PROFILE_STORAGE'))->put( $path . 'thumbnail.png', $thumbnail_image)
                 );
     }
@@ -31,7 +33,7 @@ class UserRepository
      * @param string $size
      * @return array|bool
      */
-    public function retrieveProfilePicture($user, $size = 'full')
+    public function retrieveProfilePicture($user, $size = 'medium')
     {
         $path = $this->getProfilePictureStoragePath($user);
 

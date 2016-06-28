@@ -12,7 +12,7 @@
 									<img class="cropit-preview-background" />
 								</div>
 								<div class="cropit-preview-image-container">
-									<img class="cropit-preview-image  profile-picture-full" src="{{ route('getProfilePicture', [$user->id, 'full']) }}" />
+									<img class="cropit-preview-image  profile-picture" src="{{ route('getProfilePicture', [$user->id, 'full']) }}" />
 								</div>
 							</div>
 							<div class="cropit-controller">
