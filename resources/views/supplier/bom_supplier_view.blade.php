@@ -19,7 +19,7 @@
     <div class="container">
         <div class="supplier-head-wrap">
             <h2>{{ $supplier->bom->name }}</h2>
-            <div class="b2">Uploaded: <span>{{ $supplier->bom->updated_at }}</span></div>
+            <div class="b2">Uploaded: <span>{{ $supplier->bom->updated_at }} <small>({{ $supplier->bom->updated_at->diffForHumans() }})</small></span></div>
         </div>
     </div>
     <div class="container" id="supplier-upload-wrap">

@@ -55,18 +55,19 @@ class ProjectController extends Controller
     }
 
 
-    public function store(CreateNewProjectRequest $request)
+    public function store(CreateNewProjectRequest $request, Project $project = null)
     {
 
-        $project = Project::where('name', '=', $request->get('project_name'))->first();
-        
-        if ($project === null) {
- 
-            $project = Project::create([
+        if ( $project === null ) {
+
+             $project = Project::create([
                 'user_id' => \Auth::id(),
                 'name'    => $request->get('project_name')
             ]);
+
         }
+
+
         $bom = Bom::create([
             'name'            => $request->get('bom_name'),
             'project_id'      => $project->id,
@@ -74,11 +75,31 @@ class ProjectController extends Controller
             'filename'        => $request->get('filename')
         ]);
 
+
+        switch( $request->route()->getName() ){
+            case 'postCreateproject':
+                $toast_text = 'Your project was succesfully created';
+                break;
+            case 'postAddBomToProject':
+                $toast_text = 'Your new BOM has been added to your project';
+                break;
+            default:
+                $toast_text = 'Success!';
+        }
+
+
         // Save the suppliers associated with this newly created Project/Bom
         $this->supplierRepository->store($request->get('supplier'), $bom->id);
 
-        return response(['bom_id' => $bom->id, '_token' => csrf_token() ], 200);
+
+        return response([
+                            'bom_id' => $bom->id,
+                            '_token' => csrf_token(),
+                            'toast_text' => $toast_text
+                        ], 200);
+
     }
+
 
     public function showBom($id)
     {

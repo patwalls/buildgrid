@@ -65,11 +65,11 @@
                         @endforeach
                         <div class="col-sm-6 col-md-3">
                             <div class="new-project-wrap">
-                                <a class="add" href="{{ route('getCreateProject', [$project->id]) }}">
+                                <a class="add" href="{{ route('getAddBomToProject', [$project->id]) }}">
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>
-                            <a id="add-new-bom" href="{{ route('getCreateProject', [$project->id]) }}">Add BOM</a>
+                            <a id="add-new-bom" href="{{ route('getAddBomToProject', [$project->id]) }}">Add BOM</a>
                         </div>
                     </div>
                 @endforeach
