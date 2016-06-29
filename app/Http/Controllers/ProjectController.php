@@ -4,6 +4,7 @@ namespace BuildGrid\Http\Controllers;
 
 use BuildGrid\Bom;
 use BuildGrid\Http\Requests;
+use BuildGrid\User;
 use Illuminate\Http\Request;
 use BuildGrid\Http\Requests\CreateNewProjectRequest;
 use BuildGrid\Project;
@@ -31,8 +32,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::where('user_id', \Auth::id())->with('boms')->get();
-
+        //$projects = $user->projects;
+        $user = User::findOrFail(\Auth::id());
+        $projects = $user->projects;
         if ($projects->isEmpty())
         {
             return view('create_project', ['projects' => $projects]);

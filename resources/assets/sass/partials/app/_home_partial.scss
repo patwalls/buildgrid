@@ -113,6 +113,13 @@
   }
 }
 
+.info-footer-archived{
+  background: $red;
+  p{
+    color: white;
+  }
+}
+
 .info-card-header {
     margin: 4% 0 0 4%;
     .b4{
@@ -124,6 +131,9 @@
       float: right;
       margin: 0 10px;
       z-index: 100;
+      :hover{
+        color: $red;
+      }
     }
 }
 
@@ -308,4 +318,8 @@
             }
         }
     }
+}
+
+.archive-popover {
+  width: 100%;
 }

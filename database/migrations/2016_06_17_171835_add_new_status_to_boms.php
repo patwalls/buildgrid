@@ -12,7 +12,7 @@ class AddNewStatusToBoms extends Migration
      */
     public function up()
     {
-        DB::statement("ALTER TABLE boms CHANGE status status ENUM('active','archived','accepted') DEFAULT 'active'");
+        DB::statement("ALTER TABLE boms CHANGE status status ENUM('accepted', 'active','archived') DEFAULT 'active'");
     }
 
     /**

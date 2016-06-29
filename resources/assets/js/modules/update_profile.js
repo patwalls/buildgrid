@@ -2,14 +2,7 @@ module.exports = () => {
     "use strict";
 
     $(document).ready(function () {
-        $('#image-cropper').cropit({
-            imageBackground: true
-        });
-
-        $('.select-image-btn').click(function () {
-            $('.cropit-image-input').click();
-            $('.cropit-controller').show();
-        });
+        $('#image-cropper').cropit();
 
         $('.save-image-btn').click(function () {
             var picture = $('#image-cropper').cropit('export', {type: 'image/png'});
@@ -33,9 +26,19 @@ module.exports = () => {
                     location.reload();
             });
         });
-    });
 
-    $('.cropit-preview-background').change(function(){
-        alert("none");
+        $( "#image-cropper" ).hover(
+            function() {
+                $( "#action-upload" ).show();
+            }, function() {
+                $( "#action-upload" ).hide();
+            }
+        );
+
+        $( "#action-upload" ).click(function () {
+            $('.cropit-image-input').click();;
+            $('.save-image-btn').show();
+            $('.cropit-controller').show();
+        })
     });
 };

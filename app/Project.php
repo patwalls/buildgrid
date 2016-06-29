@@ -25,4 +25,5 @@ class Project extends Ardent
         'boms' => [self::HAS_MANY, 'BuildGrid\Bom'],
         'user' => [self::BELONGS_TO, 'BuildGrid\User']
     ];
+    
 }
