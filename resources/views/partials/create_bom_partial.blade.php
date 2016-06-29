@@ -1,5 +1,5 @@
 
-@if( isset($project) )
+@if( $project )
     <h4 class="new-project-header">Add BOM to project</h4>
 @else
     <h4 class="new-project-header">New Project</h4>
@@ -9,7 +9,7 @@
     <div id="notifications"></div>
 
 
-    <form name="createNewProjectForm" method="post" action="{{ isset($project) ? route('postAddBomToProject', [$project->id]) : route('postCreateProject') }}">
+    <form name="createNewProjectForm" method="post" action="{{ is_null($project) ? route('postCreateProject') : route('postAddBomToProject', [$project->id]) }}">
 
         @unless( $project )
         <div class="row">
@@ -20,7 +20,7 @@
         </div>
         @endunless
 
-        @if( isset($project))
+        @if( $project )
                 <input type="hidden" name="project_name" value="{{$project->name }}">
                 <input type="hidden" name="project_id" value="{{$project->id }}">
         @endif
@@ -74,7 +74,7 @@
         <input type="hidden" name="filename">
         <div class="row">
             <div class="form-group col-md-3">
-                <button type="submit" class="btn btn-primary btn-block new-proj-btn">Create Project</button>
+                <button type="submit" class="btn btn-primary btn-block new-proj-btn">{{ is_null($project) ? 'Create Project' : 'Add BOM' }}</button>
             </div>
         </div>
     </form>

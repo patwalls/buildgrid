@@ -41,16 +41,16 @@ class ProjectController extends Controller
         return view('home', ['projects' => $projects]);
     }
 
-    public function create(Request $request)
-    {
-        $projects = Project::where('user_id', \Auth::id())->with('boms')->get();
 
-        if ( $projects === null or $request !== null )
-        {
-            $project = Project::find($request->id);
+    public function create(Request $request, Project $project = null)
+    {
+
+        if( ( $project->trashed() || ! $project->exists ) && $request->route()->getName() == 'getAddBomToProject' ){
+            return \Redirect::route('home');
         }
-        
-        return view('create_project', compact(['projects', 'project']));
+
+
+        return view('create_project', compact('project'));
 
     }
 
