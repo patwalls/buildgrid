@@ -38,7 +38,7 @@ Route::group(['middleware' => 'web'], function () {
 
     // User
 
-    Route::get('/home', ['uses' => 'ProjectController@index', 'as' => 'home']);
+    Route::get('/home', 'ProjectController@index')->name('home');
 
     Route::get('/create_project', 'ProjectController@create')->name('getCreateProject');
 
