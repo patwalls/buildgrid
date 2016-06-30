@@ -8,10 +8,8 @@
 		<div class="profile-picture">
 						<div id="image-cropper">
 							<div class="cropit-preview">
-								<div class="cropit-preview-background-container">
-									<img class="cropit-preview-background" />
-								</div>
-								<div class="cropit-preview-image-container">
+								<i id="action-upload" class="ion-camera"></i>
+								<div id="preview-profile" class="cropit-preview-image-container">
 									<img class="cropit-preview-image  profile-picture" src="{{ route('getProfilePicture', [$user->id, 'full']) }}" />
 								</div>
 							</div>
@@ -22,8 +20,9 @@
 							</div>
 							<input type="file" class="cropit-image-input" />
 							<input type="hidden" name="_token" value="{{ csrf_token() }}">
-							<div class="btn btn-default select-image-btn">Upload picture</div>
-							<div class="btn btn-default standard-blue-button save-image-btn" data-href="{{@route('postUploadProfilePicture', $user->id)}}">Save picture</div>
+							<div class="cropit-buttons">
+								<div class="btn btn-default standard-blue-button save-image-btn" data-href="{{@route('postUploadProfilePicture', $user->id)}}">Save picture</div>
+							</div>
 						</div>
 					</div>
 	  </div>
