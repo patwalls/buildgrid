@@ -3,10 +3,8 @@ module.exports = (data) => {
     "use strict";
 
     $('.js-resend-email').click(function(){
-        // var $_this = $(this);
         var $btn = $( this ).button('loading');
-        var emailTargetUrl = $('[data-href]').data( "href");
-        // $_this.prop('disabled', true);
+        var emailTargetUrl = $( this ).data( "href");
         $.ajax({
             url: emailTargetUrl,
             context: document.body
