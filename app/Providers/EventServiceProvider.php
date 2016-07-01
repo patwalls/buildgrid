@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'BuildGrid\Events\SomeEvent' => [
-            'BuildGrid\Listeners\EventListener',
+        'BuildGrid\Events\UserWasCreated' => [
+            'BuildGrid\Listeners\EmailUserCreated',
         ],
         'Illuminate\Auth\Events\Login' => [
             'BuildGrid\Listeners\LogSuccessfulLogin',
