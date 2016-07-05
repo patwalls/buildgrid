@@ -3,7 +3,9 @@
 namespace BuildGrid\Http\Controllers;
 
 use Auth;
+use BuildGrid\Events\UserPasswordWasChanged;
 use BuildGrid\Repositories\UserRepository;
+use Event;
 use Illuminate\Http\Request;
 use BuildGrid\User;
 
@@ -58,6 +60,8 @@ class UserController extends Controller
         if (strcmp($request->get('password'), $request->get('confirm_password')) === 0) {
             $user->password = Hash::make($request->get('password'));
             $user->save();
+
+            Event::fire(new UserPasswordWasChanged($user));
 
             return view('profile', compact($user));
             // return response()->json(['error' => false,
