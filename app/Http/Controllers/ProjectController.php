@@ -3,6 +3,7 @@
 namespace BuildGrid\Http\Controllers;
 
 use BuildGrid\Bom;
+use BuildGrid\Events\NewBom;
 use BuildGrid\Events\NewProjectCreated;
 use BuildGrid\Http\Requests;
 use BuildGrid\User;
@@ -92,6 +93,7 @@ class ProjectController extends Controller
                 break;
             case 'postAddBomToProject':
                 $toast_text = 'Your new BOM has been added to your project';
+                Event::fire(new NewBom($bom));
                 break;
             default:
                 $toast_text = 'Success!';
