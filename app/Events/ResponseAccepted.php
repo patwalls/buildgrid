@@ -2,25 +2,25 @@
 
 namespace BuildGrid\Events;
 
+use BuildGrid\BomResponse;
 use BuildGrid\Events\Event;
-use BuildGrid\User;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class UserPasswordWasChanged extends Event
+class ResponseAccepted extends Event
 {
     use SerializesModels;
-    
-    public $user;
+
+    public $bomResponse;
 
     /**
      * Create a new event instance.
      *
-     * @param User $user
+     * @param BomResponse $bomResponse
      */
-    public function __construct(User $user)
+    public function __construct(BomResponse $bomResponse)
     {
-        $this->user = $user;
+        $this->bomResponse = $bomResponse;
     }
 
     /**

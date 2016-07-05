@@ -6,6 +6,7 @@ use Auth;
 use BuildGrid\Events\UserPasswordWasChanged;
 use BuildGrid\Repositories\UserRepository;
 use Event;
+use Hash;
 use Illuminate\Http\Request;
 use BuildGrid\User;
 

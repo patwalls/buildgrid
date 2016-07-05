@@ -1,5 +1,5 @@
 <p>
-<strong>{{ $admin_name }}</strong>,
+<strong>{{ $name }}</strong>,
 </p>
 
 <p>

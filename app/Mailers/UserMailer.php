@@ -10,7 +10,7 @@ class UserMailer extends Mailer {
     public static function sendRegistrationMail(User $user)
     {
         $email = $user->email;
-        $full_name = $user->getFullNameAttribute();
+        $full_name = $user->full_name;
         
         $subject = 'Welcome '. $full_name;
         $view = 'email.users.user_registration';
@@ -23,13 +23,16 @@ class UserMailer extends Mailer {
 
     }
 
+    /**
+     * @param User $user
+     */
     public static function sendPasswordChangedMail(User $user)
     {
         $email = $user->email;
-        $full_name = $user->getFullNameAttribute();
+        $full_name = $user->full_name;
 
-        $subject = 'Welcome '. $full_name;
-        $view = 'email.users.user_registration';
+        $subject = 'Password changed';
+        $view = 'email.users.user_password_changed';
 
         $data = [
             'full_name' => $full_name,

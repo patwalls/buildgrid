@@ -4,6 +4,8 @@ namespace BuildGrid\Http\Controllers;
 
 use BuildGrid\Bom;
 use BuildGrid\BomResponse;
+use BuildGrid\Events\ResponseAccepted;
+use Event;
 use Illuminate\Http\Request;
 
 use BuildGrid\Http\Requests;
@@ -25,6 +27,8 @@ class BomResponseController extends Controller
         $bom = $bom_response->bom;
         $bom->status = $status;
         $bom->update();
+
+        Event::fire(new ResponseAccepted($bom_response));
 
         return response('OK', 200);
     }

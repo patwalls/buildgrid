@@ -22,6 +22,12 @@ class EventServiceProvider extends ServiceProvider
         'BuildGrid\Events\NewProjectCreated' => [
             'BuildGrid\Listeners\EmailNewProjectCreated',
         ],
+        'BuildGrid\Events\NewBom' => [
+            'BuildGrid\Listeners\EmailNewBom',
+        ],
+        'BuildGrid\Events\ResponseAccepted' => [
+            'BuildGrid\Listeners\EmailResponseAccepted',
+        ],
         'Illuminate\Auth\Events\Login' => [
             'BuildGrid\Listeners\LogSuccessfulLogin',
         ],

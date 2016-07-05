@@ -2,12 +2,12 @@
 
 namespace BuildGrid\Listeners;
 
-use BuildGrid\Events\NewProjectCreated;
-use BuildGrid\Mailers\ProjectMailer;
+use BuildGrid\Events\ResponseAccepted;
+use BuildGrid\Mailers\BomResponseMailer;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class EmailNewProjectCreated
+class EmailResponseAccepted
 {
     /**
      * Create the event listener.
@@ -22,11 +22,11 @@ class EmailNewProjectCreated
     /**
      * Handle the event.
      *
-     * @param  NewProjectCreated  $event
+     * @param  ResponseAccepted  $event
      * @return void
      */
-    public function handle(NewProjectCreated $event)
+    public function handle(ResponseAccepted $event)
     {
-        ProjectMailer::sendProjectCreatedMail($event->project);
+        BomResponseMailer::sendBomResponseAcceptedMail($event->bomResponse);
     }
 }
