@@ -3,6 +3,7 @@
 namespace BuildGrid\Http\Controllers;
 
 use BuildGrid\Bom;
+use BuildGrid\Events\NewProjectCreated;
 use BuildGrid\Http\Requests;
 use BuildGrid\User;
 use Illuminate\Http\Request;
@@ -57,6 +58,11 @@ class ProjectController extends Controller
     }
 
 
+    /**
+     * @param CreateNewProjectRequest $request
+     * @param Project|null $project
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
     public function store(CreateNewProjectRequest $request, Project $project = null)
     {
 
@@ -66,6 +72,8 @@ class ProjectController extends Controller
                 'user_id' => \Auth::id(),
                 'name'    => $request->get('project_name')
             ]);
+
+            Event::fire(new NewProjectCreated($project));
 
         }
 

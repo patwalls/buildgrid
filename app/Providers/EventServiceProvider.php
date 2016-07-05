@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         'BuildGrid\Events\UserPasswordWasChanged' => [
             'BuildGrid\Listeners\EmailUserPasswordChanged',
         ],
+        'BuildGrid\Events\NewProjectCreated' => [
+            'BuildGrid\Listeners\EmailNewProjectCreated',
+        ],
         'Illuminate\Auth\Events\Login' => [
             'BuildGrid\Listeners\LogSuccessfulLogin',
         ],
