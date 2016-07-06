@@ -29,12 +29,14 @@ elixir(function(mix) {
         .browserify('app.js')
         .browserify('admin.js')
         .browserify('site.js')
+        .browserify('external_app.js')
         .version([
             'public/css/site.css',
             'public/css/app.css',
             'public/js/app.js',
             'public/js/admin.js',
-            'public/js/site.js'
+            'public/js/site.js',
+            'public/js/external_app.js'
         ])
 
         // 3rd party CSS libraries
