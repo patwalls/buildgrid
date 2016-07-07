@@ -34,15 +34,14 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //$projects = $user->projects;
-        $user = User::findOrFail(\Auth::id());
-        $projects = $user->projects;
-        if ($projects->isEmpty())
-        {
-            return view('create_project', ['projects' => $projects]);
+        $projects = \Auth::user()->projects;
+
+        if( $projects->isEmpty() ){
+            return \Redirect::route('getCreateProject');
         }
 
-        return view('home', ['projects' => $projects]);
+        return view('home');
+
     }
 
 
