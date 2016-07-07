@@ -7,7 +7,7 @@
   <!-- Add new BOM Partial -->
   <div class="container footer-align">
     <div class="col-md-12">
-      @if( is_null($project) )
+      @if( \Auth::user()->projects->isEmpty() )
           @include('partials.first_login_partial')
       @endif
       @include('partials.create_bom_partial')  
