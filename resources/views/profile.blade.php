@@ -70,7 +70,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-6">
-			<form method="post" action="{{ route('update.password', [$user->id]) }}">
+			<form method="POST" action="{{ route('update.password', [$user->id]) }}">
 		    <div class="form-group">
         	<label for="first_name">New Password</label>
 					<input type="password" name="password" id="password" class="form-control">
@@ -82,6 +82,7 @@
 		    <div class="row">
 		    	<div class="col-md-6">
 				    <div class="form-group">
+					<input type="hidden" name="_method" value="PUT">
 		      		<input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
 		      		<input type="submit" class="btn btn-block standard-blue-button">
 		      	</div>
