@@ -2,13 +2,14 @@ var elixir = require('laravel-elixir');
 
 // NOTICE: Enable this section only if you are using gulp watch + browserSync
 
+/*
 elixir.config.js.browserify.watchify = {
     enabled: true,
     options: {
         poll: true
     }
 }
-
+*/
 
 /*
  |--------------------------------------------------------------------------
@@ -48,6 +49,6 @@ elixir(function(mix) {
 
         // NOTICE: Enable only if you are going to use browserSync in your local environment.
 
-        .browserSync({ proxy:'buildgrid.local.com'} )
+       // .browserSync({ proxy:'buildgrid.local.com'} )
 
 });
