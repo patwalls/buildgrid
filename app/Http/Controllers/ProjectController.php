@@ -7,6 +7,7 @@ use BuildGrid\Events\NewBom;
 use BuildGrid\Events\NewProjectCreated;
 use BuildGrid\Http\Requests;
 use BuildGrid\User;
+use Event;
 use Illuminate\Http\Request;
 use BuildGrid\Http\Requests\CreateNewProjectRequest;
 use BuildGrid\Project;
@@ -40,21 +41,27 @@ class ProjectController extends Controller
             return \Redirect::route('getCreateProject');
         }
 
-        return view('home');
+        return view('home', compact('projects'));
 
     }
 
 
+    /**
+     * @param Request $request
+     * @param Project|null $project
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function create(Request $request, Project $project = null)
     {
-
-        if( ( $project->trashed() || ! $project->exists ) && $request->route()->getName() == 'getAddBomToProject' ){
+        //If it wants to create a BOM Project has an id. Else if wants to create a new Project, injects an empty dependency.
+        if( !$project->getOriginal('id') ){
+            //"Destroys" this dependency and passes an empty array
+            $project = array();
+        } elseif( ( $project->trashed() || ! $project->exists ) && $request->route()->getName() == 'getAddBomToProject' ){
             return \Redirect::route('home');
         }
 
-
         return view('create_project', compact('project'));
-
     }
 
 
@@ -65,19 +72,15 @@ class ProjectController extends Controller
      */
     public function store(CreateNewProjectRequest $request, Project $project = null)
     {
-
-        if ( $project === null ) {
-
-             $project = Project::create([
+        //If it wants to create a new Project
+        if( !$project->getOriginal('id') ) {
+            $project = Project::create([
                 'user_id' => \Auth::id(),
-                'name'    => $request->get('project_name')
+                'name' => $request->get('project_name')
             ]);
 
             Event::fire(new NewProjectCreated($project));
-
         }
-
-
         $bom = Bom::create([
             'name'            => $request->get('bom_name'),
             'project_id'      => $project->id,
