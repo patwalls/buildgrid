@@ -9,6 +9,7 @@ use BuildGrid\InvitedSupplier;
 use BuildGrid\Repositories\BomRepository;
 use BuildGrid\Repositories\BomResponseRepository;
 use BuildGrid\Repositories\InvitedSupplierRepository;
+use BuildGrid\User;
 use Illuminate\Http\Request;
 use BuildGrid\Http\Requests;
 use Illuminate\Support\Facades\File;
@@ -55,7 +56,30 @@ class BomController extends Controller {
 
     public function bomResponseUpload(Request $request)
     {
-        $supplier = InvitedSupplier::where('hashid', $request->get('hashid'))->first();
+
+        if( $request->has('hashid')){
+            $supplier = InvitedSupplier::where('hashid', $request->get('hashid'))->first();
+        }
+
+        // If we don't find a supplier by its hashid but the request was made by an Admin,
+        // create a new Invited Supplier for the Admin.
+
+        if( ! \Auth::guest() && ! isset($supplier) && \Auth::user()->is_admin ){
+
+            $supplier = InvitedSupplier::where('hashid', \Hashids::encode([$request->get('bom_id'), \Auth::id()]))->first();
+
+            if (! $supplier ){
+
+                $supplier = InvitedSupplier::create([
+                    'name'  => \Auth::user()->full_name,
+                    'email' => \Auth::user()->email,
+                    'bom_id' => $request->get('bom_id'),
+                    'hashid' => \Hashids::encode([$request->get('bom_id'), \Auth::id()])
+                ]);
+
+            }
+        }
+
         $supplier->status = 'responded';
         $supplier->update();
         $bom = Bom::find($supplier->bom_id);
@@ -69,11 +93,17 @@ class BomController extends Controller {
             'comment'             => $request->get('comment')
         ]);
 
-        if($bom_response && $this->bomResponseRepository->storeBomResponseFile($bom_response, $file)){
-            return response('OK', 200);
+        if(! ( $bom_response && $this->bomResponseRepository->storeBomResponseFile($bom_response, $file))){
+            return response('Error', 500);
         }
 
-        return response('Error', 500);
+        if( ! \Auth::guest() && ! isset($supplier) && \Auth::user()->is_admin ){
+            $bom->bg_responded = true;
+            $bom->update();
+        }
+
+        return response('OK', 200);
+
     }
 
 
@@ -145,7 +175,7 @@ class BomController extends Controller {
     {
         $bom = Bom::findOrFail($bom_id);
 
-        if (! \Auth::id() == $bom->project->user_id || ! \Auth::user()->is_admin){
+        if ( \Auth::id() !== $bom->project->user_id && ! \Auth::user()->is_admin){
             return response('Not Found', 404);
         }
 
@@ -184,4 +214,14 @@ class BomController extends Controller {
         return response($file['contents'], 200, $headers);
     }
 
+    public function archiveBom(Request $request)
+    {
+        $id = $request->id;
+
+        $bom = Bom::findOrFail($id);
+        $bom->status = 'archived';
+        $bom->save();
+
+        return response('OK', 200);
+    }
 }

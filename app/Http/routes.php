@@ -14,31 +14,40 @@ Route::group(['middleware' => 'web'], function () {
     
     Route::get('signup', 'Auth\AuthController@showRegistrationForm');
     
-    //User profile
-    Route::get('profile', ['uses' => 'UserController@edit', 'as' => 'edit.profile']);    Route::put('profile', ['uses' => 'UserController@update', 'as' => 'update.profile']);
+    // User profile
+    Route::get('profile', ['uses' => 'UserController@edit', 'as' => 'edit.profile']);
+
+    Route::put('profile', ['uses' => 'UserController@update', 'as' => 'update.profile']);
 
     Route::put('profile/updatePassword/{id}', ['uses' => 'UserController@updatePassword', 'as'=>'update.password']);
+
+    Route::post('/user/upload_profile_picture/{user}', 'UserController@uploadProfilePicture')->name('postUploadProfilePicture');
+
+    Route::get('/user/{user}/get_profile_picture/{size}', 'UserController@getProfilePicture')->name('getProfilePicture');
     
-    //LinkedIn Login
+    // LinkedIn Login
     Route::get('login/linkedin', ['uses' => 'Auth\SocialLoginController@redirectToLinkedIn', 'as' => 'login.linkedin'] );
 
     Route::get('linkedin/callback', 'Auth\SocialLoginController@handleLinkedInCallback');
     
-    //Google+ Login
+    // Google+ Login
     Route::get('login/google', ['uses' => 'Auth\SocialLoginController@redirectToGoogle', 'as' => 'login.google'] );
 
     Route::get('google/callback', 'Auth\SocialLoginController@handleGoogleCallback');
     
+
     // User
 
-    Route::get('/home', ['uses' => 'ProjectController@index', 'as' => 'home']);
+    Route::get('/home', 'ProjectController@index')->name('home');
 
-    Route::get('/create_project/{id?}', 'ProjectController@create')->name('getCreateProject');
+    Route::get('/create_project', 'ProjectController@create')->name('getCreateProject');
+
+    Route::get('/project/{project}/add_bom', 'ProjectController@create')->name('getAddBomToProject');
 
     Route::post('/create_project', 'ProjectController@store')->name('postCreateProject');
 
-    Route::get('/bom/add/{id}', 'BomController@showAddBomToProject')->name('showAddBomToProject');
-    
+    Route::post('/project/{project}/add_bom', 'ProjectController@store')->name('postAddBomToProject');
+
     Route::get('/bom/{id}', 'ProjectController@showBom')->name('getShowBom');
 
     Route::post('/bom_file_upload', 'BomController@bomFileUpload')->name('postBomUploadFile');
@@ -57,6 +66,14 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('/bom_response_upload', 'BomController@bomResponseUpload')->name('postBomUploadResponse');
 
+    Route::get('/bom_response/accepted/{id}', 'BomResponseController@responseAccepted')->name('setResponseAccepted');
+
+    Route::get('/bom_response/rejected/{id}', 'BomResponseController@responseRejected')->name('setResponseRejected');
+
+    Route::get('/bom_response/pending/{id}', 'BomResponseController@responsePending')->name('setResponsePending');
+
+    Route::get('/bom/archive/{id}', 'BomController@archiveBom')->name('setArchiveBom');
+
 
 
     /*
@@ -69,13 +86,20 @@ Route::group(['middleware' => 'web'], function () {
 
             Route::get('/', 'AdminController@index')->name('admin.dashboard');
 
+            Route::bind('user', function($id){
+                return \BuildGrid\User::withTrashed()->find($id);
+            });
+
+            Route::bind('bom', function($id){
+                return \BuildGrid\Bom::withTrashed()->find($id);
+            });
+
             Route::resource('users', 'AdminUserController', ['parameters' => 'singular']);
-            Route::resource('boms', 'AdminBomController', ['parameters' => 'singular']);
+            Route::resource('boms', 'AdminBomController',   ['parameters' => 'singular']);
 
         });
 
     });
-
 
 
 });

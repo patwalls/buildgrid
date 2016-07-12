@@ -83,6 +83,7 @@ We are using npm as the only package manager in this project as most used and ba
 "jscroll": "^2.3.2", *Js infinite scroll plugin*
 "laravel-elixir": "^4.0.0", *The Laravel elixir toolbelt to ease the use of gulp tasks*
 "toastr": "^2.1.2" *A toast notifications plugin (growl like)*
+"cropit": "~0.5.1" *A "customizable crop and zoom" jQuery plugin*
 
 ### Configuring the development environment
 

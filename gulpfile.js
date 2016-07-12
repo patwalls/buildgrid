@@ -1,12 +1,15 @@
 var elixir = require('laravel-elixir');
 
+// NOTICE: Enable this section only if you are using gulp watch + browserSync
 
+/*
 elixir.config.js.browserify.watchify = {
     enabled: true,
     options: {
         poll: true
     }
 }
+*/
 
 /*
  |--------------------------------------------------------------------------
@@ -23,19 +26,18 @@ elixir(function(mix) {
     mix.sass('site.scss')
         .sass('app.scss')
 
-        // Non NPM 3rd party JS packages
-        // .scripts(['/vendor/jquery.sticky.js'], 'public/js/vendor.js')
-        
         // NPM JS packages
         .browserify('app.js')
         .browserify('admin.js')
         .browserify('site.js')
+        .browserify('external_app.js')
         .version([
             'public/css/site.css',
             'public/css/app.css',
             'public/js/app.js',
             'public/js/admin.js',
-            'public/js/site.js'
+            'public/js/site.js',
+            'public/js/external_app.js'
         ])
 
         // 3rd party CSS libraries
@@ -45,5 +47,8 @@ elixir(function(mix) {
             'vendor/jquery.bxslider.css'
         ], 'public/css/vendor.css')
 
-        .browserSync({proxy:'buildgrid.local.com'});
+        // NOTICE: Enable only if you are going to use browserSync in your local environment.
+
+       // .browserSync({ proxy:'buildgrid.local.com'} )
+
 });

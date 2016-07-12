@@ -16,6 +16,8 @@
 
                 <h2>Dashboard</h2>
 
+                <h3>Last 2 weeks stats</h3>
+
                 <div class="col-md-9">
 
                     <div class="row">
@@ -64,7 +66,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">Accepted Responses</div>
                                 <div class="panel-body">
-                                    --
+                                    {{ $accepted_responses }}
                                 </div>
                             </div>
                         </div>

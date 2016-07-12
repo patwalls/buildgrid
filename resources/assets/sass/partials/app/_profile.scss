@@ -1,0 +1,93 @@
+.profile-picture {
+  border-radius: 50%;
+  z-index: -1000;
+  .button-upload {
+    bottom: 0px;
+    display: none;
+    font-weight: bold;
+    position: absolute;
+    padding: 5px;
+    right: 35px;
+    width: auto;
+    z-index: 1000;
+    i {
+      font-size: 28px;
+    }
+  }
+}
+#image-cropper{
+  width: 300px;
+  height: auto;
+  overflow: hidden;
+
+  .cropit-preview {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+  }
+
+  .cropit-preview.cropit-image-loading .spinner {
+    opacity: 1;
+  }
+
+  .cropit-preview.cropit-image-loaded {
+    cursor: move;
+  }
+
+  #preview-profile{
+    z-index: -1000;
+  }
+
+  .cropit-preview-image-container {
+     cursor: move;
+     border-radius: 50%;
+  }
+
+  .cropit-image-zoom-input{
+    width: 80%;
+    display: block;
+    float: left;
+  }
+
+  .cropit-image-zoom-input[disabled] {
+    opacity: .2;
+  }
+
+  input[type="file"], .cropit-image-input {
+    visibility: hidden;
+  }
+
+  .cropit-preview-background {
+    opacity: .2;
+  }
+
+  .cropit-controller {
+    position: relative;
+    display: none;
+    top:10px;
+    .icons{
+      display: block;
+      float: left;
+      margin: 0 5px;
+    }
+
+    .cropit-preview-image{
+      border-radius: 50%;
+    }
+  }
+
+   .save-image-btn{
+      margin: 10px;
+      display: none;
+  }
+
+  #action-upload{
+    position: absolute;
+    right: 20%;
+    bottom: 5%;
+    font-size: 20px;
+    display:none;
+    z-index: 100;
+    cursor: pointer;
+  }
+}

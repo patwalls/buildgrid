@@ -1,3 +1,6 @@
+@extends('email.layout')
+
+@section('content')
 <p>
 <strong>{{ $supplier_name }}</strong>,
 </p>
@@ -10,3 +13,4 @@
 You can upload your response here: <a href="{{ route('supplierBomView',[$supplier_hashid])  }}"><strong>View on BuildGrid</strong></a>
 </p>
 
+@endsection

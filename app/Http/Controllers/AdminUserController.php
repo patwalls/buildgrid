@@ -19,7 +19,7 @@ class AdminUserController extends Controller
     {
         if( $request->ajax() )
         {
-            return \Datatables::of(User::all())->make(true);
+            return \Datatables::of(User::withTrashed())->make(true);
         }
 
         return \View::make('admin.users.index');
@@ -49,7 +49,8 @@ class AdminUserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \BuildGrid\User  $user
+     * @param Request $request
+     * @param  \BuildGrid\User $user
      * @return \Illuminate\Http\Response
      */
     public function show(User $user, Request $request)
@@ -64,34 +65,50 @@ class AdminUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param User $user
+     * @param Request $request
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function edit($id)
+    public function edit(User $user, Request $request)
     {
-        //
+        $user->restore();
+            $user->projects()->status = 'active';
+            $user->boms()->status = 'active';
+
+        $user->update();
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  BuildGrid\User  $user
+     * param User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BuildGrid\User $user)
+    public function update(User $user, Request $request)
     {
+        $user->restore();
+        $user->projects()->status = 'active';
+        $user->boms()->status = 'active';
 
+        $user->update();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param User $user
+     * @param Request $request
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
-    public function destroy($id)
+    public function destroy(User $user, Request $request)
     {
-        //
+        $user->destroy($user->id);
+        $user->projects()->status = 'inactive';
+        $user->boms()->status = 'archived';
+
+        $user->update();
     }
 }

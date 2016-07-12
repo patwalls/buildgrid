@@ -1,21 +1,30 @@
 
-@if( isset($project) )
-    <h4 class="new-project-header">New BOM</h4>
-@else
+@if( empty($project) )
     <h4 class="new-project-header">New Project</h4>
+@else
+    <h4 class="new-project-header">Add BOM to project</h4>
 @endif
 
 <div class="create-project-outer-wrap">
     <div id="notifications"></div>
 
 
-    <form name="createNewProjectForm" method="post" action="{{ route('postCreateProject') }}">
+    <form name="createNewProjectForm" method="post" action="{{  empty($project) ? route('postCreateProject') : route('postAddBomToProject', [$project->id]) }}">
+
+        @if( empty($project) )
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="project_name">Project Name</label>
                 <input type="text" class="form-control" name="project_name" value="{{ $project->name or '' }}"placeholder="e.g. The Village">
             </div>
         </div>
+        @endif
+
+        @if( ! empty($project) )
+                <input type="hidden" name="project_name" value="{{$project->name }}">
+                <input type="hidden" name="project_id" value="{{$project->id }}">
+        @endif
+
         {{-- Dropzone --}}
         <div class="row">
             <div class="form-group col-md-6">
@@ -65,7 +74,7 @@
         <input type="hidden" name="filename">
         <div class="row">
             <div class="form-group col-md-3">
-                <button type="submit" class="btn btn-primary btn-block new-proj-btn">Create Project</button>
+                <button type="submit" class="btn btn-primary btn-block new-proj-btn">{{ is_null($project) ? 'Create Project' : 'Add BOM' }}</button>
             </div>
         </div>
     </form>

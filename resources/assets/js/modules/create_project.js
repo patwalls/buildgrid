@@ -13,7 +13,7 @@ module.exports = () => {
         },
         dictDefaultMessage: "<i class='fa fa-upload fa-4x'></i><br/><h3>Drag & Drop</h3> files anywhere or <span class='underline'>browse...</span>",
         success: (file, response) => {
-            toastr.success('Your project has been succesfully created.', '', { onHidden: () => { window.location.href = "/bom/"+bgDropzone.options.params.bom_id; } });
+            toastr.success(bgDropzone.options.params.toast_text, '', { onHidden: () => { window.location.href = "/bom/"+bgDropzone.options.params.bom_id; } });
         },
         error: (file, errorMessage) => {
             toastr.error('There was an error processing your request: ' + errorMessage, '');
@@ -52,9 +52,11 @@ module.exports = () => {
 
         e.preventDefault();
 
-        $.post('/create_project', $('form[name=createNewProjectForm]').serialize())
+        var form = $('form[name=createNewProjectForm]');
+
+        $.post( form.attr('action').value, form.serialize())
             .done( (responseData) => {
-                $('button[type=submit], input').attr('disabled', 'disabled');
+                $('button[type=submit], input, textarea').attr('disabled', 'disabled');
                 removeErrorStyles();
                 bgDropzone.options.params = responseData;
                 bgDropzone.processQueue();

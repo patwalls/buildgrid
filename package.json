@@ -23,6 +23,7 @@
     "smooth-scroll": "github:cferdinandi/smooth-scroll",
     "sweetalert": "^1.1.3",
     "toastr": "^2.1.2",
-    "vanilla-modal": "^1.2.6"
+    "vanilla-modal": "^1.2.6",
+    "cropit": "~0.5.1"
   }
 }

@@ -9,6 +9,7 @@ global.jscroll   = require('jscroll');
 global.bootstrap = require('bootstrap-sass');
 global.pdfObject = require('pdfobject');
 global.swal      = require('sweetalert');
+global.cropit    = require('cropit');
 
 // ** Options and overrides ** //
 

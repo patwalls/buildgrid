@@ -28,25 +28,41 @@
                         <div class="col-md-12">
                             <div class="b2 project-title">{{ $project->name }}</div>
                         </div>
-                        @foreach($project->boms->chunk(4) as $chunk)
+                        @foreach($project->boms->sortBy('status')->chunk(4) as $chunk)
                             @foreach($chunk as $bom)
                                 <div class="col-sm-6 col-md-3">
-                                    <div class="info-card" onclick="location.href='{{ route('getShowBom', [$bom->id]) }}'">
+                                    <div class="info-card">
                                         <div class="info-card-header">
                                             <a href="{{ route('getShowBom', [$bom->id]) }}" class="b2">{{ $bom->name }}</a>
-                                            <p class="b4"><span>Last Updated:</span> {{ getDaysAgo($bom->updated_at) }}</p>
+                                            @if($bom->status != 'archived')
+                                                <a id="archive-icon" class="archive-icon" tabindex="0" role="button" data-href="{{route('setArchiveBom', $bom->id)}}" data-toggle="popover" data-trigger="focus" title="Are you sure?" data-placement="auto top" data-container="body" data-content=''>
+                                                    <i class="b2 ion-ios-trash-outline"></i>
+                                                </a>
+                                            @endif
+                                            <p class="b4" onclick="location.href='{{ route('getShowBom', [$bom->id]) }}'"><span>Last Updated:</span> {{ $bom->updated_at->diffForHumans() }}</p>
                                         </div>
-                                        @if( count($bom->responses) == null )
-                                            <div class="info-card-footer">
-                                                <p>No Responses</p>
+                                        <div class="info-card-body" onclick="location.href='{{ route('getShowBom', [$bom->id]) }}'"></div>
+                                        @if($bom->status == 'accepted')
+                                            <div class="info-card-footer info-footer-accepted">
+                                                <p><i class="ion-checkmark-round"></i> Accepted</p>
                                             </div>
-                                        @elseif ( count($bom->responses) == 1 )
-                                            <div class="info-card-footer info-footer-updates">
-                                                <p> <span class="red-counter">{{ count($bom->responses) }}</span> Response</p>
-                                            </div>
-                                        @else
-                                            <div class="info-card-footer info-footer-updates">
-                                                <p> <span class="red-counter">{{ count($bom->responses) }}</span> Responses</p>
+                                        @elseif($bom->status == 'active')
+                                            @if( count($bom->responses) == null )
+                                                <div class="info-card-footer">
+                                                    <p>No Responses</p>
+                                                </div>
+                                            @elseif ( count($bom->responses) == 1 )
+                                                <div class="info-card-footer info-footer-updates">
+                                                    <p> <span class="red-counter">{{ count($bom->responses) }}</span> Response</p>
+                                                </div>
+                                            @else
+                                                <div class="info-card-footer info-footer-updates">
+                                                    <p> <span class="red-counter">{{ count($bom->responses) }}</span> Responses</p>
+                                                </div>
+                                            @endif
+                                        @elseif($bom->status == 'archived')
+                                            <div class="info-card-footer info-footer-archived">
+                                                <p> {{ucfirst($bom->status)}} </p>
                                             </div>
                                         @endif
                                     </div>
@@ -55,11 +71,11 @@
                         @endforeach
                         <div class="col-sm-6 col-md-3">
                             <div class="new-project-wrap">
-                                <a class="add" href="{{ route('getCreateProject', [$project->id]) }}">
+                                <a class="add" href="{{ route('getAddBomToProject', [$project->id]) }}">
                                     <i class="fa fa-plus"></i>
                                 </a>
                             </div>
-                            <a id="add-new-bom" href="{{ route('getCreateProject', [$project->id]) }}">Add BOM</a>
+                            <a id="add-new-bom" href="{{ route('getAddBomToProject', [$project->id]) }}">Add BOM</a>
                         </div>
                     </div>
                 @endforeach

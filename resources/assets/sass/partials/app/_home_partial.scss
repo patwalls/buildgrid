@@ -72,6 +72,8 @@
 
 .info-card {
     width: 100%;
+    height: auto;
+    position: relative;
     border: 1px solid $light-gray-border;
     margin-bottom: 20px;
     overflow: hidden;
@@ -103,6 +105,21 @@
         color: white;
     }
 }
+
+.info-footer-accepted{
+  background: $admin-green;
+  p{
+    color: white;
+  }
+}
+
+.info-footer-archived{
+  background: $red;
+  p{
+    color: white;
+  }
+}
+
 .info-card-header {
     margin: 4% 0 0 4%;
     .b4{
@@ -110,9 +127,25 @@
             font-weight: 300;
         }
     }
+    .archive-icon{
+      float: right;
+      margin: 0 10px;
+      z-index: 100;
+      :hover{
+        color: $red;
+      }
+    }
 }
 
-
+.info-card-body {
+  overflow: auto;
+  bottom: 0px;
+  width: 100%;
+  height: 75%;
+  position: absolute;
+  right: 0px;
+  margin: 0;
+}
 
 
 .info-card-header a {
@@ -285,4 +318,8 @@
             }
         }
     }
+}
+
+.archive-popover {
+  width: 100%;
 }

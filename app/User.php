@@ -3,9 +3,11 @@
 namespace BuildGrid;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes as SoftDeletes;
 
 class User extends Authenticatable
 {
+    use SoftDeletes;
     /**
      * The attributes that are mass assignable.
      *
@@ -29,12 +31,19 @@ class User extends Authenticatable
         'full_name',
         'total_boms',
         'active_boms_count',
-        'invited_suppliers_count'
+        'invited_suppliers_count',
+        'user_status'
     ];
 
     protected $dates = [
-        'last_login'
+        'last_login',
+        'deleted_at'
     ];
+
+    protected $casts = [
+        'is_admin' => 'boolean',
+    ];
+
 
     public function getFullNameAttribute()
     {
@@ -72,12 +81,9 @@ class User extends Authenticatable
 
     public function active_boms()
     {
-        return $this->hasManyThrough('BuildGrid\Bom', 'BuildGrid\Project')->where('status', 'active');
+        return $this->boms()->where('boms.status', 'active');
     }
 
-    public function getisAdministratorAttribute(){
-        return (bool) $this->is_admin;
-    }
 
     public function getInvitedSuppliersCountAttribute()
     {
@@ -88,6 +94,17 @@ class User extends Authenticatable
         };
 
         return $total;
+    }
+
+    public function getUserStatusAttribute()
+    {
+        $status = "Active";
+
+        if ( $this->trashed() ) {
+            $status = "Inactive";
+        }
+
+        return $status;
     }
 
 }
