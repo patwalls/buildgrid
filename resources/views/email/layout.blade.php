@@ -11,7 +11,7 @@
         * {
             font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
             font-size: 100%;
-            line-height: 1.6em;
+            line-height: 2.5em;
             margin: 0;
             padding: 0;
         }
@@ -196,6 +196,7 @@
                 <table>
                     <tr>
                         <td align="center">
+                            <p>The materials purchasing marketplace you always wanted, but didn’t expect to get.</p>
                             <p>&copy; {{ date('Y') }}, BuildGrid</p>
                         </td>
                     </tr>
