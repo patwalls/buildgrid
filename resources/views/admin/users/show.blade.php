@@ -20,7 +20,7 @@
 
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="{{ route('getProfilePicture', [Auth::user()->id, 'medium']) }}" alt="" class="profile-picture">
+                            <img src="{{ route('getProfilePicture', [$user->id, 'medium'])  }}" alt="" class="profile-picture">
                         </div>
 
                         <div class="col-md-5 col-md-offset-1">
