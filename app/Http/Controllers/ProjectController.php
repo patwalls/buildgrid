@@ -79,7 +79,6 @@ class ProjectController extends Controller
                 'name' => $request->get('project_name')
             ]);
 
-            Event::fire(new NewProjectCreated($project));
         }
         $bom = Bom::create([
             'name'            => $request->get('bom_name'),
@@ -90,8 +89,9 @@ class ProjectController extends Controller
 
 
         switch( $request->route()->getName() ){
-            case 'postCreateproject':
+            case 'postCreateProject':
                 $toast_text = 'Your project was succesfully created';
+                Event::fire(new NewProjectCreated($project));
                 break;
             case 'postAddBomToProject':
                 $toast_text = 'Your new BOM has been added to your project';

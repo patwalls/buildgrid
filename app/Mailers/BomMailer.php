@@ -18,15 +18,18 @@ class BomMailer extends Mailer
     {
         $bom_name = $bom->name;
         $project_name = $bom->project_name;
+        $project_bom_admin_url = url('admin/boms/' . $bom->id );
         
         $subject = "A new BOM has been created";
         $view = 'email.bom.new_bom';
         $data = [
             'bom_name' => $bom_name,
             'project_name' => $project_name,
+            'project_bom_admin_url' => $project_bom_admin_url
         ];
 
         return AdminMailer::sendMailToAdmin($data, $subject, $view);
     }
 
 }
+
