@@ -64,7 +64,7 @@ class BomController extends Controller {
         // If we don't find a supplier by its hashid but the request was made by an Admin,
         // create a new Invited Supplier for the Admin.
 
-        if( \Auth::user()->is_admin && ! isset($supplier) ){
+        if( ! \Auth::guest() && ! isset($supplier) && \Auth::user()->is_admin ){
 
             $supplier = InvitedSupplier::where('hashid', \Hashids::encode([$request->get('bom_id'), \Auth::id()]))->first();
 
@@ -97,7 +97,7 @@ class BomController extends Controller {
             return response('Error', 500);
         }
 
-        if( \Auth::user()->is_admin ){
+        if( ! \Auth::guest() && ! isset($supplier) && \Auth::user()->is_admin ){
             $bom->bg_responded = true;
             $bom->update();
         }
