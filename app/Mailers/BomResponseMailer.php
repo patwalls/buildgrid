@@ -15,21 +15,26 @@ class BomResponseMailer extends Mailer
     public static function sendBomResponseAcceptedMail(BomResponse $bomResponse)
     {
         $invited_supplier_email = $bomResponse->invitedSupplier->email;
-        $invited_supplier_name = $bomResponse->invitedSupplier->name;
+        $invited_supplier_name  = $bomResponse->invitedSupplier->name;
+        $purchaser_name         = $bomResponse->bom->project->user->full_name;
+        $purchaser_email        = $bomResponse->bom->project->user->email;
+        $project_name           = $bomResponse->bom->project->name;
 
-        $bom_name = $bomResponse->bom->name;
-        $bom_id = $bomResponse->bom->id;
 
-        $subject = "A response has been accepted";
+        $subject = "Your BOM has been accepted on BuildGrid";
         $view = 'email.bom_response.bom_response_accepted';
+
+
         $data = [
-            'bom_name' => $bom_name,
-            'bom_id' => $bom_id
+            'invited_supplier_name'  => $invited_supplier_name,
+            'invited_supplier_email' => $invited_supplier_email,
+            'purchaser_name'         => $purchaser_name,
+            'purchaser_email'        => $purchaser_email,
+            'project_name'           => $project_name
         ];
 
-        AdminMailer::sendMailToAdmin($data, $subject, $view);
 
-        $data = array_add($data, 'name', $invited_supplier_name);
+        AdminMailer::sendMailToAdmin($data, $subject, $view);
 
         return parent::sendMail($invited_supplier_email, $subject, $view, $data);
     }
