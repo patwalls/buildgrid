@@ -16,6 +16,10 @@ class Project extends Ardent
         'user_id'
     ];
 
+    protected $casts = [
+        'user_id' => 'int'
+    ];
+
     public static $rules = [
         'name' => 'required',
         'user_id' => 'required|numeric|exists:users,id',
