@@ -138,6 +138,7 @@
                       </div>
                   </div>
                 </div>
+                <img id="pdf-preview" src="{{ route('getBomResponsePreview', $response->id) }}"/>
                 <span class="b4 response-file"><i class="ion-paperclip"></i> <a href="{{ route('bomResponseDownload', [$response->id]) }}">Download Response</a></span>
               </div>
             </div>

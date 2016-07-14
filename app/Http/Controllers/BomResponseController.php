@@ -2,7 +2,7 @@
 
 namespace BuildGrid\Http\Controllers;
 
-use BuildGrid\Bom;
+use BuildGrid\Repositories\BomResponseRepository;
 use BuildGrid\BomResponse;
 use BuildGrid\Events\ResponseAccepted;
 use Event;
@@ -12,6 +12,17 @@ use BuildGrid\Http\Requests;
 
 class BomResponseController extends Controller
 {
+    public $bomResponseRepository;
+
+    /**
+     * BomResponseController constructor.
+     * @param BomResponseRepository $bomResponseRepository
+     */
+    public function __construct(BomResponseRepository $bomResponseRepository)
+    {
+        $this->bomResponseRepository = $bomResponseRepository;
+    }
+
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
@@ -68,5 +79,27 @@ class BomResponseController extends Controller
         }
 
         return response('OK', 200);
+    }
+
+    /**
+     * @param BomResponse $bomResponse
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response
+     */
+    public function getBomResponsePreview(Request $request)
+    {
+        $bom_response_id = $request->id;
+        $bom_response = BomResponse::findOrFail($bom_response_id);
+        $file = $this->bomResponseRepository->retrieveBomResponsePreview($bom_response);
+
+        if (! $file ) {
+            $file = \Image::make( public_path() . '/images/document_preview.png' );
+
+            $response = \Response::make($file->encode('png'));
+            $response->header('Content-Type', 'image/png');
+
+            return $response;
+        }
+
+        return response($file, 200, [ 'Content-Type' => 'image/png' ]);
     }
 }
