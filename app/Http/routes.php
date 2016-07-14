@@ -74,7 +74,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/bom/archive/{id}', 'BomController@archiveBom')->name('setArchiveBom');
 
-
+    Route::get('/bom/{bom}/preview', 'BomController@getBomPreview')->name('getBomPreview');
 
     /*
      *   Admin Routes

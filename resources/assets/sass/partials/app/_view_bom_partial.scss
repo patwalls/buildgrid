@@ -86,7 +86,10 @@
 }
 
 #pdf-preview {
+  display: block;
+  height: 400px;
   margin-bottom: 20px;
+  width: auto;
 }
 
 .submit-new-supplier-btn{

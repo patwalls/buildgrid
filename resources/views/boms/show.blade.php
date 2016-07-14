@@ -89,8 +89,7 @@
       {{-- project details --}}
       <div class="row">
           <div class="col-md-12">
-              <div id="pdf-preview" data-document-url="{{ route('bomDownload', [$bom->id, $bom->filename]) }}"></div>
-          </div>
+              <img id="pdf-preview" src="{{ route('getBomPreview', $bom->id) }}"/>
       </div>
 
       <div class="row">
