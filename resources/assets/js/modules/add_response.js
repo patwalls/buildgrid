@@ -35,7 +35,4 @@ module.exports = () => {
     document.getElementById('postResponseBtn').onclick = function () {
         bomResponseDropzone.processQueue();
     };
-
-    pdfObject.embed($('#pdf-preview').data('document-url'), '#pdf-preview', {height: "540px"});
-
 }

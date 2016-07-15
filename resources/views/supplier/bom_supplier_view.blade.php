@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="container" id="supplier-upload-wrap">
-        <div id="pdf-preview" data-document-url="{{ route('bomDownload', [$supplier->bom->id, $supplier->bom->filename]) }}"></div>
+        <img id="pdf-preview" src="{{ route('getBomPreview', $supplier->bom->id) }}"/>
         <a class="download-link" href="{{ route('supplierBomDownload', [$supplier->hashid]) }}">Download BOM</a>
         <div class="upload-wrap">
             <div class="b2">Add A Response</div>

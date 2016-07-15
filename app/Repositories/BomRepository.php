@@ -58,4 +58,40 @@ class BomRepository {
 
     }
 
+    /**
+     * @param $bom
+     * @return string
+     */
+    public function getPreviewStoragePath($bom)
+    {
+
+        $preview_storage_path = 'Boms'
+            . DIRECTORY_SEPARATOR
+            . $bom->project->user->id
+            . DIRECTORY_SEPARATOR
+            . $bom->project->id
+            . '-'
+            . snake_case(camel_case($bom->project->name))
+            . DIRECTORY_SEPARATOR
+            . 'preview.png';
+
+        return $preview_storage_path;
+
+    }
+
+    /**
+     * @param $bom
+     * @return bool|string
+     */
+    public function retrievePreview($bom)
+    {
+        $path = $this->getPreviewStoragePath($bom);
+        
+        if( ! \Storage::disk(env('DOCUMENTS_STORAGE'))->exists( $path ) ){
+            return false;
+        }
+
+        return \Storage::disk(env('DOCUMENTS_STORAGE'))->get( $path );
+    }
+
 }
