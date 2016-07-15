@@ -234,7 +234,7 @@ class BomController extends Controller {
         $file = $this->bomRepository->retrievePreview($bom);
 
         if (! $file ) {
-            $file = \Image::make( public_path() . '/images/document_preview.png' );
+            $file = \Image::make( public_path() . '/images/file_preview.png' );
 
             $response = \Response::make($file->encode('png'));
             $response->header('Content-Type', 'image/png');
