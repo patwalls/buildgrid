@@ -32,5 +32,4 @@
         bomResponseDropzone.processQueue();
     };
 
-    var pdfObject = new PDFObject.embed(document.getElementById('pdf-preview').dataset.documentUrl, '#pdf-preview', {height: "540px"});
 
