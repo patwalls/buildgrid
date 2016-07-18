@@ -31,8 +31,8 @@ class CreateNewProjectRequest extends Request
         return [
             'project_name'         => 'required|min:3',
             'bom_name'             => 'required',
-            'supplier.1.name'      => 'required',
-            'supplier.1.email'     => 'required|email',
+            'supplier.1.name'      => 'required_with:supplier.1.email',
+            'supplier.1.email'     => 'required_with:supplier.1.name|email',
             'supplier.2.name'      => 'required_with:supplier.2.email',
             'supplier.2.email'     => 'required_with:supplier.2.name|email',
             'supplier.3.name'      => 'required_with:supplier.3.email',
