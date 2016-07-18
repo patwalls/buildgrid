@@ -132,8 +132,9 @@ class SocialLoginController extends Controller
     	}
     
     	//Create a NEW user
-    	$authUser = ['first_name'   => $user->user['name']['givenName'],
-    			     'last_name'    => $user->user['name']['familyName'],
+		$google_user = $user->getRaw();
+    	$authUser = ['first_name'   => $google_user['name']['givenName'],
+    			     'last_name'    => $google_user['name']['familyName'],
     			     'email'        => $user->email,
     			     'google_id'    => $user->id,
     			     'google_token' => $user->token ];
