@@ -192,7 +192,13 @@ return [
          *  Datatables Service
          */
 
-        Yajra\Datatables\DatatablesServiceProvider::class
+        Yajra\Datatables\DatatablesServiceProvider::class,
+
+        /*
+         *  FilePreviews.io
+         */
+
+        FilePreviews\Laravel\FilePreviewsServiceProvider::class,
 
     ],
 
@@ -260,7 +266,13 @@ return [
          * Datatables
          */
 
-        'Datatables'=> Yajra\Datatables\Facades\Datatables::class
+        'Datatables'=> Yajra\Datatables\Facades\Datatables::class,
+
+        /*
+         *  Filepreviews.io
+         */
+        'FilePreviews' => FilePreviews\Laravel\FilePreviewsFacade::class
+
     ],
 
 ];
