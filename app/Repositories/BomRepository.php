@@ -3,6 +3,8 @@
 namespace BuildGrid\Repositories;
 
 
+use BuildGrid\Events\BomFileStored;
+
 class BomRepository {
 
 
@@ -15,7 +17,13 @@ class BomRepository {
     {
         $path = $this->getBomFileStoragePath($bom);
 
-        return \Storage::disk(env('DOCUMENTS_STORAGE'))->put($path, file_get_contents($file));
+        if ( ! \Storage::disk(env('DOCUMENTS_STORAGE'))->put($path, file_get_contents($file))){
+            return false;
+        }
+
+        event(new BomFileStored($bom));
+
+        return true;
 
     }
 
@@ -57,6 +65,13 @@ class BomRepository {
         return $file_storage_path;
 
     }
+
+
+    public function requestPreview()
+    {
+        $fp = app();
+    }
+
 
     /**
      * @param $bom

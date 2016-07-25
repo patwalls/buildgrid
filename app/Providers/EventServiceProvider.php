@@ -28,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
         'BuildGrid\Events\ResponseAccepted' => [
             'BuildGrid\Listeners\EmailResponseAccepted',
         ],
+        'BuildGrid\Events\BomFileStored' => [
+            'BuildGrid\Listeners\RequestBomFilePreview',
+        ],
         'Illuminate\Auth\Events\Login' => [
             'BuildGrid\Listeners\LogSuccessfulLogin',
         ],
