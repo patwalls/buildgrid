@@ -55,7 +55,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/bom_supplier_view/{hashid}', 'BomController@displayBomForSupplier' )->name('supplierBomView');
     
     Route::get('/bom/{bom_id}/bom_download/{attach?}', 'BomController@BomDownload')->name('bomDownload');
-    
+
     Route::get('/bom/{hashid}/supplier_bom_download/{attach?}', 'BomController@supplierBomDownload')->name('supplierBomDownload');
 
     Route::get('/bom/{response_id}/response_download', 'BomController@bomResponseDownload')->name('bomResponseDownload');
@@ -77,6 +77,14 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/bom/{bom}/preview', 'BomController@getBomPreview')->name('getBomPreview');
     
     Route::get('/bom_response/{id}/preview', 'BomResponseController@getBomResponsePreview')->name('getBomResponsePreview');
+
+
+    /*
+     *  Routes for generate Bom previews with FilePreviews.io
+     */
+    Route::get('/downloadFileForFilePreviews.io/{bom_id}', 'BomController@BomDownload')->name('bomDownloadFilePreviews.io');
+    Route::post('/receivePreviewFile/webhook', '\FilePreviews\Laravel\WebhookController@handleWebhook');
+
 
     /*
      *   Admin Routes
