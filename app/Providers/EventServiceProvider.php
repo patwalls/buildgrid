@@ -34,6 +34,9 @@ class EventServiceProvider extends ServiceProvider
         'Illuminate\Auth\Events\Login' => [
             'BuildGrid\Listeners\LogSuccessfulLogin',
         ],
+        'filepreviews.success' => [
+            'BuildGrid\Listeners\FilePreviewsSuccess'
+        ]
     ];
 
     /**
