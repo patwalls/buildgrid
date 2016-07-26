@@ -89,7 +89,9 @@
       {{-- project details --}}
       <div class="row">
           <div class="col-md-12">
-              <img id="pdf-preview" src="{{ route('getBomPreview', $bom->id) }}"/>
+              <a href="{{ route('bomDownload', [$bom->id]) }}" class="download-bom-link">
+                <img id="pdf-preview" src="{{ route('getBomPreview', $bom->id) }}"/>
+              </a>
       </div>
 
       <div class="row">
