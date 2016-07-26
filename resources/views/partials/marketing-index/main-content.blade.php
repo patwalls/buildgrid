@@ -38,7 +38,7 @@
                     At BuildGrid, we’ve examined the problems in procuring materials from both the developer and contractor points-of-view. Seeing both sides helped us recognize the only solution that can truly bring us into the future. <strong>We need a transparent marketplace</strong>—one that invites relevant vendors to participate in an open and fair bidding process. <strong>And that’s what we’ve built.</strong>
                 </p>
                 <p>
-                    Our leadership team has long been pushing the industry into the future. From building ReGreen, a diversified construction and engineering firm in the energy efficiency and renewable energy space, to co-founding UrbanBlox, a real estate development firm with over 100M in project pipeline.
+                    Our leadership team has long been pushing the industry into the future. Our team member experiences have touched nearly all facets of the industry from constructing of government projects to operating distribution and importation for construction materials to real estate development across multiple asset classes. We have all shared our horror stories and came together to solve this problem.
                 </p>
                 <p>
                     Now we are determined to forever change the broken process of purchasing materials in construction.
