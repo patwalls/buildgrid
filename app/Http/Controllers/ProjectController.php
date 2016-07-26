@@ -124,7 +124,7 @@ class ProjectController extends Controller
         $bom = Bom::findOrFail($id);
         $user = $bom->project->user;
 
-        if( \Auth::id() == $user->id || \Auth::user()->is_admin){
+        if( \Auth::id() == $user->id || (\Auth::user() !== null && \Auth::user()->is_admin)){
             $invited_suppliers = $bom->invitedSuppliers;
             $responses = $bom->responses->sortBy('created_at')->sortBy('status');
 
