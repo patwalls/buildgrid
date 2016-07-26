@@ -11,8 +11,6 @@ class RequestBomFilePreview
 {
     /**
      * Create the event listener.
-     *
-     * @return void
      */
     public function __construct(BomRepository $bomRepository)
     {
@@ -27,6 +25,8 @@ class RequestBomFilePreview
      */
     public function handle(BomFileStored $event)
     {
+
+        $this->bomRepository->requestPreview($event->bom);
 
     }
 }
