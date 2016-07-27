@@ -3,6 +3,8 @@
 namespace BuildGrid\Repositories;
 
 
+use BuildGrid\Events\BomFileStored;
+
 class BomRepository {
 
 
@@ -15,7 +17,13 @@ class BomRepository {
     {
         $path = $this->getBomFileStoragePath($bom);
 
-        return \Storage::disk(env('DOCUMENTS_STORAGE'))->put($path, file_get_contents($file));
+        if ( ! \Storage::disk(env('DOCUMENTS_STORAGE'))->put($path, file_get_contents($file))){
+            return false;
+        }
+
+        event(new BomFileStored($bom));
+
+        return true;
 
     }
 
@@ -58,6 +66,54 @@ class BomRepository {
 
     }
 
+
+    public function requestPreview($bom)
+    {
+        $fp = app('FilePreviews');
+
+        $options = [
+            'data' => [
+                'bom_id' => $bom->id,
+                'project' => $bom->project->name
+            ],
+            'sizes' => [
+                '400'
+            ]
+        ];
+
+        $url =  route('bomDownloadFilePreviews.io', [$bom->id]);
+
+        return $fp->generate($url, $options);
+
+    }
+
+
+    public function storePreview($bom, $file_url)
+    {
+        $curl = curl_init ($file_url);
+        curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_BINARYTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 0);
+        $preview_file = curl_exec($curl);
+        curl_close ($curl);
+
+        $path = $this->getPreviewStoragePath($bom);
+
+        if( ! $preview_file === false){
+
+            if ( \Storage::disk(env('DOCUMENTS_STORAGE'))->put($path, $preview_file)){
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
+
     /**
      * @param $bom
      * @return string
@@ -78,6 +134,7 @@ class BomRepository {
         return $preview_storage_path;
 
     }
+
 
     /**
      * @param $bom

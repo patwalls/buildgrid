@@ -64,7 +64,7 @@ class BomController extends Controller {
         // If we don't find a supplier by its hashid but the request was made by an Admin,
         // create a new Invited Supplier for the Admin.
 
-        if( ! \Auth::guest() && ! isset($supplier) && \Auth::user()->is_admin ){
+        if( ! \Auth::guest() && ! isset($supplier) && (\Auth::user() !== null && \Auth::user()->is_admin) ){
 
             $supplier = InvitedSupplier::where('hashid', \Hashids::encode([$request->get('bom_id'), \Auth::id()]))->first();
 
@@ -97,7 +97,7 @@ class BomController extends Controller {
             return response('Error', 500);
         }
 
-        if( ! \Auth::guest() && ! isset($supplier) && \Auth::user()->is_admin ){
+        if( ! \Auth::guest() && ! isset($supplier) && (\Auth::user() !== null && \Auth::user()->is_admin) ){
             $bom->bg_responded = true;
             $bom->update();
         }
@@ -173,9 +173,13 @@ class BomController extends Controller {
 
     public function bomDownload($bom_id, $attach = 'attach')
     {
+
         $bom = Bom::findOrFail($bom_id);
 
-        if ( \Auth::id() !== $bom->project->user_id && ! \Auth::user()->is_admin){
+        if (! \Auth::id() == $bom->project->user_id &&
+            ! (\Auth::user() !== null && \Auth::user()->is_admin) &&
+            ! \Route::current()->getName() == 'bomDownloadFilePreviews.io'){
+
             return response('Not Found', 404);
         }
 
@@ -214,6 +218,7 @@ class BomController extends Controller {
         return response($file['contents'], 200, $headers);
     }
 
+
     public function archiveBom(Request $request)
     {
         $id = $request->id;
@@ -224,6 +229,7 @@ class BomController extends Controller {
 
         return response('OK', 200);
     }
+
 
     /**
      * @param Bom $bom
