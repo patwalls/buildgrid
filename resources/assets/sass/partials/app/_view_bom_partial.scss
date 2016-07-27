@@ -86,7 +86,11 @@
 }
 
 #pdf-preview {
+  display: block;
+  box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.3);
+  width: 400px;
   margin-bottom: 20px;
+  height: auto;
 }
 
 .submit-new-supplier-btn{

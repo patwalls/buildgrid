@@ -16,19 +16,29 @@
             </div>
         </div>
     </div>
+
     <div class="container">
         <div class="supplier-head-wrap">
             <h2>{{ $supplier->bom->name }}</h2>
             <div class="b2">Uploaded: <span>{{ $supplier->bom->updated_at }} <small>({{ $supplier->bom->updated_at->diffForHumans() }})</small></span></div>
         </div>
     </div>
+
     <div class="container" id="supplier-upload-wrap">
-        <div id="pdf-preview" data-document-url="{{ route('bomDownload', [$supplier->bom->id, $supplier->bom->filename]) }}"></div>
-        <a class="download-link" href="{{ route('supplierBomDownload', [$supplier->hashid]) }}">Download BOM</a>
+
+        <a class="download-link" href="{{ route('supplierBomDownload', [$supplier->hashid]) }}">
+            <img id="pdf-preview" src="{{ route('getBomPreview', $supplier->bom->id) }}"/>
+        </a>
+
+        <p>
+            <a class="download-link" href="{{ route('supplierBomDownload', [$supplier->hashid]) }}">Download BOM</a>
+        </p>
+
         <div class="upload-wrap">
             <div class="b2">Add A Response</div>
             <div id="dropzone" class="dropzone"></div>        
         </div>
+
         <form onsubmit="return false;" class="response-text-wrap">
             <div class="b2">Comments</div>
             <div class="form-group">
@@ -38,7 +48,9 @@
             <input type="hidden" name="hashid" id="hashid" value="{{ $supplier->hashid }}">
             {{ csrf_field() }}
         </form>
+
     </div>
+
 </div>
 
 @endsection

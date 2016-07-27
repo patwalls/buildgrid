@@ -89,8 +89,9 @@
       {{-- project details --}}
       <div class="row">
           <div class="col-md-12">
-              <div id="pdf-preview" data-document-url="{{ route('bomDownload', [$bom->id, $bom->filename]) }}"></div>
-          </div>
+              <a href="{{ route('bomDownload', [$bom->id]) }}" class="download-bom-link">
+                <img id="pdf-preview" src="{{ route('getBomPreview', $bom->id) }}"/>
+              </a>
       </div>
 
       <div class="row">
@@ -139,6 +140,7 @@
                       </div>
                   </div>
                 </div>
+                <img id="pdf-preview" src="{{ route('getBomResponsePreview', $response->id) }}"/>
                 <span class="b4 response-file"><i class="ion-paperclip"></i> <a href="{{ route('bomResponseDownload', [$response->id]) }}">Download Response</a></span>
               </div>
             </div>

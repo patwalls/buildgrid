@@ -115,15 +115,22 @@ class ProjectController extends Controller
     }
 
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function showBom($id)
     {
         $bom = Bom::findOrFail($id);
-
-        $invited_suppliers = $bom->invitedSuppliers;
-        $responses = $bom->responses->sortBy('created_at')->sortBy('status');
-
         $user = $bom->project->user;
 
-        return view('boms.show', compact(['bom', 'invited_suppliers', 'responses', 'user']));
+        if( \Auth::id() == $user->id || (\Auth::user() !== null && \Auth::user()->is_admin)){
+            $invited_suppliers = $bom->invitedSuppliers;
+            $responses = $bom->responses->sortBy('created_at')->sortBy('status');
+
+            return view('boms.show', compact(['bom', 'invited_suppliers', 'responses', 'user']));
+        }else{
+            return redirect('home');
+        }
     }
 }

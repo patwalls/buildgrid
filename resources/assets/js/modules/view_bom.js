@@ -19,9 +19,6 @@ module.exports = (data) => {
         var group_count = $( '.supplier-item-wrap' ).length;
         $( '.supplier-item-wrap' ).last().after('<div class="row supplier-item-wrap"><div class="form-group col-md-12"><input type="text" class="form-control" name="supplier[' + group_count + '][name]" placeholder="Supplier Name"></div><div class="form-group col-md-12"><input type="text" class="form-control" name="supplier[' + group_count + '][email]" placeholder="Supplier Email"></div></div>');
     });
-
-
-    pdfObject.embed($('#pdf-preview').data('document-url'), '#pdf-preview', { height: "500px" });
     
     $(document).ready(function(){
 
