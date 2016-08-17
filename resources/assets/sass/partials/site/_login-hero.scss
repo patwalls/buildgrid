@@ -51,10 +51,10 @@
 
 .auth-form{
   width: $mobile-auth-width;
-  margin: 75px 0 200px 0;
+  // margin: 75px 0 200px 0;
   @media screen and (max-width: 480px){
     width: 360px;
-    margin: 20px 0;
+    // margin: 20px 0;
   }
   &__header{
     background: $dark-gray;
@@ -148,6 +148,8 @@
     background-repeat: no-repeat;
   }
 }
+
+
 
 
 

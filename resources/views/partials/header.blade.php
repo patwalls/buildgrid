@@ -14,7 +14,7 @@
           @if (Auth::check())          
             <li><a href="{{ url('/home') }}"><span class="b1">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }} </span></a></li>
           @else
-            <li><a href="{{ url('/login') }}"><span class="b1">Login</span></a></li>
+            <li><a href="#" id="loginModalLink"><span class="b1">Login</span></a></li>
             <li><a href="{{ url('/signup') }}"><span class="b1 signup">Sign Up</span></a></li>
           @endif
         </ul>
@@ -42,3 +42,32 @@
     </ul>
   </div>
 </div>
+
+<div class="modal__hide" id="loginForm">
+  <div class="modal__overlay-wrap">
+    <div class="modal__wrap">
+      <i class="icon ion-close-circled" id="loginFormClose"></i>
+      @include('forms.login_form')
+    </div>
+  </div>
+</div>
+
+<script>
+
+  
+  $('#loginFormClose').click(function(){
+    $('#loginForm').fadeOut();
+  });
+  
+
+  $(document).keyup(function(e) {
+     if (e.keyCode == 27) { // escape key maps to keycode `27`
+      $('#loginForm').fadeOut();
+    }
+  });
+  
+  $('#loginModalLink').click(function(){
+    $('#loginForm').fadeIn();
+  });
+
+</script>

@@ -15,6 +15,8 @@
     <link href="{{  elixir('css/site.css') }}" rel="stylesheet">
     <link href="/css/vendor.css" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
 </head>
 <body>
     
@@ -25,7 +27,6 @@
     @include('partials.footer')
 
     <!-- JavaScripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="{{ elixir('js/site.js') }}"></script>
 
 </body>
