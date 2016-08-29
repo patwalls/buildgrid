@@ -29,14 +29,13 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password">
                     </div>
-
                     <button type="submit" class="auth-form__submit">Sign Up</button>
                     <div class="auth-form__social-logins">
-                        <a class="" href="{{ route('login.google') }}" class="auth-form__social-logins--google"></a>
-                        <a class="" href="{{ route('login.linkedin') }}" class="auth-form__social-logins--linkedin"></a>
+                        <a href="{{ route('login.google') }}" class="auth-form__social-logins--google"></a>
+                        <a href="{{ route('login.linkedin') }}" class="auth-form__social-logins--linkedin"></a>
                     </div>
                 </div>
-            </form>
+            </form> 
         </div>
     </div>
 </div>
