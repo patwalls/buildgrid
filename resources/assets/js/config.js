@@ -2,6 +2,7 @@
 
 global.$ = global.jQuery = require('jquery');       // jQuery is expected to be found tied to the window object.
 global.router    = require('jquery-router-plugin');
+global.cookie    = require('js-cookie');
 global.inputmask = require('jquery.inputmask');
 global.toastr    = require('toastr');
 global.dropzone  = require('dropzone');
