@@ -28,7 +28,8 @@
         {{-- Dropzone --}}
         <div class="row">
             <div class="form-group col-md-6">
-                <div id="dropzone" class="dropzone"></div>            
+                <div id="dropzone" class="dropzone"></div>
+                <br/>Supported file types: <b>.pdf, .doc, .docx, .xls, .xlsx, .csv </b><br/>Max size: <b>10 MB</b>
             </div>
         </div>
         <div class="row">
