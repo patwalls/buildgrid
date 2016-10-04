@@ -66,3 +66,29 @@ $('#mobile-nav-link').click(function(){
 $('#mobile-menu-list li a').click(function(){
   $('#mobile-nav-link').click();
 });
+
+
+$('#registerFormClose').click(function(){
+  $('#registerForm').fadeOut();
+});
+
+$('#registerModalLink').click(function(evt){
+  evt.preventDefault();
+  $('#registerForm').fadeIn();
+});
+
+$('#loginFormClose').click(function(){
+  $('#loginForm').fadeOut();
+});
+
+$(document).keyup(function(e) {
+  if (e.keyCode == 27) { // escape key maps to keycode `27`
+    $('#loginForm').fadeOut();
+    $('#registerForm').fadeOut();
+  }
+});
+
+$('#loginModalLink').click(function(evt){
+  evt.preventDefault();
+  $('#loginForm').show();
+});
