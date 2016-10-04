@@ -1,6 +1,13 @@
 module.exports = () => {
     "use strict";
 
+    if (cookie('popupCookie')) {
+    } else {
+      $('.new-login-outer-wrap').show();
+    }
+    // set cookie to expire in 7 days
+    cookie('popupCookie', 'true', { expires: 7});
+
     // Create Dropzone
 
     var bgDropzone = new dropzone("div#dropzone", {
