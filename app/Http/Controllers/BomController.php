@@ -4,12 +4,14 @@ namespace BuildGrid\Http\Controllers;
 
 use BuildGrid\Bom;
 use BuildGrid\BomResponse;
+use BuildGrid\Events\SupplierRespondedBom;
 use BuildGrid\Project;
 use BuildGrid\InvitedSupplier;
 use BuildGrid\Repositories\BomRepository;
 use BuildGrid\Repositories\BomResponseRepository;
 use BuildGrid\Repositories\InvitedSupplierRepository;
 use BuildGrid\User;
+use Event;
 use Illuminate\Http\Request;
 use BuildGrid\Http\Requests;
 use Illuminate\Support\Facades\File;
@@ -101,6 +103,7 @@ class BomController extends Controller {
             $bom->bg_responded = true;
             $bom->update();
         }
+        Event::fire(new SupplierRespondedBom ($bom_response));
 
         return response('OK', 200);
 
