@@ -15,12 +15,6 @@
     <link href="/css/vendor.css" rel="stylesheet">
     <link href="{{  elixir('css/app.css') }}" rel="stylesheet">
 
-
-    
-    <script src="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
-    <script src="{{ elixir('js/external_app.js') }}"></script>
-
     <link rel="shortcut icon" href="/images/buildgrid-favicon-01.png">
 </head>
 
@@ -92,6 +86,9 @@
             </footer>
         </div>
 
+        <script src="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+        <script src="{{ elixir('js/external_app.js') }}"></script>
 
     </body>
 </html>

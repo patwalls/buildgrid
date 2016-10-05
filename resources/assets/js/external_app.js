@@ -27,7 +27,6 @@
         if(document.getElementsByName('bom_id')[0]) formData.append('bom_id', document.getElementsByName('bom_id')[0].value);
 
     });
-
     document.getElementById('postResponseBtn').onclick = function () {
         bomResponseDropzone.processQueue();
     };

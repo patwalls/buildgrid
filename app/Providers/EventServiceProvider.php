@@ -36,6 +36,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'filepreviews.success' => [
             'BuildGrid\Listeners\FilePreviewsSuccess'
+        ],
+        'BuildGrid\Events\SupplierRespondedBom' => [
+            'BuildGrid\Listeners\EmailSupplierResponseBom',
         ]
     ];
 
