@@ -36,14 +36,14 @@
           @if (Auth::check())
             <li><a href="{{ url('/home') }}"><span class="b1 signup">Account</span></a></li> 
           @else
-      <li><a href="{{ url('/login') }}"><span class="b1">Login</span></a></li>
-      <li id='signup-mobile-item'><a href="{{ url('/signup') }}"><span class="b1 signup">Sign Up</span></a></li>
+      <li><a href="{{ url('/login') }}" id="loginModalLink"><span class="b1">Login</span></a></li>
+      <li id='signup-mobile-item'><a href="{{ url('/signup') }}" id="registerModalLink"><span class="b1 signup">Sign Up</span></a></li>
           @endif
     </ul>
   </div>
 </div>
 
-<div class="modal__hide" id="loginForm" @if ( $errors->any() ) style="display:block;" @endif >
+<div class="modal__hide" id="loginForm">
   <div class="modal__overlay-wrap">
     <div class="modal__wrap">
       <i class="icon ion-close-circled" id="loginFormClose"></i>
@@ -52,7 +52,7 @@
   </div>
 </div>
 
-<div class="modal__hide" id="registerForm" @if ( $errors->any() ) style="display:block;" @endif >
+<div class="modal__hide" id="registerForm">
   <div class="modal__overlay-wrap">
     <div class="modal__wrap">
       <i class="icon ion-close-circled" id="registerFormClose"></i>
@@ -60,32 +60,3 @@
     </div>
   </div>
 </div>
-
-<script>
-
-  $('#registerFormClose').click(function(){
-    $('#registerForm').fadeOut();
-  });
-
-  $('#registerModalLink').click(function(evt){
-    evt.preventDefault();
-    $('#registerForm').fadeIn();
-  });
-  
-  $('#loginFormClose').click(function(){
-    $('#loginForm').fadeOut();
-  });
-
-  $(document).keyup(function(e) {
-     if (e.keyCode == 27) { // escape key maps to keycode `27`
-      $('#loginForm').fadeOut();
-      $('#registerForm').fadeOut();
-    }
-  });
-  
-  $('#loginModalLink').click(function(evt){
-    evt.preventDefault();
-    $('#loginForm').fadeIn();
-  });
-
-</script>
