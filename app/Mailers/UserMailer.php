@@ -29,7 +29,6 @@ class UserMailer extends Mailer {
     public static function sendPasswordChangedMail(User $user)
     {
         $email = $user->email;
-        $full_name = $user->full_name;
 
         $subject = 'Password changed';
         $view = 'email.users.user_password_changed';

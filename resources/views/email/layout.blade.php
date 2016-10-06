@@ -11,10 +11,11 @@
         * {
             font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
             font-size: 100%;
-            line-height: 2.5em;
+            line-height: 20px;
             margin: 0;
             padding: 0;
         }
+
         img {
             max-width: 600px;
             width: auto;
