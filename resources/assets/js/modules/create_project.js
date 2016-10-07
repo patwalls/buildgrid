@@ -1,24 +1,37 @@
 module.exports = () => {
     "use strict";
 
+    if (cookie('popupCookie')) {
+    } else {
+      $('.new-login-outer-wrap').show();
+    }
+    // set cookie to expire in 7 days
+    cookie('popupCookie', 'true', { expires: 7});
+
     // Create Dropzone
 
     var bgDropzone = new dropzone("div#dropzone", {
         url: "/bom_file_upload",
         autoProcessQueue: false,
         maxFiles: 1,
+        maxFilesize: 10,
+        acceptedFiles: ".pdf,.doc,.docx,.xls,.xlsx,.csv,image/*",
         maxfilesexceeded: (file) => {        // For replacing the current file with another one that was just dropped/selected.
-            this.removeAllFiles();
-            this.addFile(file);
+            bgDropzone.removeAllFiles();
+            bgDropzone.addFile(file);
         },
         dictDefaultMessage: "<i class='fa fa-upload fa-4x'></i><br/><h3>Drag & Drop</h3> files anywhere or <span class='underline'>browse...</span>",
         success: (file, response) => {
             toastr.success(bgDropzone.options.params.toast_text, '', { onHidden: () => { window.location.href = "/bom/"+bgDropzone.options.params.bom_id; } });
         },
-        error: (file, errorMessage) => {
-            toastr.error('There was an error processing your request: ' + errorMessage, '');
+        error: (file, errorMessage, xhr) => {
+            if (xhr) {
+                toastr.error('There was an error processing your request: ' + errorMessage, '');
+            }
+        },
+        uploadProgress: (progress)  => {
+            bgDropzone.querySelector("#total-progress .progress-bar").style.width = progress + "%";
         }
-        
     })
         .on('addedfile', (file) => {
 
@@ -31,7 +44,6 @@ module.exports = () => {
 
             $('input[name=bom_name]').val(bomName);
             $('input[name=filename]').val(file.name.toString());
-
         });
 
 

@@ -1,4 +1,4 @@
-<div class="new-login-outer-wrap">
+<div class="new-login-outer-wrap" style="display:none;">
   <div class="new-login-wrap">
     <div class="new-login-header-wrap">
       <img src="{{ url('images/bg_door_logo.png') }}" alt="">

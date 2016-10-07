@@ -13,7 +13,7 @@ Route::group(['middleware' => 'web'], function () {
     // Route::auth();
 
     // Authentication Routes...
-    // Route::get('login', 'Auth\AuthController@showLoginForm');
+    Route::get('login', 'Auth\AuthController@showLoginForm');
     Route::post('login', 'Auth\AuthController@login');
     Route::get('logout', 'Auth\AuthController@logout');
 
@@ -26,7 +26,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\PasswordController@reset');
     
-    // Route::get('signup', 'Auth\AuthController@showRegistrationForm');
+    Route::get('signup', 'Auth\AuthController@showRegistrationForm');
     
     // User profile
     Route::get('profile', ['uses' => 'UserController@edit', 'as' => 'edit.profile']);
