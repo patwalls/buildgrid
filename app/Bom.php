@@ -67,5 +67,4 @@ class Bom extends Ardent
     {
         return ($this->bg_responded == true) ? 'Yes' : 'No';
     }
-
 }
