@@ -34,7 +34,7 @@
                                     <div class="info-card">
                                         <div class="info-card-header">
                                             <a href="{{ route('getShowBom', [$bom->id]) }}" class="b2">{{ $bom->name }}</a>
-                                            @if($bom->status != 'archived')
+                                            @if($bom->status != 'archived' && $bom->status != 'accepted')
                                                 <a id="archive-icon" class="archive-icon" tabindex="0" role="button" data-href="{{route('setArchiveBom', $bom->id)}}" data-toggle="popover" data-trigger="focus" title="Are you sure?" data-placement="auto top" data-container="body" data-content=''>
                                                     <i class="b2 ion-ios-trash-outline"></i>
                                                 </a>

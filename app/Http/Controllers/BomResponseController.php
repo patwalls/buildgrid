@@ -34,8 +34,11 @@ class BomResponseController extends Controller
         $bom_response = BomResponse::findOrFail($id);
         $bom_response->status = $status;
         $bom_response->save();
-
+        
         $bom = $bom_response->bom;
+        //Set other responses Not Accepted
+        $bom_response->responsesNotAccepted($id, $bom->id)->get();
+
         $bom->status = $status;
         $bom->update();
 
