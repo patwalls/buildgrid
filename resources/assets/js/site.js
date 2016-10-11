@@ -11,6 +11,7 @@ $(document).ready(function(){
     var data = $(this).serialize();
     $.post(url, data, function(response){
       $("form[data-form='contact']").before("<h4>Thank you for contacting us.  Someone will be in touch with you shortly.</h4>");
+        $("form[data-form='contact'] *").attr('disabled', 'disabled');
     });
   });
   
