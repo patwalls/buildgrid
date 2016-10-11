@@ -4,7 +4,7 @@
             <span class="header">Login to <strong>BuildGrid</strong></span>
         </div>
         <div class="auth-form__content">
-            <form role="form" method="POST" action="{{ url('/login') }}" class="login-form">
+            <form role="form" method="POST" action="{{ url('/login') }}" class="login-form" id="loginForm">
                 <div class="auth-form__fields">                
                     {!! csrf_field() !!}
                     @if ( $errors->any() )
@@ -26,7 +26,8 @@
                     </div>
                 </div>
                 <div class="auth-form__password">
-                    <a href="{{ url('/password/reset') }}">Forgot Password?</a>
+                    <a href="{{ url('/password/reset') }}">Forgot Password?</a><span>&nbsp;&nbsp;</span>
+                    <a href="#" id="loginRegistrationRedirect"> Don't have an account? Sign Up</a>
                 </div>
             </form>
         </div>

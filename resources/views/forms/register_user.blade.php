@@ -35,6 +35,9 @@
                         <a href="{{ route('login.linkedin') }}" class="auth-form__social-logins--linkedin"></a>
                     </div>
                 </div>
+                <div class="auth-form__password">
+                    <a href="#" id="registerLoginRedirect">Already have an account? Login</a>
+                </div>
             </form> 
         </div>
     </div>

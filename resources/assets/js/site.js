@@ -44,8 +44,7 @@ $('#mobile-nav-link').click(function(){
     $('#mobile-nav-link i').removeClass( endingMenuIcon ).addClass( startingMenuIcon);
   }else{
     $('#mobile-nav-link i').addClass( startingMenuIcon);
-  } 
-
+  }
 
   // Fade Toggle the menu on to the screen
   $('#mobile-menu-wrap').fadeToggle('slow');
@@ -61,12 +60,12 @@ $('#mobile-nav-link').click(function(){
     $( menuContainer ).removeClass( mobileMenuOutEffect ).addClass( mobileMenuInEffect );
   }else{
     $( menuContainer ).addClass( mobileMenuInEffect );
-  } 
+  }
 });
+
 $('#mobile-menu-list li a').click(function(){
   $('#mobile-nav-link').click();
 });
-
 
 $('#registerFormClose').click(function(){
   $('#registerForm').fadeOut();
@@ -82,7 +81,7 @@ $('#loginFormClose').click(function(){
 });
 
 $(document).keyup(function(e) {
-  if (e.keyCode == 27) { // escape key maps to keycode `27`
+  if (e.keyCode == 27) { 
     $('#loginForm').fadeOut();
     $('#registerForm').fadeOut();
   }
@@ -92,3 +91,23 @@ $('#loginModalLink').click(function(evt){
   evt.preventDefault();
   $('#loginForm').show();
 });
+
+// $("#loginForm").submit(function(evt){
+//   evt.preventDefault();
+//   var url = $(this).attr("action");
+//   var data = $(this).serialize();
+//   $.post(url, data, function(response){
+//     $("#loginForm").before("<h4>Thank you for contacting us.  Someone will be in touch with you shortly.</h4>");
+//   });
+// });
+
+$('#loginRegistrationRedirect').click(function(){
+  $('#loginForm').fadeOut();
+  $('#registerForm').fadeIn();
+});
+
+$('#registerLoginRedirect').click(function(){
+  $('#registerForm').fadeOut();
+  $('#loginForm').fadeIn();
+});
+
