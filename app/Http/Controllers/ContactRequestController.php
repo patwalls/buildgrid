@@ -2,30 +2,20 @@
 
 namespace BuildGrid\Http\Controllers;
 
+use BuildGrid\Events\ContactRequestEvent;
 use Illuminate\Http\Request;
-use BuildGrid\Http\Requests;
-use BuildGrid\ContactRequest;
-use BuildGrid\Http\Controllers\Controller;
+
 
 class ContactRequestController extends Controller
 {
     public function addContactRequest(Request $request)
     {
 
-      $this->validate($request, [
-          'name' => 'required',
-          'email' => 'required|email',
-      ]);
+      $input = $request->only(['name', 'email', 'message_body']);
 
-      $project = ContactRequest::create([
-        'name' => $request->get('name'), 
-        'email' => $request->get('email'), 
-        'message' => $request->get('message')
-      ]); 
+      \Event::fire(new ContactRequestEvent($input));
 
-      return redirect('/');
- 
-      // return response()->json(['response' => 'Thank You for submitting your request.  We will contact you shortly']);
+      return response()->json(['response' => 'Thank You for submitting your request.  We will contact you shortly']);
       
     }
 }
