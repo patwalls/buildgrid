@@ -19,7 +19,7 @@
                         <label for="password">Password</label>
                         <input type="password" name="password">
                     </div>
-                    <button type="submit" class="auth-form__submit">Sign in</button>
+                    <button type="submit" class="auth-form__submit">Login</button>
                     <div class="auth-form__social-logins">
                         <a href="{{ route('login.google') }}" class="auth-form__social-logins--google"></a>
                         <a href="{{ route('login.linkedin') }}" class="auth-form__social-logins--linkedin"></a>

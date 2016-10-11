@@ -1,7 +1,7 @@
 <div class="utility-center-row">
     <div class="auth-form">
         <div class="auth-form__header">
-            <span class="header">Signup with <strong>BuildGrid</strong></span>
+            <span class="header">Sign Up with <strong>BuildGrid</strong></span>
         </div>
         <div class="auth-form__content">
             <form role="form" method="POST" action="{{ url('/register') }}" class="register-form">
