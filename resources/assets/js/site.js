@@ -92,14 +92,48 @@ $('#loginModalLink').click(function(evt){
   $('#loginForm').show();
 });
 
-// $("#loginForm").submit(function(evt){
-//   evt.preventDefault();
-//   var url = $(this).attr("action");
-//   var data = $(this).serialize();
-//   $.post(url, data, function(response){
-//     $("#loginForm").before("<h4>Thank you for contacting us.  Someone will be in touch with you shortly.</h4>");
-//   });
-// });
+$("#loginFormWrap").submit(function(evt){
+  evt.preventDefault();
+  var url = $("#loginFormWrap").attr("action");
+  var data = $("#loginFormWrap").serialize();
+  $.ajax({
+     url: url,
+     data: data,
+     processData: false,
+     type: 'POST',
+     success: function ( data ) {
+         window.location.replace("/home");
+     },
+     error: function(XMLHttpRequest, textStatus, errorThrown)
+     {
+      $.each(XMLHttpRequest.responseJSON, function(i, error) {
+         $('#loginErrorMessage').fadeIn().html(error);
+      });
+     }
+  });
+});
+
+$("#registerFormWrap").submit(function(evt){
+  evt.preventDefault();
+  var url = $("#registerFormWrap").attr("action");
+  var data = $("#registerFormWrap").serialize();
+  $.ajax({
+     url: url,
+     data: data,
+     processData: false,
+     type: 'POST',
+     success: function ( data ) {
+         window.location.replace("/home");
+     },
+     error: function(XMLHttpRequest, textStatus, errorThrown)
+     {
+      $.each(XMLHttpRequest.responseJSON, function(i, error) {
+         $('#registerErrorMessage').fadeIn().html(error);
+      });
+     }
+  });
+});
+
 
 $('#loginRegistrationRedirect').click(function(){
   $('#loginForm').fadeOut();
