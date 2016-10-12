@@ -45,8 +45,7 @@ $('#mobile-nav-link').click(function(){
     $('#mobile-nav-link i').removeClass( endingMenuIcon ).addClass( startingMenuIcon);
   }else{
     $('#mobile-nav-link i').addClass( startingMenuIcon);
-  } 
-
+  }
 
   // Fade Toggle the menu on to the screen
   $('#mobile-menu-wrap').fadeToggle('slow');
@@ -62,12 +61,12 @@ $('#mobile-nav-link').click(function(){
     $( menuContainer ).removeClass( mobileMenuOutEffect ).addClass( mobileMenuInEffect );
   }else{
     $( menuContainer ).addClass( mobileMenuInEffect );
-  } 
+  }
 });
+
 $('#mobile-menu-list li a').click(function(){
   $('#mobile-nav-link').click();
 });
-
 
 $('#registerFormClose').click(function(){
   $('#registerForm').fadeOut();
@@ -83,7 +82,7 @@ $('#loginFormClose').click(function(){
 });
 
 $(document).keyup(function(e) {
-  if (e.keyCode == 27) { // escape key maps to keycode `27`
+  if (e.keyCode == 27) { 
     $('#loginForm').fadeOut();
     $('#registerForm').fadeOut();
   }
@@ -93,3 +92,57 @@ $('#loginModalLink').click(function(evt){
   evt.preventDefault();
   $('#loginForm').show();
 });
+
+$("#loginFormWrap").submit(function(evt){
+  evt.preventDefault();
+  var url = $("#loginFormWrap").attr("action");
+  var data = $("#loginFormWrap").serialize();
+  $.ajax({
+     url: url,
+     data: data,
+     processData: false,
+     type: 'POST',
+     success: function ( data ) {
+         window.location.replace("/home");
+     },
+     error: function(XMLHttpRequest, textStatus, errorThrown)
+     {
+      $.each(XMLHttpRequest.responseJSON, function(i, error) {
+         $('#loginErrorMessage').fadeIn().html(error);
+      });
+     }
+  });
+});
+
+$("#registerFormWrap").submit(function(evt){
+  evt.preventDefault();
+  var url = $("#registerFormWrap").attr("action");
+  var data = $("#registerFormWrap").serialize();
+  $.ajax({
+     url: url,
+     data: data,
+     processData: false,
+     type: 'POST',
+     success: function ( data ) {
+         window.location.replace("/home");
+     },
+     error: function(XMLHttpRequest, textStatus, errorThrown)
+     {
+      $.each(XMLHttpRequest.responseJSON, function(i, error) {
+         $('#registerErrorMessage').fadeIn().html(error);
+      });
+     }
+  });
+});
+
+
+$('#loginRegistrationRedirect').click(function(){
+  $('#loginForm').fadeOut();
+  $('#registerForm').fadeIn();
+});
+
+$('#registerLoginRedirect').click(function(){
+  $('#registerForm').fadeOut();
+  $('#loginForm').fadeIn();
+});
+

@@ -2,3 +2,14 @@
   width: 100%;
   background: red;
 }
+.error{
+  &__modal-text{
+    width: 100%;
+    background: $dark-gray;
+    display: block;
+    padding: 13px 10px 10px 10px;
+    margin: 0 0 10px 0;
+    color: white;
+    border-radius: 5px;
+  }
+}
