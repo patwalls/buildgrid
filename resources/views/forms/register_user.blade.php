@@ -1,18 +1,13 @@
 <div class="utility-center-row">
     <div class="auth-form">
         <div class="auth-form__header">
-            <span class="header">Signup with <strong>BuildGrid</strong></span>
+            <span class="header">Sign Up with <strong>BuildGrid</strong></span>
         </div>
         <div class="auth-form__content">
-            <form role="form" method="POST" action="{{ url('/register') }}" class="register-form">
+            <form role="form" method="POST" action="{{ url('/register') }}" class="register-form" id="registerFormWrap">
                 <div class="auth-form__fields">
                   {!! csrf_field() !!}
-                    @if ( $errors->any() )
-                        {{ $errors->first('first_name') }}
-                        {{ $errors->first('last_name') }}
-                        {{ $errors->first('email') }}
-                        {{ $errors->first('password') }}
-                    @endif
+                    <span class="error__modal-text" id="registerErrorMessage" style="display:none;"></span>
                     <div class="@if ($errors->has('first_name')) has-error @endif utility--stack-col">
                             <label for="first_name">First Name</label>
                             <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}">
@@ -34,6 +29,9 @@
                         <a href="{{ route('login.google') }}" class="auth-form__social-logins--google"></a>
                         <a href="{{ route('login.linkedin') }}" class="auth-form__social-logins--linkedin"></a>
                     </div>
+                </div>
+                <div class="auth-form__password">
+                    <a href="#" id="registerLoginRedirect">Already have an account? Login</a>
                 </div>
             </form> 
         </div>

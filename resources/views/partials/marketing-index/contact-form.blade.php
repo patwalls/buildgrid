@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="name" class="b4">Message</label>
-                <textarea name="message" id="" cols="30" rows="6"></textarea>
+                <textarea name="message_body" id="" cols="30" rows="6"></textarea>
             </div>
             <button class="submit b4" type="submit">Submit <i class="icon ion-ios-arrow-right"></i></button>
         </form>

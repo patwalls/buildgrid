@@ -27,4 +27,12 @@ class BomResponse extends Ardent
         'invitedSupplier' => [self::BELONGS_TO, 'BuildGrid\InvitedSupplier'],
         'bom' => [self::BELONGS_TO, 'BuildGrid\Bom']
     ];
+    
+    public function scopeResponsesNotAccepted($query, $id, $bom_id)
+    {
+        $query->where('bom_id', $bom_id)
+                ->where('id', '<>', $id)
+                ->where('status', '<>', 'rejected')
+                ->update(['status' => 'not accepted']);
+    }
 }

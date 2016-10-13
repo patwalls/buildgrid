@@ -10,7 +10,9 @@
                   <span class="b2">{{ $bom->project->name }}</span>
                 </div>
                 <div class="col-md-6 item-wrap">
-                  <a id="archive-bom" tabindex="0" role="button" data-toggle="popover" data-href="{{route('setArchiveBom', $bom->id)}}" data-placement="bottom" title="Are you sure?" data-container="body" - data-content=''><span class="b2"><i class="icon ion-archive"></i>Archive BOM</span></a>
+                  @if($bom->status != 'archived' && $bom->status != 'accepted')
+                      <a id="archive-bom" tabindex="0" role="button" data-toggle="popover" data-href="{{route('setArchiveBom', $bom->id)}}" data-placement="bottom" title="Are you sure?" data-container="body" - data-content=''><span class="b2"><i class="icon ion-archive"></i>Archive BOM</span></a>
+                  @endif
                   <a href="{{ route('getCreateProject') }}"><button class="btn btn-success new-proj-btn">New Project</button></a>
                 </div>
             </div>
@@ -41,39 +43,41 @@
                   </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="b2">
-                <button type="button" id="myButton" data-loading-text="Sending..."  autocomplete="off"  data-href="{{ route('sendSupplierReminder',[$invited_supplier->id])  }}" class="btn btn-primary btn-sm resend-email-notification js-resend-email">Resend BOM</button>
-                <p class="bg-success" id="bom-notify-success">Your BOM has been resent</p> 
+          @if($bom->status != 'archived' && $bom->status != 'accepted')
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="b2">
+                    <button type="button" id="myButton" data-loading-text="Sending..."  autocomplete="off"  data-href="{{ route('sendSupplierReminder',[$invited_supplier->id])  }}" class="btn btn-primary btn-sm resend-email-notification js-resend-email">Resend BOM</button>
+                    <p class="bg-success" id="bom-notify-success">Your BOM has been resent</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+          @endif
         </div>
       </div>
       @endforeach
-      <form method="post" action="{{ route('addNewSuppliers', [$bom->id]) }}">
-        <hr class="light-hr">
-        <div class="row supplier-item-wrap">
-{{--           <div class="form-group col-md-12">
-              <label>Invite more suppliers to your BOM</label>
-              <input type="text" class="form-control" name="supplier[1][name]" placeholder="Supplier Name">
-          </div>
-          <div class="form-group col-md-12">
-              <input type="text" class="form-control" name="supplier[1][email]" placeholder="Supplier Email">
-          </div> --}}
-        </div>
-        <div class="row center-block">
-          <button class="add-supplier-to-bom"><i class="icon ion-plus-circled"></i> Add another supplier</button>
-        </div>
-        <input type="hidden" name="bom_id" value="{{ $bom->id }}">
-        {!! csrf_field() !!}
-        <div class="row">
-          <div class="col-md-12 submit-new-supplier-btn">
-            
-          </div>
-        </div>
-      </form>
+      @if($bom->status != 'archived' && $bom->status != 'accepted')
+          <form method="post" action="{{ route('addNewSuppliers', [$bom->id]) }}">
+            <hr class="light-hr">
+            <div class="row supplier-item-wrap">
+    {{--           <div class="form-group col-md-12">
+                  <label>Invite more suppliers to your BOM</label>
+                  <input type="text" class="form-control" name="supplier[1][name]" placeholder="Supplier Name">
+              </div>
+              <div class="form-group col-md-12">
+                  <input type="text" class="form-control" name="supplier[1][email]" placeholder="Supplier Email">
+              </div> --}}
+            </div>
+            <div class="row center-block">
+              <button class="add-supplier-to-bom"><i class="icon ion-plus-circled"></i> Add another supplier</button>
+            </div>
+            <input type="hidden" name="bom_id" value="{{ $bom->id }}">
+            {!! csrf_field() !!}
+            <div class="row">
+              <div class="col-md-12 submit-new-supplier-btn"></div>
+            </div>
+          </form>
+      @endif
     </div>
     <div class="col-sm-12 col-md-9 col-lg-9 right-app-dash-outer-wrap">
       <h2>{{ $bom->name }}</h2>
@@ -133,9 +137,9 @@
                            <button class="btn btn-primary new-proj-btn btn-accept-response" data-href="{{route ('setResponseAccepted', $response->id)}}">Accept</button>
                            <button class="btn btn-confirm btn-decline-response" data-href="{{route('setResponseRejected', $response->id)}}">Decline</button>
                     @elseif($response->status == 'accepted')
-                           <button class="btn btn-primary new-proj-btn btn-undo-response" data-href="{{route('setResponsePending', $response->id)}}">{{ucfirst($response->status)}}</button>
-                    @elseif($response->status == 'rejected')
-                            <button class="btn btn-primary btn-confirm btn-undo-response" data-href="{{route('setResponsePending', $response->id)}}">{{ucfirst($response->status)}}</button>
+                           <button class="btn btn-primary new-proj-btn" data-href="{{route('setResponsePending', $response->id)}}">{{ucfirst($response->status)}}</button>
+                    @elseif($response->status == 'rejected' || $response->status == 'not accepted')
+                            <button class="btn btn-primary btn-confirm" data-href="{{route('setResponsePending', $response->id)}}">{{ucfirst($response->status)}}</button>
                     @endif
                       </div>
                   </div>

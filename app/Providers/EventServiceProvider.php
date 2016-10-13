@@ -39,6 +39,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'BuildGrid\Events\SupplierRespondedBom' => [
             'BuildGrid\Listeners\EmailSupplierResponseBom',
+        ],
+        'BuildGrid\Events\ContactRequestEvent' => [
+            'BuildGrid\Listeners\ContactRequestListener'
         ]
     ];
 

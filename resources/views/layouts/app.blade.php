@@ -64,7 +64,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ url('/home') }}"> <i class="fa fa-btn fa-home"></i>Home</a></li>
+                                    <li><a href="{{ url('/home') }}"> <i class="fa fa-btn fa-home"></i> Home</a></li>
                                     <li><a href="{{ url('/profile') }}"><i class="fa fa-btn fa-user"></i> Profile</a></li>
                                     @if (Auth::user()->is_admin)
                                         <li><a href="{{ url('/admin') }}"><i class="fa fa-btn fa-gear"></i> Admin</a></li>

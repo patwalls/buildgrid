@@ -47,3 +47,7 @@ strong {
   @include display(flex);
   @include flex-direction(column);
 }
+
+button, a{
+  cursor: pointer;
+}

@@ -30,14 +30,12 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
 
     protected $redirectAfterLogout = '/';
 
     /**
      * Create a new authentication controller instance.
      *
-     * @return void
      */
     public function __construct()
     {
@@ -79,4 +77,21 @@ class AuthController extends Controller
 
         return $user;
     }
+
+
+    /**
+     * Redirects a user based on his role on BG.
+     * @return string
+     */
+    public function redirectPath()
+    {
+
+        if( \Auth::user()->is_admin == true){
+            return '/admin';
+        }
+
+        return '/home';
+
+    }
+
 }
