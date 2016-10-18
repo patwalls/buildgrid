@@ -51,3 +51,10 @@ strong {
 button, a{
   cursor: pointer;
 }
+
+.form{
+  &__password-wrap{
+    @include display(flex);
+    @include justify-content(space-between);
+  }
+}

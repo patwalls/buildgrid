@@ -17,7 +17,10 @@
                         <input type="email" class="form-control" name="email" value="{{ old('email') }}">
                     </div>
                     <div class="@if ($errors->has('password')) has-error @endif utility--stack-col">
-                        <label for="password">Password</label>
+                        <div class="form__password-wrap">
+                            <label for="password">Password</label>
+                            <a href="{{ url('/password/reset') }}">Forgot Password?</a>
+                        </div>
                         <input type="password" name="password">
                     </div>
                     <button type="submit" class="auth-form__submit">Login</button>
@@ -27,7 +30,6 @@
                     </div>
                 </div>
                 <div class="auth-form__password">
-                    <a href="{{ url('/password/reset') }}">Forgot Password?</a><span>&nbsp;&nbsp;</span>
                     <a href="#" id="loginRegistrationRedirect"> Don't have an account? Sign Up</a>
                 </div>
             </form>
