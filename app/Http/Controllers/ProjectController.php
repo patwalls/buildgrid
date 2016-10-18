@@ -35,6 +35,10 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        if( \Auth::user()->is_admin ){
+            return \Redirect::route('admin.dashboard');
+        }
+
         $projects = \Auth::user()->projects;
 
         if( $projects->isEmpty() ){
