@@ -26,8 +26,11 @@ class Project extends Ardent
     ];
 
     public static $relationsData = [
-        'boms' => [self::HAS_MANY, 'BuildGrid\Bom'],
         'user' => [self::BELONGS_TO, 'BuildGrid\User']
     ];
     
+    public function boms()
+    {
+        return $this->hasMany('BuildGrid\Bom')->withTrashed();
+    }
 }
