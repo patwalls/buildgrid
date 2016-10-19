@@ -125,7 +125,7 @@ class ProjectController extends Controller
      */
     public function showBom($id)
     {
-        $bom = Bom::findOrFail($id);
+        $bom = Bom::withTrashed()->findOrFail($id);
         $user = $bom->project->user;
 
         if( \Auth::id() == $user->id || (\Auth::user() !== null && \Auth::user()->is_admin)){

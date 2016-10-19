@@ -66,7 +66,7 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function projects(){
-        return $this->hasMany('BuildGrid\Project');
+        return $this->hasMany('BuildGrid\Project')->withTrashed();
     }
 
     /**
@@ -76,7 +76,7 @@ class User extends Authenticatable
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
     public function boms(){
-        return $this->hasManyThrough('BuildGrid\Bom', 'BuildGrid\Project');
+        return $this->hasManyThrough('BuildGrid\Bom', 'BuildGrid\Project')->withTrashed();
     }
 
     public function active_boms()
