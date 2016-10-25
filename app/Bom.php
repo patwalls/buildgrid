@@ -30,6 +30,10 @@ class Bom extends Ardent
         'bg_responded' => 'boolean',
     ];
 
+    protected $touches = [
+        'project'
+    ];
+
 
     public static $rules = [
         'name'       => 'required',
