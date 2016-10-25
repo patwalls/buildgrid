@@ -33,4 +33,21 @@ class Project extends Ardent
     {
         return $this->hasMany('BuildGrid\Bom')->withTrashed();
     }
+
+    public function scopeActiveBoms($query)
+    {
+        return $query->whereHas('boms', function($query){
+            $query->where('status', 'active');
+        } );
+    }
+
+    public function scopeArchivedBoms($query)
+    {
+        return $query->whereHas('boms', function($query){
+            $query->where('status', 'archived');
+        } );
+    }
+
+
+
 }
