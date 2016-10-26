@@ -2,6 +2,8 @@
         url: "/bom_response_upload",
         autoProcessQueue: false,
         maxFiles: 1,
+        maxFilesize: 10,
+        acceptedFiles: ".pdf,.doc,.docx,.xls,.xlsx,.csv,image/*",
         maxfilesexceeded: function maxfilesexceeded(file) {
             this.removeAllFiles();
             this.addFile(file);
@@ -16,8 +18,13 @@
                 if(document.getElementById('hashid')) window.location.href = "/"; else window.location.reload();
             })
         },
-        error: function error(file, errorMessage) {
-            swal("Oops...", "Something went wrong! Please try again later.", "error");
+        error: function error(file, errorMessage, xhr) {
+            if (xhr) {
+                swal("Oops...", "Something went wrong! Please try again later.", "error");
+            }
+        },
+        uploadProgress: (progress)  => {
+           this.querySelector("#total-progress .progress-bar").style.width = progress + "%";
         }
     }).on("sending", function (file, xhr, formData) {
         formData.append("_token",  document.getElementsByName('_token')[0].value);

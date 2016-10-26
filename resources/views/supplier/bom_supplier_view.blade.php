@@ -36,7 +36,8 @@
 
         <div class="upload-wrap">
             <div class="b2">Add A Response</div>
-            <div id="dropzone" class="dropzone"></div>        
+            <div id="dropzone" class="dropzone"></div>
+            <br/>Supported file types: <b>.pdf, .doc, .docx, .xls, .xlsx, .csv </b><br/>Max size: <b>10 MB</b>
         </div>
 
         <form onsubmit="return false;" class="response-text-wrap">
