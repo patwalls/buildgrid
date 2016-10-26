@@ -26,7 +26,7 @@
                 @foreach($projects as $project)
                     <div class="row project-grid-item">
                         <div class="col-md-12">
-                            <div class="b2 project-title">{{ $project->name }}</div>
+                            <div class="b2 project-title">{{ $project->name }} <small>{{ $project->updated_at->diffForHumans() }}</small></div>
                         </div>
                         @foreach($project->boms->sortBy('status')->chunk(4) as $chunk)
                             @foreach($chunk as $bom)

@@ -39,11 +39,15 @@ class ProjectController extends Controller
             return \Redirect::route('admin.dashboard');
         }
 
-        $projects = \Auth::user()->projects;
-
-        if( $projects->isEmpty() ){
+        if( \Auth::user()->projects->count() == 0 ){
             return \Redirect::route('getCreateProject');
         }
+
+        $projects_with_active_boms = \Auth::user()->projects()->activeBoms()->orderBy('updated_at', 'desc')->get();
+
+        $projects_with_archived_boms = \Auth::user()->projects()->archivedBoms()->orderBy('updated_at', 'desc')->get();
+
+        $projects = $projects_with_active_boms->merge($projects_with_archived_boms);
 
         return view('home', compact('projects'));
 
