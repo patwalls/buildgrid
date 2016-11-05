@@ -21,7 +21,7 @@
 	color: #fff;
 }
 
-.resend-email-notification{
+.resend-email-notification, .copy-link{
   i{
     color: $dark-gray;
     font-size: 24px; 
@@ -32,13 +32,15 @@
   border:none;
   background-color: transparent;
   color: $white;
-  @include display(flex);
+  font-weight: bold;
   @include align-items(center);
   i{
     font-size: 32px;
     margin-bottom: -5px;
     margin-right: 5px;
   }
+  margin-bottom: 15px;
+  width: 100%;
 }
 
 .update-suppliers-btn{

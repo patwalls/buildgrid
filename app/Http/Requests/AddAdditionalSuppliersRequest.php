@@ -37,12 +37,13 @@ class AddAdditionalSuppliersRequest extends Request
      * Attempting to make custom error messages
      * @return array
      */
-    // public function messages()
-    // {
-    //     return [
-    //         'email.required' => 'Er, you forgot your email address!'
-    //     ];
-    // }
+     public function messages()
+     {
+         return [
+             'supplier.*.name.required' => 'The name is required',
+             'supplier.*.email.required' => 'The mail is required'
+         ];
+     }
     
 
 }
