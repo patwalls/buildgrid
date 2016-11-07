@@ -17,7 +17,11 @@ module.exports = (data) => {
     $('.add-supplier-to-bom').click((e) => {
         e.preventDefault();
         var group_count = $( '.supplier-item-wrap' ).length;
-        $( '.supplier-item-wrap' ).last().after('<div class="row supplier-item-wrap"><div class="form-group col-md-12"><input type="text" class="form-control" name="supplier[' + group_count + '][name]" placeholder="Supplier Name"></div><div class="form-group col-md-12"><input type="text" class="form-control" name="supplier[' + group_count + '][email]" placeholder="Supplier Email"></div></div>');
+        $( '.supplier-item-wrap' ).last().after('<div class="row supplier-item-wrap"><div class="form-group col-md-12"><input type="text" class="form-control" name="supplier[' + group_count + '][name]" placeholder="Name"></div><div class="form-group col-md-12"><input type="text" class="form-control" name="supplier[' + group_count + '][email]" placeholder="Email"></div></div>');
+    });
+
+    $('.copy-link').click(() => {
+        $('#copy-notify-success').fadeIn( 400 ).delay( 4000 ).fadeOut( 400 );
     });
     
     $(document).ready(function(){

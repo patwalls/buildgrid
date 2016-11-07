@@ -10,6 +10,15 @@ body{
 .app-content {
   margin-top: 20px;
   padding-bottom: 80px;
+
+  .container.bom-info{
+    width: 100%;
+    display:flex;
+    .row{
+      width: 100%;
+    }
+  }
+
 }
 /* ------------ */
 
@@ -40,6 +49,10 @@ body{
     }
   }
 }
+.app-current-proj-outer-wrap.view-bom{
+  margin-top: -20px;
+}
+
 .new-proj-btn{
   background: $admin-green;
   border: 0px;
