@@ -2,7 +2,7 @@
 
 @section ('content')
 
-<div class="app-current-proj-outer-wrap">
+<div class="app-current-proj-outer-wrap view-bom">
     <div class="container" id="app-current-proj-wrap">
         <div class="row">
             <div class="col-md-12 inner-wrap">
@@ -20,10 +20,10 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container bom-info">
   <div class="row">
     <div class="col-sm-12 col-md-3 col-lg-3 left-app-dash-outer-wrap">
-      <div class="b2 supplier-title">Suppliers</div>
+      <div class="b2 supplier-title">Invited Suppliers</div>
       @foreach( $invited_suppliers as $invited_supplier)
       <div class="panel panel-default suppier-item-wrap">
         <div class="panel-body">
@@ -47,8 +47,10 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="b2">
-                    <button type="button" id="myButton" data-loading-text="Sending..."  autocomplete="off"  data-href="{{ route('sendSupplierReminder',[$invited_supplier->id])  }}" class="btn btn-primary btn-sm resend-email-notification js-resend-email">Resend BOM</button>
+                    <button type="button" id="myButton" data-loading-text="Sending..."  autocomplete="off"  data-href="{{ route('sendSupplierReminder',[$invited_supplier->id])  }}" class="btn btn-primary btn-sm resend-email-notification js-resend-email">Resend Email</button>
                     <p class="bg-success" id="bom-notify-success">Your BOM has been resent</p>
+                    <button type="button" id="copyLink" class="btn btn-primary btn-sm copy-link" data-href="{{url('bom_supplier_view', $invited_supplier->hashid)}}">Copy Link</button>
+                    <p id="copy-notify-success">{{url('bom_supplier_view', $invited_supplier->hashid)}}</p>
                   </div>
                 </div>
               </div>
@@ -57,7 +59,7 @@
       </div>
       @endforeach
       @if($bom->status != 'archived' && $bom->status != 'accepted')
-          <form method="post" action="{{ route('addNewSuppliers', [$bom->id]) }}">
+          <form id="add-supplier" method="post" action="{{ route('addNewSuppliers', [$bom->id]) }}">
             <hr class="light-hr">
             <div class="row supplier-item-wrap">
     {{--           <div class="form-group col-md-12">
@@ -69,7 +71,7 @@
               </div> --}}
             </div>
             <div class="row center-block">
-              <button class="add-supplier-to-bom"><i class="icon ion-plus-circled"></i> Add another supplier</button>
+              <button class="add-supplier-to-bom"><i class="icon ion-plus-circled"></i> Add New Supplier</button>
             </div>
             <input type="hidden" name="bom_id" value="{{ $bom->id }}">
             {!! csrf_field() !!}

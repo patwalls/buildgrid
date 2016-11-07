@@ -131,8 +131,8 @@ class BomController extends Controller {
 
         $supplier = InvitedSupplier::where('hashid', $hashid)->first();
 
-        if(! $supplier){
-            return response('Not Found', 404);
+        if(! $supplier || ! $supplier->bom){
+            return response('Not  Found', 404);
         }
 
         if($supplier->status == 'notViewed'){
@@ -229,6 +229,7 @@ class BomController extends Controller {
         $bom = Bom::findOrFail($id);
         $bom->status = 'archived';
         $bom->save();
+        $bom->delete();
 
         return response('OK', 200);
     }

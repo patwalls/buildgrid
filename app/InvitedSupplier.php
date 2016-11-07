@@ -25,7 +25,7 @@ class InvitedSupplier extends Ardent
         'bom' => [self::BELONGS_TO, 'BuildGrid\Bom'],
         'bomResponses' => [self::HAS_MANY, 'BuildGrid\BomResponse'],
     ];
-
+    
     public function responseAcceptedFromBom()
     {
         return $this->hasManyThrough( 'BuildGrid\BomResponse', 'BuildGrid\Bom', 'id', 'id')->where('bom_responses.status', 'accepted');
