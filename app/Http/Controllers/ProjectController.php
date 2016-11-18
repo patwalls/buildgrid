@@ -47,7 +47,9 @@ class ProjectController extends Controller
 
         $projects_with_archived_boms = \Auth::user()->projects()->archivedBoms()->orderBy('updated_at', 'desc')->get();
 
-        $projects = $projects_with_active_boms->merge($projects_with_archived_boms);
+        $projects_with_accepted_boms = \Auth::user()->projects()->acceptedBoms()->orderBy('updated_at', 'desc')->get();
+
+        $projects = $projects_with_active_boms->merge($projects_with_accepted_boms)->merge($projects_with_archived_boms);
 
         return view('home', compact('projects'));
 

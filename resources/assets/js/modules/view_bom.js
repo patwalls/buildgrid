@@ -41,8 +41,14 @@ module.exports = (data) => {
 
     });
 
-    $( ".add-supplier-to-bom" ).one( "click", function() {
-        $('.submit-new-supplier-btn').append('<button type="submit" class="btn btn-primary btn-sm update-suppliers-btn">Update Suppliers</button>');
+  
+
+    $("#add-supplier").keypress( function (e) {
+        if(e.which == 13) {
+            e.preventDefault();
+            this.submit();
+            return false;
+        }
     });
 
     $( ".btn-accept-response" ).click((e) => {
