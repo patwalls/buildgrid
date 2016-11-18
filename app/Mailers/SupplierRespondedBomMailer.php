@@ -23,7 +23,7 @@ class SupplierRespondedBomMailer  extends Mailer
         $purchaser_name         = $bomResponse->bom->project->user->full_name;
         $purchaser_email        = $bomResponse->bom->project->user->email;
         $project_name           = $bomResponse->bom->project->name;
-
+        $bom_name               = $bomResponse->bom->name;
 
         $subject = "A Supplier Responded to your BOM";
         $view = 'email.bom_response.supplier_responded_bom';
@@ -33,10 +33,31 @@ class SupplierRespondedBomMailer  extends Mailer
             'purchaser_name'         => $purchaser_name,
             'purchaser_email'        => $purchaser_email,
             'project_name'           => $project_name,
-            'project_url'            => link_to_route('getShowBom', $project_name , ['id' => $bomResponse->bom->id])
+            'bom_name'               => $bom_name,
+            'project_url'            => link_to_route('getShowBom', $bom_name , ['id' => $bomResponse->bom->id])
         ];
 
         return parent::sendMail($purchaser_email, $subject, $view, $data);
     }
 
+    public static function sendConfirmationToSupplier(BomResponse $bomResponse)
+    {
+        $supplier_name         = $bomResponse->bom->project->user->full_name;
+        $supplier_email        = $bomResponse->bom->project->user->email;
+        $project_name           = $bomResponse->bom->project->name;
+
+
+        $subject = "Thank you for your response";
+        $view = 'email.bom_response.supplier_confirmation';
+
+
+        $data = [
+            'supplier_name'         => $supplier_name,
+            'supplier_email'        => $supplier_email,
+            'project_name'          => $project_name,
+        ];
+
+        return parent::sendMail($supplier_email, $subject, $view, $data);
+    }
+    
 }
