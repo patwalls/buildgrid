@@ -30,5 +30,6 @@ class EmailSupplierResponseBom
     public function handle(SupplierRespondedBom $event)
     {
        SupplierRespondedBomMailer::sendSupplierResponseBomMail($event->bomResponse);
+       SupplierRespondedBomMailer::sendConfirmationToSupplier($event->bomResponse);
     }
 }

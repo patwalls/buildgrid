@@ -1,4 +1,6 @@
     var bomResponseDropzone = new Dropzone("div#dropzone", {
+        addRemoveLinks: true,
+        dictRemoveFile: 'Remove',
         url: "/bom_response_upload",
         autoProcessQueue: false,
         maxFiles: 1,
@@ -7,6 +9,9 @@
         maxfilesexceeded: function maxfilesexceeded(file) {
             this.removeAllFiles();
             this.addFile(file);
+        },
+        uploadProgress: function (progress) {
+            bomResponseDropzone.querySelector("#total-progress .progress-bar").style.width = progress + "%";
         },
         dictDefaultMessage: "<i class='fa fa-upload fa-4x'></i><br/><h3>Drag & Drop</h3> your response or <span class='underline'>browse...</span>",
         success: function success(file, response) {
@@ -22,9 +27,6 @@
             if (xhr) {
                 swal("Oops...", "Something went wrong! Please try again later.", "error");
             }
-        },
-        uploadProgress: (progress)  => {
-           this.querySelector("#total-progress .progress-bar").style.width = progress + "%";
         }
     }).on("sending", function (file, xhr, formData) {
         formData.append("_token",  document.getElementsByName('_token')[0].value);

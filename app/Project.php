@@ -48,6 +48,11 @@ class Project extends Ardent
         } );
     }
 
-
+    public function scopeAcceptedBoms($query)
+    {
+        return $query->whereHas('boms', function($query){
+            $query->where('status', 'accepted');
+        } );
+    }
 
 }

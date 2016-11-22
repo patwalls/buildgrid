@@ -41,7 +41,8 @@ class AddAdditionalSuppliersRequest extends Request
      {
          return [
              'supplier.*.name.required' => 'The name is required',
-             'supplier.*.email.required' => 'The mail is required'
+             'supplier.*.email.required' => 'The email is required',
+             'supplier.*.email.email' => 'Must be a valid email address.'
          ];
      }
     

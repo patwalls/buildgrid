@@ -11,6 +11,8 @@ module.exports = () => {
     // Create Dropzone
 
     var bgDropzone = new dropzone("div#dropzone", {
+        addRemoveLinks: true,
+        dictRemoveFile: 'Remove',
         url: "/bom_file_upload",
         autoProcessQueue: false,
         maxFiles: 1,
