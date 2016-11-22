@@ -4,6 +4,7 @@
         url: "/bom_response_upload",
         autoProcessQueue: false,
         maxFiles: 1,
+        maxFilesize: 10,
         acceptedFiles: ".pdf,.doc,.docx,.xls,.xlsx,.csv,image/*",
         maxfilesexceeded: function maxfilesexceeded(file) {
             this.removeAllFiles();
