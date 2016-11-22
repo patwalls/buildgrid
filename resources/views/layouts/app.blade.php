@@ -15,9 +15,34 @@
     <link href="/css/vendor.css" rel="stylesheet">
     <link href="{{  elixir('css/app.css') }}" rel="stylesheet">
 
+    @if(Auth::guest())
+        <link href="{{  elixir('css/site.css') }}" rel="stylesheet">
+    @endif
+
 </head>
 <body id="app-layout">
     <div class="app-inner-wrap">
+
+        @if(Auth::guest())
+            <div class="modal__hide" id="loginForm">
+                <div class="modal__overlay-wrap">
+                    <div class="modal__wrap">
+                        <i class="icon ion-close-circled" id="loginFormClose"></i>
+                        @include('forms.login_form')
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal__hide" id="registerForm">
+                <div class="modal__overlay-wrap">
+                    <div class="modal__wrap">
+                        <i class="icon ion-close-circled" id="registerFormClose"></i>
+                        @include('forms.register_user')
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <nav class="navbar navbar-default">
             <div class="container" id="app-content-wrap">
                 <div class="navbar-header">
@@ -53,8 +78,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Sign Up</a></li>
+                            <li><a href="{{ url('/login') }}" id="loginModalLink">Login</a></li>
+                            <li><a href="{{ url('/register') }}" id="registerModalLink">Sign Up</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -93,6 +118,9 @@
 
     <script src="{{ elixir('js/app.js') }}"></script>
 
+    @if (Auth::guest())
+        <script src="{{ elixir('js/site.js') }}"></script>
+    @endif
 
 </body>
 </html>
