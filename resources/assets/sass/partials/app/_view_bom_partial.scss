@@ -186,7 +186,11 @@
 
 .left-app-dash-outer-wrap{
   background: $admin-light-blue;
-  min-height: 100%;
+
+  @media screen and (min-width: 970px) {
+    min-height: 100%;
+  }
+
   .supplier-title{
     text-transform: uppercase;
     font-size: 14px !important;
