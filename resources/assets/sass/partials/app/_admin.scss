@@ -44,4 +44,18 @@
     margin-left: 10px;
   }
 
+  .container.bom-info{
+    width: 100%;
+    display:flex;
+
+    .row{
+      width: 100%;
+    }
+
+  }
+
+  .bom-info{
+    margin-top: 0;
+  }
+
 }
