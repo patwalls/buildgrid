@@ -18,6 +18,7 @@ module.exports = () => {
         maxFiles: 1,
         maxFilesize: 10,
         acceptedFiles: ".pdf,.doc,.docx,.xls,.xlsx,.csv,image/*",
+        createImageThumbnails: false,
         maxfilesexceeded: (file) => {        // For replacing the current file with another one that was just dropped/selected.
             bgDropzone.removeAllFiles();
             bgDropzone.addFile(file);
