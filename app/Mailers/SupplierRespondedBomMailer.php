@@ -42,19 +42,21 @@ class SupplierRespondedBomMailer  extends Mailer
 
     public static function sendConfirmationToSupplier(BomResponse $bomResponse)
     {
-        $supplier_name         = $bomResponse->bom->project->user->full_name;
-        $supplier_email        = $bomResponse->bom->project->user->email;
+        $supplier_name         = $bomResponse->invitedSupplier->name;
+        $supplier_email        = $bomResponse->invitedSupplier->email;
         $project_name           = $bomResponse->bom->project->name;
+        $purchaser_name         = $bomResponse->bom->project->user->full_name;
+        $bom_name               = $bomResponse->bom->name;
 
 
-        $subject = "Thank you for your response";
+        $subject = "Your response has been subject for $project_name - $bom_name";
         $view = 'email.bom_response.supplier_confirmation';
 
 
         $data = [
             'supplier_name'         => $supplier_name,
-            'supplier_email'        => $supplier_email,
-            'project_name'          => $project_name,
+            'purchaser_name'       => $purchaser_name,
+            'bom_name'              => $bom_name,
         ];
 
         return parent::sendMail($supplier_email, $subject, $view, $data);
