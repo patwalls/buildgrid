@@ -9,6 +9,7 @@ module.exports = () => {
         autoProcessQueue: false,
         maxFiles: 1,
         acceptedFiles: ".pdf,.doc,.docx,.xls,.xlsx,.csv,image/*",
+        createImageThumbnails: false,
         maxfilesexceeded: function maxfilesexceeded(file) {
             this.removeAllFiles();
             this.addFile(file);

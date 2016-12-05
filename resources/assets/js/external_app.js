@@ -6,6 +6,7 @@
         maxFiles: 1,
         maxFilesize: 10,
         acceptedFiles: ".pdf,.doc,.docx,.xls,.xlsx,.csv,image/*",
+        createImageThumbnails: false,
         maxfilesexceeded: function maxfilesexceeded(file) {
             this.removeAllFiles();
             this.addFile(file);
