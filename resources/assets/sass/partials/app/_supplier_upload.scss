@@ -13,7 +13,10 @@
     }
   }
 #supplier-upload-wrap{
+
   background: white;
+  @include display(flex);
+  @include justify-content(space-between);
   padding: 2%;
   border: 1px solid $gray; 
   border-radius: 4px;
