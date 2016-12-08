@@ -101,6 +101,29 @@
                     </div>
                     {{-- / project details--}}
 
+                    @if($bom->status != 'archived' && $bom->status != 'accepted')
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="well">Bom Response</h3>
+
+                                <div class="upload-wrap">
+                                    <div class="b2">Add A Response</div>
+                                    <div id="dropzone" class="dropzone"></div>
+                                </div>
+                                <form onsubmit="return false;" class="response-text-wrap admin-response-form">
+                                    <div class="b2">Comments</div>
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="comment" id="comment" rows="5" placeholder="Comments..."></textarea>
+                                    </div>
+                                    <button id="postResponseBtn" class="btn btn-default">Send</button>
+                                    <input type="hidden" value="{{ $bom->id }}" name="bom_id">
+                                    {{ csrf_field() }}
+                                </form>
+                            </div>
+                        </div>
+
+                    @endif
                     {{-- Responses --}}
                     <div class="row">
                         <div class="col-md-12">
