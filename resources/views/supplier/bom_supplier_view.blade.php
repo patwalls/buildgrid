@@ -25,30 +25,28 @@
     </div>
 
     <div class="container" id="supplier-upload-wrap">
-
-        <a class="download-link" href="{{ route('supplierBomDownload', [$supplier->hashid]) }}">
-            <img id="pdf-preview" src="{{ route('getBomPreview', $supplier->bom->id) }}"/>
-        </a>
-
-        <p>
-            <a class="download-link" href="{{ route('supplierBomDownload', [$supplier->hashid]) }}">Download BOM</a>
-        </p>
+        <div class="flex">
+            <a class="download-link" href="{{ route('supplierBomDownload', [$supplier->hashid]) }}">
+                <img id="pdf-preview" src="{{ route('getBomPreview', $supplier->bom->id) }}"/>
+                <p><a class="download-link" href="{{ route('supplierBomDownload', [$supplier->hashid]) }}">Download BOM</a></p>
+            </a>
+        </div>
 
         <div class="upload-wrap">
             <div class="b2">Add A Response</div>
-            <div id="dropzone" class="dropzone"></div>        
-        </div>
-
-        <form onsubmit="return false;" class="response-text-wrap">
-            <div class="b2">Comments</div>
-            <div class="form-group">
-                <textarea class="form-control" name="comment" id="comment" rows="5" placeholder="Comments..."></textarea>
+            <div id="dropzone" class="dropzone">
             </div>
-            <button id="postResponseBtn" class="btn btn-default">Send</button>
-            <input type="hidden" name="hashid" id="hashid" value="{{ $supplier->hashid }}">
-            {{ csrf_field() }}
-        </form>
-
+            <br/>Supported file types: <b>.pdf, .doc, .docx, .xls, .xlsx, .csv, .jpg, .png </b><br/>Max size: <b>10 MB</b>
+            <form onsubmit="return false;" class="response-text-wrap">
+                <div class="b2">Comments</div>
+                <div class="form-group">
+                    <textarea class="form-control" name="comment" id="comment" rows="5" placeholder="Comments..."></textarea>
+                </div>
+                <button id="postResponseBtn" class="btn btn-default">Send</button>
+                <input type="hidden" name="hashid" id="hashid" value="{{ $supplier->hashid }}">
+                {{ csrf_field() }}
+            </form>
+        </div>
     </div>
 
 </div>

@@ -50,7 +50,6 @@
                     <button type="button" id="myButton" data-loading-text="Sending..."  autocomplete="off"  data-href="{{ route('sendSupplierReminder',[$invited_supplier->id])  }}" class="btn btn-primary btn-sm resend-email-notification js-resend-email">Resend Email</button>
                     <p class="bg-success" id="bom-notify-success">Your BOM has been resent</p>
                     <button type="button" id="copyLink" class="btn btn-primary btn-sm copy-link" data-href="{{url('bom_supplier_view', $invited_supplier->hashid)}}">Copy Link</button>
-                    <p id="copy-notify-success">{{url('bom_supplier_view', $invited_supplier->hashid)}}</p>
                   </div>
                 </div>
               </div>
@@ -58,6 +57,7 @@
         </div>
       </div>
       @endforeach
+        <div class="col-md-12"><p id="copy-notify-success"></p></div>
       @if($bom->status != 'archived' && $bom->status != 'accepted')
           <form id="add-supplier" method="post" action="{{ route('addNewSuppliers', [$bom->id]) }}">
             <hr class="light-hr">
