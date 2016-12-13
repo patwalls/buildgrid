@@ -61,6 +61,14 @@ body{
   }
 }
 
+.cancel-proj-btn{
+  background: $admin-red;
+  border: 0px;
+  &:hover, &:active, &:focus, &:visited{
+    background: $admin-red;
+  }
+}
+
 [data-toggle="popover"]{
   &:focus{
     outline: none;
