@@ -76,6 +76,7 @@
         <div class="row">
             <div class="form-group col-md-3">
                 <button type="submit" class="btn btn-primary btn-block new-proj-btn">{{ is_null($project) ? 'Create Project' : 'Add BOM' }}</button>
+                <a class="btn btn-primary btn-block cancel-proj-btn" href="{{ url('/home') }}">Cancel</a>
             </div>
         </div>
     </form>
