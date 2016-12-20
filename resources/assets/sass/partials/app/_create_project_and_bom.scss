@@ -29,3 +29,12 @@
   margin-left: -14px;
   margin-top: 22px;
 }
+
+.flexable {
+  @include display(flex);
+  @include align-items(baseline);
+  @include justify-content(space-between);
+  @media only screen and (min-width:960px){
+    width: 67%;
+  }
+}
