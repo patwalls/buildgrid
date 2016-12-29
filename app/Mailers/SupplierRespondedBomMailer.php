@@ -25,7 +25,7 @@ class SupplierRespondedBomMailer  extends Mailer
         $project_name           = $bomResponse->bom->project->name;
         $bom_name               = $bomResponse->bom->name;
 
-        $subject = "A Supplier Responded to your BOM";
+        $subject = "A Supplier Responded to your BOM - ". $bom_name;
         $view = 'email.bom_response.supplier_responded_bom';
 
 

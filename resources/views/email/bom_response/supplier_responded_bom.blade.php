@@ -7,7 +7,7 @@
     </p>
 
     <p>
-    A supplier has responded your BOM <strong>{{$bom_name}}</strong> for project: <strong>{{ $project_name }}</strong>. Great work! <br>
+    A supplier has responded to your BOM <strong>{{$bom_name}}</strong> for project: <strong>{{ $project_name }}</strong>. Great work! <br>
     </p>
 
     <p>
