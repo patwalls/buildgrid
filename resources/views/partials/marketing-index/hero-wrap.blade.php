@@ -3,6 +3,6 @@
     <h2>Welcome to<span> Build</span>Grid</h2>
     <div class="b1">The materials purchasing marketplace you</div>
     <div class="b1">always wanted, <span class="b2">but didn’t expect to get.</span></div>
-    <a href="{{ url('/register') }}"><span class="b1">Get Started </span><i class="icon ion-ios-arrow-right"></i></a>
+    <a href="#" id="modalRegister"><span class="b1">Get Started </span><i class="icon ion-ios-arrow-right"></i></a>
   </div>
 </div>

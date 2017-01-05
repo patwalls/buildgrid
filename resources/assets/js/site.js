@@ -77,6 +77,11 @@ $('#registerModalLink').click(function(evt){
   $('#registerForm').fadeIn();
 });
 
+$('#modalRegister').click(function(evt){
+  evt.preventDefault();
+  $('#registerForm').fadeIn();
+});
+
 $('#loginFormClose').click(function(){
   $('#loginForm').fadeOut();
 });
