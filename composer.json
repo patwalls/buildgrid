@@ -17,19 +17,17 @@
         "intervention/image": "2.3.5",
         "ipunkt/laravel-analytics": "1.1.4",
         "jenssegers/rollbar": "v1.4.6",
-        "jenssegers/date": "v3.1.1",
         "laracasts/presenter": "0.2.1",
         "laravelbook/ardent": "v3.4.2",
         "league/flysystem-aws-s3-v3": "1.0.9",
         "league/flysystem-dropbox": "1.0.1",
-        "slynova/laravel-commentable": "v2.0.0",
         "spatie/laravel-glide": "2.2.8",
         "mathiasgrimm/laravel-dot-env-gen": "dev-master",
         "venturecraft/revisionable": "^1.26",
-        "barryvdh/laravel-elfinder": "^0.3.5",
         "vinkla/hashids": "2.2.2",
         "yajra/laravel-datatables-oracle": "~6.0",
-        "filepreviews/filepreviews-laravel": "^1.0"
+        "filepreviews/filepreviews-laravel": "^1.0",
+        "jenssegers/date": "^3.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "v2.1.2",
@@ -77,7 +75,7 @@
            "echo Do not forget to run 'npm install' and 'gulp'"
         ],
         "pre-update-cmd": [
-           "php artisan clear-compiled"
+         
         ],
         "post-update-cmd": [
            "vendor/bin/security-checker security:check",
