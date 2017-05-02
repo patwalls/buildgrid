@@ -75,7 +75,7 @@
            "echo Do not forget to run 'npm install' and 'gulp'"
         ],
         "pre-update-cmd": [
-         
+            "php artisan clear-compiled"
         ],
         "post-update-cmd": [
            "vendor/bin/security-checker security:check",
