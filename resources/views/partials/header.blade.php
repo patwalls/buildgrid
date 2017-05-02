@@ -4,6 +4,7 @@
       <div class="header-item-wrap">
         <a href="{{ url('/') }}"><img src="/images/logo.png" alt=""></a>
       </div>
+      {{-- Navbar here --}}
       <div class="header-item-wrap" id="right-header-wrap">
         <ul id="menu-target">
           <li><a @if( url() == '/') data-scroll @endif href="{{ url('/#nav-desk') }}"><span class="b1">Home</span></a></li>
@@ -28,6 +29,7 @@
 <div id="mobile-menu-wrap">
   <div class="mobile-menu-inner-wrap">
     <ul id="mobile-menu-list" class="animated ">
+      <li id='signup-mobile-item'><a href="{{ url('/signup') }}" id="registerModalLink"><span class="b1 signup">Sign Up</span></a></li>
       <li><a href="{{ url('/#home') }}"><span class="b1">Home</span></a></li>
       <li><a href="{{ url('/#about-us') }}"><span class="b1">About Us</span></a></li>
       <li><a href="{{ url('/#how-it-works') }}"><span class="b1">How it Works</span></a></li>
